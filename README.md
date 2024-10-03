@@ -1,4 +1,4 @@
-# Dart Package Template
+# DF - Widgets
 
 <a href="https://www.buymeacoffee.com/robmllze" target="_blank"><img align="right" src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
@@ -11,7 +11,7 @@ Dart & Flutter Packages by DevCetra.com & contributors.
 
 ## Summary
 
-Coming soon.
+A collection of practical widgets that are neither material nor cupertino.
 
 For a full feature set, please refer to the [API reference](https://pub.dev/documentation/df_widgets/).
 
