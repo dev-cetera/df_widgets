@@ -116,7 +116,8 @@ class ContentDivider extends StatelessWidget {
     final thickness1 = thickness ?? 1.sc;
     final size1 = math.max(thickness1, size ?? thickness1);
     final spacing1 = childMainAxisPadding ?? 8.sc;
-    final childAlignment1 = childAlignment?.toAlignment(orientation1) ?? Alignment.center;
+    final childAlignment1 =
+        childAlignment?.toAlignment(orientation1) ?? Alignment.center;
     final vertical = orientation1 == Axis.vertical;
     final horizontal = orientation1 == Axis.horizontal;
     final screenSize = MediaQuery.of(context).size;
@@ -149,7 +150,8 @@ class ContentDivider extends StatelessWidget {
                   child: Container(
                     height: horizontal ? size1 : null,
                     width: vertical ? size1 : null,
-                    decoration: (childDecoration ?? const BoxDecoration()).copyWith(
+                    decoration:
+                        (childDecoration ?? const BoxDecoration()).copyWith(
                       color: childDecoration?.color,
                       borderRadius: childDecoration?.borderRadius ??
                           BorderRadius.circular(math.max(8.sc, 0.25 * size1)),
@@ -197,11 +199,15 @@ enum MDividerAlignment {
   Alignment toAlignment(Axis axis) {
     switch (this) {
       case MDividerAlignment.START:
-        return axis == Axis.horizontal ? Alignment.centerLeft : Alignment.topCenter;
+        return axis == Axis.horizontal
+            ? Alignment.centerLeft
+            : Alignment.topCenter;
       case MDividerAlignment.CENTER:
         return Alignment.center;
       case MDividerAlignment.END:
-        return axis == Axis.horizontal ? Alignment.centerRight : Alignment.bottomCenter;
+        return axis == Axis.horizontal
+            ? Alignment.centerRight
+            : Alignment.bottomCenter;
     }
   }
 }

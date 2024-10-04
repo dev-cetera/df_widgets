@@ -50,7 +50,8 @@ class BreatheAnimator extends StatefulWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class _State extends State<BreatheAnimator> with SingleTickerProviderStateMixin {
+class _State extends State<BreatheAnimator>
+    with SingleTickerProviderStateMixin {
   //
   //
   //

@@ -17,6 +17,10 @@ repository: https://github.com/robmllze/df_widgets
 funding:
   - https://www.buymeacoffee.com/robmllze
 topics:
+  - design
+  - modular
+  - theme
+  - ui
   - widgets
 
 ## -----------------------------------------------------------------------------
@@ -35,6 +39,4 @@ dependencies:
 ## -----------------------------------------------------------------------------
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
