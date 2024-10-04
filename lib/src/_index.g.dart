@@ -34,6 +34,7 @@ export 'animators/slide_animator.dart';
 export 'animators/breathe_animator.dart';
 export 'animators/rpm_animator.dart';
 export 'animators/collapsable_animator.dart';
+export 'theme/text_style.dart';
 export 'surfaces/clipped_surface.dart';
 export 'surfaces/blurry_surface.dart';
 

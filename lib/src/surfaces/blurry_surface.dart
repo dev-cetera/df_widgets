@@ -16,7 +16,7 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class MBlurryContainer extends StatelessWidget {
+class BlurrySurface extends StatelessWidget {
   //
   //
   //
@@ -36,7 +36,7 @@ class MBlurryContainer extends StatelessWidget {
   //
   //
 
-  const MBlurryContainer({
+  const BlurrySurface({
     super.key,
     this.child,
     this.sigma = 8.0,
