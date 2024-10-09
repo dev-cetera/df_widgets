@@ -21,13 +21,22 @@ import '/_common.dart';
 void showLoadingOverlayUntilComplete(
   BuildContext context,
   Future<void> future,
+  void Function(Object? e) onError,
 ) {
+  VoidCallback? remove;
+  future.onError((e, stackTrace) {
+    if (context.mounted) {
+      remove?.call();
+      onError.call(e);
+    }
+  });
   showMessageOverlay(
     context,
     leading: CircularProgressIndicator.adaptive(strokeWidth: 4.sc),
-    remover: (remove) async {
+    remover: (r) async {
+      remove = r;
       await future;
-      remove();
+      r();
     },
   );
 }
