@@ -25,6 +25,7 @@ Future<void> showMessageOverlay(
   Widget? trailing,
   bool tapBackgroundToDismiss = false,
   EdgeInsets? padding,
+  EdgeInsets margin = EdgeInsets.zero,
   BoxConstraints? constraints,
   double? spacing,
   double? titleIconSpacing,
@@ -45,40 +46,43 @@ Future<void> showMessageOverlay(
         mainAxisSize: MainAxisSize.min,
         children: [
           IntrinsicWidth(
-            child: ClippedSurface(
-              padding: padding ?? EdgeInsets.all(32.sc),
-              decoration: decoration,
-              constraints: constraints,
-              color: color,
-              borderRadius: borderRadius,
-              width: width,
-              height: height,
-              child: DividedColumn(
-                divider: SizedBox(height: spacing ?? 16.sc),
-                children: [
-                  if (title != null) ...[
-                    Wrap(
-                      children: [
-                        Text(
-                          title,
-                          style: titleStyle,
-                        ),
-                        if (titleIcon != null) ...[
-                          SizedBox(width: titleIconSpacing ?? 8.sc),
-                          titleIcon,
+            child: Padding(
+              padding: margin,
+              child: ClippedSurface(
+                padding: padding ?? EdgeInsets.all(32.sc),
+                decoration: decoration,
+                constraints: constraints,
+                color: color,
+                borderRadius: borderRadius,
+                width: width,
+                height: height,
+                child: DividedColumn(
+                  divider: SizedBox(height: spacing ?? 16.sc),
+                  children: [
+                    if (title != null) ...[
+                      Wrap(
+                        children: [
+                          Text(
+                            title,
+                            style: titleStyle,
+                          ),
+                          if (titleIcon != null) ...[
+                            SizedBox(width: titleIconSpacing ?? 8.sc),
+                            titleIcon,
+                          ],
                         ],
-                      ],
-                    ),
-                    const ContentDivider(),
+                      ),
+                      const ContentDivider(),
+                    ],
+                    if (leading != null) leading,
+                    if (message != null)
+                      Text(
+                        message.toString(),
+                        style: messageStyle,
+                      ),
+                    if (trailing != null) trailing,
                   ],
-                  if (leading != null) leading,
-                  if (message != null)
-                    Text(
-                      message.toString(),
-                      style: messageStyle,
-                    ),
-                  if (trailing != null) trailing,
-                ],
+                ),
               ),
             ),
           ),
