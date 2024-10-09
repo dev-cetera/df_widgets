@@ -17,6 +17,7 @@ export 'builders/view_insets_builder.dart';
 export 'overlays/show_blurry_overlay.dart';
 export 'overlays/show_aligned_overlay.dart';
 export 'overlays/show_bottom_message_overlay.dart';
+export 'overlays/show_loading_overlay_until_complete.dart';
 export 'overlays/global_overlay.dart';
 export 'overlays/overlayed.dart';
 export 'overlays/show_message_overlay.dart';
