@@ -25,7 +25,7 @@ Future<void> showMessageOverlay(
   Widget? trailing,
   bool tapBackgroundToDismiss = false,
   EdgeInsets? padding,
-  EdgeInsets? margin,
+  BoxConstraints? constraints,
   double? spacing,
   double? titleIconSpacing,
   BoxDecoration? decoration,
@@ -40,51 +40,49 @@ Future<void> showMessageOverlay(
     tapBackgroundToDismiss: tapBackgroundToDismiss,
     builder: (context, remove) {
       remover?.call(remove);
-      return Padding(
-        padding: margin ?? EdgeInsets.all(32.sc),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IntrinsicWidth(
-              child: ClippedSurface(
-                padding: padding ?? EdgeInsets.all(32.sc),
-                decoration: decoration,
-                color: color,
-                borderRadius: borderRadius,
-                width: width,
-                height: height,
-                child: DividedColumn(
-                  divider: SizedBox(height: spacing ?? 16.sc),
-                  children: [
-                    if (title != null) ...[
-                      Wrap(
-                        children: [
-                          Text(
-                            title,
-                            style: titleStyle,
-                          ),
-                          if (titleIcon != null) ...[
-                            SizedBox(width: titleIconSpacing ?? 8.sc),
-                            titleIcon,
-                          ],
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IntrinsicWidth(
+            child: ClippedSurface(
+              padding: padding ?? EdgeInsets.all(32.sc),
+              decoration: decoration,
+              constraints: constraints,
+              color: color,
+              borderRadius: borderRadius,
+              width: width,
+              height: height,
+              child: DividedColumn(
+                divider: SizedBox(height: spacing ?? 16.sc),
+                children: [
+                  if (title != null) ...[
+                    Wrap(
+                      children: [
+                        Text(
+                          title,
+                          style: titleStyle,
+                        ),
+                        if (titleIcon != null) ...[
+                          SizedBox(width: titleIconSpacing ?? 8.sc),
+                          titleIcon,
                         ],
-                      ),
-                      const ContentDivider(),
-                    ],
-                    if (leading != null) leading,
-                    if (message != null)
-                      Text(
-                        message.toString(),
-                        style: messageStyle,
-                      ),
-                    if (trailing != null) trailing,
+                      ],
+                    ),
+                    const ContentDivider(),
                   ],
-                ),
+                  if (leading != null) leading,
+                  if (message != null)
+                    Text(
+                      message.toString(),
+                      style: messageStyle,
+                    ),
+                  if (trailing != null) trailing,
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       );
     },
   );
