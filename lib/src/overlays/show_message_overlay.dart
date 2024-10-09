@@ -31,6 +31,7 @@ Future<void> showMessageOverlay(
   double? titleIconSpacing,
   BoxDecoration? decoration,
   Color? color,
+  Color? dividerColor,
   BorderRadius borderRadius = BorderRadius.zero,
   void Function(void Function() remove)? remover,
   double? height,
@@ -72,7 +73,9 @@ Future<void> showMessageOverlay(
                           ],
                         ],
                       ),
-                      const ContentDivider(),
+                      ContentDivider(
+                        color: dividerColor,
+                      ),
                     ],
                     if (leading != null) leading,
                     if (message != null)
