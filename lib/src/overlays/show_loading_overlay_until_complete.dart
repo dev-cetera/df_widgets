@@ -24,9 +24,7 @@ void showLoadingOverlayUntilComplete(
 ) {
   showMessageOverlay(
     context,
-    leading: CircularProgressIndicator.adaptive(
-      strokeWidth: 4.sc,
-    ),
+    leading: CircularProgressIndicator.adaptive(strokeWidth: 4.sc),
     remover: (remove) async {
       await future;
       remove();
