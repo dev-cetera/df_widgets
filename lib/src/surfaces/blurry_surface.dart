@@ -23,7 +23,7 @@ class BlurrySurface extends StatelessWidget {
 
   final Widget? child;
   final double? sigma;
-  final double opacity;
+  final int alpha;
   final BorderRadius borderRadius;
   final BoxConstraints constraints;
   final BoxDecoration decoration;
@@ -40,7 +40,7 @@ class BlurrySurface extends StatelessWidget {
     super.key,
     this.child,
     this.sigma = 8.0,
-    this.opacity = 0.75,
+    this.alpha = 192,
     this.borderRadius = BorderRadius.zero,
     this.constraints = const BoxConstraints(),
     this.decoration = const BoxDecoration(),
@@ -68,7 +68,7 @@ class BlurrySurface extends StatelessWidget {
           height: height,
           constraints: constraints,
           decoration: decoration.copyWith(
-            color: color?.withOpacity(color!.opacity * opacity),
+            color: color?.withAlpha(alpha),
             borderRadius: borderRadius,
           ),
           padding: padding ?? EdgeInsets.zero,
