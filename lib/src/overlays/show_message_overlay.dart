@@ -27,7 +27,12 @@ Future<void> showMessageOverlay(
   EdgeInsets? padding,
   double? spacing,
   double? titleIconSpacing,
+  BoxDecoration? decoration,
+  Color? color,
+  BorderRadius borderRadius = BorderRadius.zero,
   void Function(void Function() remove)? remover,
+  double? height,
+  double? width,
 }) {
   return showBlurryOverlay(
     context,
@@ -41,6 +46,11 @@ Future<void> showMessageOverlay(
           IntrinsicWidth(
             child: ClippedSurface(
               padding: padding ?? EdgeInsets.all(32.sc),
+              decoration: decoration,
+              color: color,
+              borderRadius: borderRadius,
+              width: width,
+              height: height,
               child: DividedColumn(
                 divider: SizedBox(height: spacing ?? 16.sc),
                 children: [
