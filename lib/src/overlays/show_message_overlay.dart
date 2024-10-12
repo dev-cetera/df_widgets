@@ -49,12 +49,11 @@ Future<void> showMessageOverlay(
           IntrinsicWidth(
             child: Padding(
               padding: margin,
-              child: ClippedSurface(
+              child: Container(
                 padding: padding ?? EdgeInsets.all(32.sc),
                 decoration: decoration,
                 constraints: constraints,
                 color: color,
-                borderRadius: borderRadius,
                 width: width,
                 height: height,
                 child: DividedColumn(

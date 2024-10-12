@@ -23,7 +23,10 @@ Future<void> showBlurryOverlay(
     BuildContext context,
     void Function() remove,
   ) builder,
-  Color? color,
+  BlurryOverlayProperties properties = const BlurryOverlayProperties(
+    sigma: 1.0,
+    color: Color.fromARGB(128, 0, 0, 0),
+  ),
 }) {
   final completer = Completer<dynamic>();
   late final OverlayEntry overlayEntry;
@@ -40,7 +43,7 @@ Future<void> showBlurryOverlay(
   overlayEntry = OverlayEntry(
     builder: (context) {
       return BlurryOverlay(
-        color: color,
+        properties: properties,
         onTapBackground: tapBackgroundToDismiss ? complete : null,
         child: FutureBuilder(
           future: () async {

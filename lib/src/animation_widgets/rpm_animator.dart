@@ -14,34 +14,24 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class ClippedSurface extends StatelessWidget {
+class RpmAnimator extends StatefulWidget {
   //
   //
   //
 
-  final Widget? child;
-  final BorderRadius borderRadius;
-  final BoxConstraints? constraints;
-  final BoxDecoration? decoration;
-  final EdgeInsets? padding;
-  final Color? color;
-  final double? width;
-  final double? height;
+  final Widget child;
+  final double rpm;
+  final bool clockwise;
 
   //
   //
   //
 
-  const ClippedSurface({
+  const RpmAnimator({
     super.key,
-    this.child,
-    this.borderRadius = BorderRadius.zero,
-    this.constraints,
-    this.decoration,
-    this.padding,
-    this.color,
-    this.height,
-    this.width,
+    required this.child,
+    this.rpm = 30.0,
+    this.clockwise = true,
   });
 
   //
@@ -49,24 +39,48 @@ class ClippedSurface extends StatelessWidget {
   //
 
   @override
+  _State createState() => _State();
+}
+
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+class _State extends State<RpmAnimator> with SingleTickerProviderStateMixin {
+  //
+  //
+  //
+
+  late final _controller = AnimationController(
+    duration: Duration(seconds: (60.0 / (widget.rpm)).round()),
+    vsync: this,
+  )..repeat();
+
+  late final _animation = CurvedAnimation(
+    parent: _controller,
+    curve: Curves.easeInOut,
+  );
+
+  //
+  //
+  //
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  //
+  //
+  //
+
+  @override
   Widget build(BuildContext context) {
-    final color1 = decoration?.color ?? color;
-    final borderRadius1 = decoration?.borderRadius ?? borderRadius;
-    return Container(
-      width: width,
-      height: height,
-      constraints: constraints,
-      decoration: decoration?.copyWith(
-            color: color1,
-            borderRadius: borderRadius1,
-          ) ??
-          BoxDecoration(
-            color: color1,
-            borderRadius: borderRadius1,
-          ),
-      padding: padding ?? EdgeInsets.zero,
-      clipBehavior: Clip.antiAlias,
-      child: child,
+    return RotationTransition(
+      turns: Tween(
+        begin: 0.0,
+        end: widget.clockwise ? 1.0 : -1.0,
+      ).animate(_animation),
+      child: widget.child,
     );
   }
 }

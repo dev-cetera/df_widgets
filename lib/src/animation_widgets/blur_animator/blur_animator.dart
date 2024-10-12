@@ -12,6 +12,8 @@
 
 import '/_common.dart';
 
+part '_blur_animator_properties.g.dart';
+
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 class BlurAnimator extends StatefulWidget {
@@ -20,14 +22,7 @@ class BlurAnimator extends StatefulWidget {
   //
 
   final Widget child;
-  final Duration delay;
-  final Duration duration;
-  final Curve curve;
-  final double begin;
-  final double end;
-  final Color? color;
-  final BlendMode blendMode;
-  final bool disabled;
+  final BlurAnimatorProperties properties;
 
   //
   //
@@ -36,14 +31,16 @@ class BlurAnimator extends StatefulWidget {
   const BlurAnimator({
     super.key,
     required this.child,
-    this.delay = Duration.zero,
-    this.duration = const Duration(milliseconds: 1500),
-    this.curve = Curves.easeInCirc,
-    this.begin = 0.0,
-    this.end = 3.0,
-    this.color,
-    this.blendMode = BlendMode.darken,
-    this.disabled = false,
+    this.properties = const BlurAnimatorProperties(
+      delay: Duration.zero,
+      duration: Duration(milliseconds: 1500),
+      curve: Curves.easeInCirc,
+      begin: 0.0,
+      end: 3.0,
+      blendMode: BlendMode.darken,
+      disabled: false,
+      color: Color.fromARGB(128, 0, 0, 0),
+    ),
   });
 
   //
@@ -73,20 +70,20 @@ class _State extends State<BlurAnimator> with SingleTickerProviderStateMixin {
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: widget.duration,
+      duration: widget.properties.duration$,
     );
-    Future.delayed(widget.delay, () {
+    Future.delayed(widget.properties.delay$, () {
       if (mounted) {
         _controller.forward();
       }
     });
     _animation = Tween<double>(
-      begin: widget.begin,
-      end: widget.end,
+      begin: widget.properties.begin$,
+      end: widget.properties.end$,
     ).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: widget.curve,
+        curve: widget.properties.curve$,
       ),
     );
   }
@@ -114,12 +111,39 @@ class _State extends State<BlurAnimator> with SingleTickerProviderStateMixin {
         final sigma = _animation.value;
         return Blur(
           sigma: sigma,
-          color: widget.color,
-          blendMode: widget.blendMode,
-          disabled: widget.disabled,
+          color: widget.properties.color$,
+          blendMode: widget.properties.blendMode$,
+          disabled: widget.properties.disabled$,
           child: child,
         );
       },
     );
   }
+}
+
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+@GenerateDartModel(
+  fields: {
+    ...ANIMATOR_PROPERTIES_FIELDS,
+    Field(
+      fieldPath: ['blendMode'],
+      fieldType: BlendMode,
+      nullable: false,
+    ),
+    Field(
+      fieldPath: ['color'],
+      fieldType: Color,
+      nullable: false,
+    ),
+    Field(
+      fieldPath: ['disabled'],
+      fieldType: bool,
+      nullable: false,
+    ),
+  },
+  shouldInherit: true,
+)
+class _BlurAnimatorProperties {
+  const _BlurAnimatorProperties();
 }

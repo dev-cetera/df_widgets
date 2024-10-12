@@ -17,7 +17,7 @@ import '/_common.dart';
 Future<void> showBottomMessageOverlay(
   BuildContext context, {
   required Object? message,
-  TextStyle? textStyle,
+  TextStyle? messageStyle,
   Widget? icon,
   double? iconSpacing,
   void Function(void Function() remove)? remover,
@@ -44,16 +44,17 @@ Future<void> showBottomMessageOverlay(
             IntrinsicWidth(
               child: SlideAnimator(
                 extent: 0.5,
-                child: ClippedSurface(
+                child: Container(
                   decoration: BoxDecoration(
                     color: backgroundColor,
+                    borderRadius: borderRadius ?? BorderRadius.circular(24.sc),
                   ),
+                  clipBehavior: Clip.antiAlias,
                   padding: padding ??
                       EdgeInsets.symmetric(
                         horizontal: 20.sc,
                         vertical: 12.sc,
                       ),
-                  borderRadius: borderRadius ?? BorderRadius.circular(24.sc),
                   child: Wrap(
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
@@ -65,7 +66,7 @@ Future<void> showBottomMessageOverlay(
                       ],
                       Text(
                         message.toString(),
-                        style: textStyle,
+                        style: messageStyle,
                         softWrap: true,
                       ),
                     ],

@@ -10,28 +10,35 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
+import 'dart:ui' show ImageFilter;
+
 import '/_common.dart';
+
+part 'blurry_overlay.g.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class RpmAnimator extends StatefulWidget {
+class BlurryOverlay extends StatelessWidget {
   //
   //
   //
 
-  final Widget child;
-  final double rpm;
-  final bool clockwise;
+  final VoidCallback? onTapBackground;
+  final BlurryOverlayProperties properties;
+  final Widget? child;
 
   //
   //
   //
 
-  const RpmAnimator({
+  const BlurryOverlay({
     super.key,
-    required this.child,
-    this.rpm = 30.0,
-    this.clockwise = true,
+    this.properties = const BlurryOverlayProperties(
+      sigma: 1.0,
+      color: Color.fromARGB(128, 0, 0, 0),
+    ),
+    this.onTapBackground,
+    this.child,
   });
 
   //
@@ -39,43 +46,33 @@ class RpmAnimator extends StatefulWidget {
   //
 
   @override
-  _State createState() => _State();
-}
-
-// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-
-class _State extends State<RpmAnimator> with SingleTickerProviderStateMixin {
-  //
-  //
-  //
-
-  late final _controller = AnimationController(
-    duration: Duration(seconds: (60.0 / (widget.rpm)).round()),
-    vsync: this,
-  )..repeat();
-
-  //
-  //
-  //
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  //
-  //
-  //
-
-  @override
   Widget build(BuildContext context) {
-    return RotationTransition(
-      turns: Tween(
-        begin: 0.0,
-        end: widget.clockwise ? 1.0 : -1.0,
-      ).animate(_controller),
-      child: widget.child,
+    return Stack(
+      fit: StackFit.expand,
+      alignment: Alignment.center,
+      children: [
+        GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: onTapBackground,
+          child: Container(
+            color: properties.color,
+          ),
+        ),
+        Builder(
+          builder: (context) {
+            final sigma = properties.sigma ?? 1.0;
+            return BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: sigma,
+                sigmaY: sigma,
+              ),
+              child: Center(
+                child: child,
+              ),
+            );
+          },
+        ),
+      ],
     );
   }
 }

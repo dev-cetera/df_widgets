@@ -11,7 +11,11 @@
 //.title~
 
 export 'package:flutter/widgets.dart';
+export 'package:flutter/gestures.dart';
 
+export 'package:df_color/df_color.dart';
+export 'package:df_generate_dart_models_core/df_generate_dart_models_core.dart';
+export 'package:df_pod/df_pod.dart';
 export 'package:df_scalable/df_scalable.dart';
 
 export '/src/_index.g.dart';
