@@ -1,5 +1,6 @@
 import 'package:df_widgets/_common.dart';
 import 'package:df_widgets/df_widgets.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -19,12 +20,28 @@ class _HomeState extends State<Home> {
             properties: NavigationBarItemProperties(
               selected: true,
               size: 50,
-              selectedIcon: Icon(Icons.home),
-              unselectedIcon: Icon(Icons.home_outlined),
+              selectedIcon: Icon(FluentIcons.home_24_filled),
+              unselectedIcon: Icon(FluentIcons.home_24_regular),
               tapBoxProperties: TapBox.DEFAULT_PROPERTIES.copyWith(
+                overlayHoverDecoration: BoxDecoration(
+                  color: Colors.transparent,
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 3,
+                  ),
+                  shape: BoxShape.circle,
+                ),
+                overlayTapDecoration: BoxDecoration(
+                  color: Colors.black.withAlpha(32),
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 3,
+                  ),
+                  shape: BoxShape.circle,
+                ),
                 decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(8.sc),
+                  color: Colors.yellow[300],
+                  shape: BoxShape.circle,
                 ),
               ),
             ),
