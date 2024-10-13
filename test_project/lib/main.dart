@@ -21,12 +21,13 @@ class _HomeState extends State<Home> {
           //   label: Text('HELLO'),
           //   child: Icon(Icons.add),
           // ),
+
           Padding(
             padding: const EdgeInsets.all(100),
             child: NavigationBarItem(
               properties: NavigationBarItemProperties(
                 selected: true,
-                size: 50,
+                size: 80,
                 selectedIcon: Icon(FluentIcons.home_24_filled),
                 unselectedIcon: Icon(FluentIcons.home_24_regular),
                 tapBoxProperties: TapBox.DEFAULT_PROPERTIES.copyWith(
@@ -35,16 +36,12 @@ class _HomeState extends State<Home> {
                       properties: Extruded.DEFAULT_PROPERTIES.copyWith(
                         showExtrusion: state != TapBoxState.TAP_DOWN,
                       ),
-                      child: Container(
-                        color: state == TapBoxState.HOVER ? Colors.blue.shade200 : Colors.blue,
-                        width: 80,
-                        height: 80,
-                        child: child,
-                      ),
-                      endChild: Container(
-                        color: Colors.grey,
-                        width: 80,
-                        height: 80,
+                      child: ColoredBox(
+                        color: state == TapBoxState.IDLE
+                            ? Colors.blue.shade600
+                            : state == TapBoxState.TAP_DOWN
+                                ? Colors.blue.shade500
+                                : Colors.blue.shade400,
                         child: child,
                       ),
                     );

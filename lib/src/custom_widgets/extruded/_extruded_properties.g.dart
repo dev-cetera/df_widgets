@@ -42,7 +42,7 @@ class ExtrudedProperties extends _ExtrudedProperties {
     required this.color,
     this.extrusion,
     required this.angle,
-    required this.border,
+    this.border,
   });
 
   /// Creates a copy of this instance, replacing the specified fields.
@@ -107,5 +107,5 @@ class ExtrudedProperties extends _ExtrudedProperties {
   /// If the field is nullable, the return value may be null; otherwise, it
   /// will always return a non-null value.
   @pragma('vm:prefer-inline')
-  ShapeBorder get border$ => border!;
+  ShapeBorder? get border$ => border;
 }

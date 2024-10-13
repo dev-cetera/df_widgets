@@ -12,6 +12,8 @@
 
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
 import '/_common.dart';
 
 part '_extruded_properties.g.dart';
@@ -28,7 +30,7 @@ class Extruded extends StatelessWidget {
     showExtrusion: true,
     color: Color.fromARGB(128, 0, 0, 0),
     angle: 55.0,
-    border: LinearBorder(),
+    border: OutlineInputBorder(),
   );
 
   const Extruded({
@@ -40,66 +42,70 @@ class Extruded extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final extrusion = (properties.extrusion ?? 6.sc).round();
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Visibility.maintain(
-          visible: properties.showExtrusion$,
-          child: CustomPaint(
-            painter: ExtrudedPainter(
-              border: properties.border$,
-              color: properties.color$,
-              extrusion: extrusion,
-              angle: properties.angle$,
-            ),
-            child: ClipPath(
-              clipper: ShapeBorderClipper(
-                shape: properties.border$,
+    final extrusion = (properties.extrusion ?? 8.sc).round();
+    final border =
+        properties.border ?? OutlineInputBorder(borderRadius: BorderRadius.circular(8.sc));
+    return IntrinsicWidth(
+      child: IntrinsicHeight(
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Visibility.maintain(
+              visible: properties.showExtrusion$,
+              child: CustomPaint(
+                painter: ExtrudedPainter(
+                  border: border,
+                  color: properties.color$,
+                  extrusion: extrusion,
+                  angle: properties.angle$,
+                ),
+                child: ClipPath(
+                  clipper: ShapeBorderClipper(
+                    shape: border,
+                  ),
+                  child: child,
+                ),
               ),
-              child: child,
             ),
-          ),
-        ),
-        if (endChild != null)
-          Visibility.maintain(
-            visible: !properties.showExtrusion$,
-            child: Builder(
-              builder: (context) {
-                final extrusion = (properties.extrusion ?? 6.sc).round();
-                final angleInRadians = (properties.angle$ % 360) * pi / 180;
+            Visibility.maintain(
+              visible: !properties.showExtrusion$,
+              child: Builder(
+                builder: (context) {
+                  final angleInRadians = (properties.angle$ % 360) * pi / 180;
 
-                // Calculate the translation
-                final dx = 2.0 * extrusion * cos(angleInRadians);
-                final dy = 2.0 * extrusion * sin(angleInRadians);
+                  // Calculate the translation
+                  final dx = 2.0 * extrusion * cos(angleInRadians);
+                  final dy = 2.0 * extrusion * sin(angleInRadians);
 
-                // Add padding only in the directions needed to avoid clipping
-                final extraLeft = dx < 0 ? -dx : 0.0;
-                final extraTop = dy < 0 ? -dy : 0.0;
-                final extraRight = dx > 0 ? dx : 0.0;
-                final extraBottom = dy > 0 ? dy : 0.0;
+                  // Add padding only in the directions needed to avoid clipping
+                  final extraLeft = dx < 0 ? -dx : 0.0;
+                  final extraTop = dy < 0 ? -dy : 0.0;
+                  final extraRight = dx > 0 ? dx : 0.0;
+                  final extraBottom = dy > 0 ? dy : 0.0;
 
-                return Padding(
-                  padding: EdgeInsets.only(
-                    left: extraLeft,
-                    top: extraTop,
-                    right: extraRight,
-                    bottom: extraBottom,
-                  ),
-                  child: Transform.translate(
-                    offset: Offset(dx, dy),
-                    child: ClipPath(
-                      clipper: ShapeBorderClipper(
-                        shape: properties.border$,
-                      ),
-                      child: endChild,
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      left: extraLeft,
+                      top: extraTop,
+                      right: extraRight,
+                      bottom: extraBottom,
                     ),
-                  ),
-                );
-              },
+                    child: Transform.translate(
+                      offset: Offset(dx, dy),
+                      child: ClipPath(
+                        clipper: ShapeBorderClipper(
+                          shape: border,
+                        ),
+                        child: endChild ?? child,
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
-          ),
-      ],
+          ],
+        ),
+      ),
     );
   }
 }
@@ -131,7 +137,7 @@ class Extruded extends StatelessWidget {
     Field(
       fieldPath: ['border'],
       fieldType: ShapeBorder,
-      nullable: false,
+      nullable: true,
     ),
   },
   shouldInherit: true,
