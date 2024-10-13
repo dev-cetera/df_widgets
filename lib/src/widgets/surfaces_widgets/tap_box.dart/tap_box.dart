@@ -23,11 +23,8 @@ class TapBox extends StatefulWidget {
   final Widget? child;
 
   static const DEFAULT_PROPERTIES = TapBoxProperties(
-    overlayHoverDecoration: BoxDecoration(color: Color.fromARGB(16, 0, 0, 0)),
-    overlayTapDecoration: BoxDecoration(color: Color.fromARGB(32, 0, 0, 0)),
-    underlayHoverDecoration: BoxDecoration(color: Color(0x00000000)),
-    underlayTapDecoration: BoxDecoration(color: Color(0x00000000)),
     decoration: BoxDecoration(),
+    foregroundDecoration: BoxDecoration(),
   );
 
   const TapBox({
@@ -39,18 +36,23 @@ class TapBox extends StatefulWidget {
   });
 
   @override
-  _TapBoxState createState() => _TapBoxState();
+  _State createState() => _State();
 }
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class _TapBoxState extends State<TapBox> {
-  bool _isTapped = false;
-  bool _isHovered = false;
+enum TapBoxState {
+  IDLE,
+  HOVER,
+  TAP_DOWN,
+}
+
+class _State extends State<TapBox> {
+  TapBoxState _state = TapBoxState.IDLE;
 
   void _handleTapDown(TapDownDetails details) {
     setState(() {
-      _isTapped = true;
+      _state = TapBoxState.TAP_DOWN;
     });
     if (widget.onTapDown != null) {
       widget.onTapDown!(details);
@@ -59,7 +61,7 @@ class _TapBoxState extends State<TapBox> {
 
   void _handleTapUp(TapUpDetails details) {
     setState(() {
-      _isTapped = false;
+      _state = TapBoxState.HOVER;
     });
     if (widget.onTap != null) {
       widget.onTap!();
@@ -68,19 +70,19 @@ class _TapBoxState extends State<TapBox> {
 
   void _handleTapCancel() {
     setState(() {
-      _isTapped = false;
+      _state = TapBoxState.HOVER;
     });
   }
 
   void _handleMouseEnter(PointerEnterEvent event) {
     setState(() {
-      _isHovered = true;
+      _state = TapBoxState.HOVER;
     });
   }
 
   void _handleMouseExit(PointerExitEvent event) {
     setState(() {
-      _isHovered = false;
+      _state = TapBoxState.IDLE;
     });
   }
 
@@ -95,40 +97,15 @@ class _TapBoxState extends State<TapBox> {
         onExit: _handleMouseExit,
         child: Builder(
           builder: (context) {
-            final child = (_isHovered
-                    ? widget.properties.hoverBuilder?.call(context) ?? widget.child
-                    : widget.properties.nonHoverBuilder?.call(context) ?? widget.child) ??
-                const SizedBox.shrink();
-
-            final underlay = Container(
-              decoration: (_isTapped
-                  ? widget.properties.underlayTapDecoration
-                  : _isHovered
-                      ? widget.properties.underlayHoverDecoration
-                      : null),
-              child: const SizedBox.expand(),
-            );
-            final overlay = Container(
-              decoration: (_isTapped
-                  ? widget.properties.overlayTapDecoration
-                  : _isHovered
-                      ? widget.properties.overlayHoverDecoration
-                      : null),
-              child: const SizedBox.expand(),
-            );
             return IntrinsicHeight(
               child: IntrinsicWidth(
                 child: Container(
                   clipBehavior: Clip.antiAlias,
                   decoration: widget.properties.decoration$,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      underlay,
-                      child,
-                      overlay,
-                    ],
-                  ),
+                  foregroundDecoration: widget.properties.foregroundDecoration,
+                  child: widget.properties.builder?.call(context, _state, widget.child) ??
+                      widget.child ??
+                      const SizedBox.shrink(),
                 ),
               ),
             );
@@ -144,38 +121,18 @@ class _TapBoxState extends State<TapBox> {
 @GenerateDartModel(
   fields: {
     Field(
-      fieldPath: ['underlayTapDecoration'],
-      fieldType: Decoration,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['underlayHoverDecoration'],
-      fieldType: Decoration,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['overlayTapDecoration'],
-      fieldType: Decoration,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['overlayHoverDecoration'],
-      fieldType: Decoration,
-      nullable: false,
-    ),
-    Field(
       fieldPath: ['decoration'],
       fieldType: Decoration,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['hoverBuilder'],
-      fieldType: 'WidgetBuilder',
       nullable: true,
     ),
     Field(
-      fieldPath: ['nonHoverBuilder'],
-      fieldType: 'WidgetBuilder',
+      fieldPath: ['foregroundDecoration'],
+      fieldType: Decoration,
+      nullable: true,
+    ),
+    Field(
+      fieldPath: ['builder'],
+      fieldType: '_WidgetBuilder',
       nullable: true,
     ),
   },
@@ -184,3 +141,5 @@ class _TapBoxState extends State<TapBox> {
 class _TapBoxProperties {
   const _TapBoxProperties();
 }
+
+typedef _WidgetBuilder = Widget Function(BuildContext context, TapBoxState state, Widget? child);

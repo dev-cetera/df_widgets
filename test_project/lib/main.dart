@@ -16,32 +16,39 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: Column(
         children: [
-          NavigationBarItem(
-            properties: NavigationBarItemProperties(
-              selected: true,
-              size: 50,
-              selectedIcon: Icon(FluentIcons.home_24_filled),
-              unselectedIcon: Icon(FluentIcons.home_24_regular),
-              tapBoxProperties: TapBox.DEFAULT_PROPERTIES.copyWith(
-                overlayHoverDecoration: BoxDecoration(
-                  color: Colors.transparent,
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 3,
-                  ),
-                  shape: BoxShape.circle,
-                ),
-                overlayTapDecoration: BoxDecoration(
-                  color: Colors.black.withAlpha(32),
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 3,
-                  ),
-                  shape: BoxShape.circle,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.yellow[300],
-                  shape: BoxShape.circle,
+          // Badge(
+          //   backgroundColor: Colors.yellow,
+          //   label: Text('HELLO'),
+          //   child: Icon(Icons.add),
+          // ),
+          Padding(
+            padding: const EdgeInsets.all(100),
+            child: NavigationBarItem(
+              properties: NavigationBarItemProperties(
+                selected: true,
+                size: 50,
+                selectedIcon: Icon(FluentIcons.home_24_filled),
+                unselectedIcon: Icon(FluentIcons.home_24_regular),
+                tapBoxProperties: TapBox.DEFAULT_PROPERTIES.copyWith(
+                  builder: (context, state, child) {
+                    return Extruded(
+                      properties: Extruded.DEFAULT_PROPERTIES.copyWith(
+                        showExtrusion: state != TapBoxState.TAP_DOWN,
+                      ),
+                      child: Container(
+                        color: state == TapBoxState.HOVER ? Colors.blue.shade200 : Colors.blue,
+                        width: 80,
+                        height: 80,
+                        child: child,
+                      ),
+                      endChild: Container(
+                        color: Colors.grey,
+                        width: 80,
+                        height: 80,
+                        child: child,
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
