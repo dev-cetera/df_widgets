@@ -44,6 +44,7 @@ class TapBox extends StatefulWidget {
 enum TapBoxState {
   IDLE,
   HOVER,
+  TAP_UP,
   TAP_DOWN,
 }
 
@@ -61,7 +62,7 @@ class _State extends State<TapBox> {
 
   void _handleTapUp(TapUpDetails details) {
     setState(() {
-      _state = TapBoxState.HOVER;
+      _state = TapBoxState.TAP_UP;
     });
     if (widget.onTap != null) {
       widget.onTap!();
