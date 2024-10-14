@@ -62,7 +62,6 @@ class ExtrudedBox extends StatelessWidget {
     final extraBottom = py > 0 ? py : 0.0;
     final rx = extrusion * ax;
     final ry = extrusion * ay;
-
     return Padding(
       padding: EdgeInsets.only(
         left: extraLeft,

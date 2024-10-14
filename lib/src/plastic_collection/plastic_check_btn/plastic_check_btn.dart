@@ -23,18 +23,18 @@ class PlasticCheckBtn extends StatelessWidget {
   final PlasticCheckBtnProperties? properties;
   static final defaultProperties = PlasticCheckBtnProperties(
     checkedColor: Colors.green.shade300,
-    checkedHoverColor: Colors.green.shade300,
-    checkedHoverIconColor: Colors.green.shade700,
+    checkedHoverColor: Colors.green.shade200,
+    checkedHoverIconColor: Colors.green.shade600,
     checkedHoverIconData: FluentIcons.checkbox_checked_24_filled,
-    checkedHoverShadowColor: Colors.green.shade700,
+    checkedHoverShadowColor: Colors.green.shade600,
     checkedIconColor: Colors.green.shade700,
     checkedIconData: FluentIcons.checkbox_checked_24_filled,
     checkedShadowColor: Colors.green.shade700,
     uncheckedColor: Colors.blueGrey.shade300,
-    uncheckedHoverColor: Colors.blueGrey.shade300,
-    uncheckedHoverIconColor: Colors.blueGrey.shade700,
+    uncheckedHoverColor: Colors.blueGrey.shade200,
+    uncheckedHoverIconColor: Colors.blueGrey.shade600,
     uncheckedHoverIconData: FluentIcons.checkbox_unchecked_24_filled,
-    uncheckedHoverShadowColor: Colors.blueGrey.shade700,
+    uncheckedHoverShadowColor: Colors.blueGrey.shade600,
     uncheckedIconColor: Colors.blueGrey.shade700,
     uncheckedIconData: FluentIcons.checkbox_unchecked_24_filled,
     uncheckedShadowColor: Colors.blueGrey.shade700,
@@ -64,8 +64,8 @@ class PlasticCheckBtn extends StatelessWidget {
       onTap: onTap,
       onTapDown: onTapDown,
       tapBoxProperyBuilder: (checked, defaultTapBoxProperties) => defaultTapBoxProperties.copyWith(
-        builder: (context, state, _) {
-          final notIdling = state != TapBoxState.IDLE;
+        builder: (context, states, _) {
+          final notIdling = states.isNotEmpty;
           return ExtrudedBox(
             properties: (p.extrudedBoxProperties ?? ExtrudedBox.theme).copyWith(
               color: checked

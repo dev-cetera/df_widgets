@@ -44,20 +44,19 @@ class TapBox extends StatefulWidget {
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 enum TapBoxState {
-  IDLE,
   HOVER,
   TAP_UP,
   TAP_DOWN,
 }
 
 class _State extends State<TapBox> {
-  var _state = TapBoxState.IDLE;
+  var _states = <TapBoxState>{};
 
   TapBoxProperties get _p => widget.properties ?? TapBox.theme;
 
   void _handleTapDown(TapDownDetails details) {
     setState(() {
-      _state = TapBoxState.TAP_DOWN;
+      _states = {TapBoxState.HOVER, TapBoxState.TAP_DOWN};
     });
     if (widget.onTapDown != null) {
       widget.onTapDown!(details);
@@ -66,7 +65,7 @@ class _State extends State<TapBox> {
 
   void _handleTapUp(TapUpDetails details) {
     setState(() {
-      _state = TapBoxState.TAP_UP;
+      _states = {TapBoxState.HOVER, TapBoxState.TAP_UP};
     });
     if (widget.onTap != null) {
       widget.onTap!();
@@ -75,25 +74,25 @@ class _State extends State<TapBox> {
 
   void _handleTapCancel() {
     setState(() {
-      _state = TapBoxState.HOVER;
+      _states = {};
     });
   }
 
-  // void _handleMouseEnter(PointerEnterEvent event) {
-  //   setState(() {
-  //     _state = TapBoxState.HOVER;
-  //   });
-  // }
+  void _handleMouseEnter(PointerEnterEvent event) {
+    setState(() {
+       _states = {TapBoxState.HOVER};
+    });
+  }
 
   void _handleMouseExit(PointerExitEvent event) {
     setState(() {
-      _state = TapBoxState.IDLE;
+      _states = {};
     });
   }
 
   void _handleMouseHover(PointerHoverEvent event) {
     setState(() {
-      _state = TapBoxState.HOVER;
+      _states = {TapBoxState.HOVER};
     });
   }
 
@@ -104,7 +103,7 @@ class _State extends State<TapBox> {
       onTapUp: _handleTapUp,
       onTapCancel: _handleTapCancel,
       child: MouseRegion(
-        //onEnter: _handleMouseEnter,
+        onEnter: _handleMouseEnter,
         onExit: _handleMouseExit,
         onHover: _handleMouseHover,
         child: Builder(
@@ -115,7 +114,7 @@ class _State extends State<TapBox> {
                   clipBehavior: Clip.antiAlias,
                   decoration: _p.decoration$,
                   foregroundDecoration: _p.foregroundDecoration,
-                  child: _p.builder?.call(context, _state, widget.child) ??
+                  child: _p.builder?.call(context, _states, widget.child) ??
                       widget.child ??
                       const SizedBox.shrink(),
                 ),
@@ -154,4 +153,4 @@ class _TapBoxProperties {
   const _TapBoxProperties();
 }
 
-typedef _WidgetBuilder = Widget Function(BuildContext context, TapBoxState state, Widget? child);
+typedef _WidgetBuilder = Widget Function(BuildContext context, Set<TapBoxState> states, Widget? child);

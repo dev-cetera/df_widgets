@@ -20,6 +20,22 @@ class _HomeState extends State<Home> {
           //   label: Text('HELLO'),
           //   child: Icon(Icons.add),
           // ),
+          BasicBtn(
+            text: 'Login',
+            onTap: () {},
+          ),
+          BasicErrBtn(
+            text: 'Logout',
+            onTap: () {},
+          ),
+          BasicBackBtn(
+            pState: Pod(false),
+            onTap: (pState) => pState.update((e) => !e),
+          ),
+          BasicCheckBtn(
+            pState: Pod(false),
+            onTap: (pState) => pState.update((e) => !e),
+          ),
           PlasticCheckBtn(
             pState: Pod(false),
             onTap: (pState) => pState.update((e) => !e),
@@ -72,71 +88,65 @@ class _HomeState extends State<Home> {
           //   ),
           // ),
 
-          NavigationBarItem(
-            properties: NavigationBarItemProperties(
-              selected: true,
-              selectedIcon: Icon(
-                FluentIcons.home_24_filled,
-                color: Colors.blue.shade900,
-              ),
-              unselectedIcon: Icon(
-                FluentIcons.home_24_regular,
-                color: Colors.blue.shade900,
-              ),
-              tapBoxProperties: TapBox.theme.copyWith(
-                builder: (context, state, child) {
-                  return ExtrudedBox(
-                    properties: ExtrudedBox.theme.copyWith(
-                      max: 8.sc,
-                      color: Colors.blue.shade900,
-                      value: state != TapBoxState.TAP_DOWN ? 1.0 : 0.5,
-                    ),
-                    child: ColoredBox(
-                      color: state == TapBoxState.IDLE
-                          ? Colors.blue.shade400
-                          : state == TapBoxState.TAP_DOWN
-                              ? Colors.blue.shade700
-                              : Colors.blue.shade400,
-                      child: child,
-                    ),
+          BasicNavigationBarBtn(
+            pState: Pod(true),
+            onTap: (s) {},
+            iconBuilder: (state) {
+              switch (state) {
+                case NavigationBarItemState.SELECTED:
+                  return Icon(
+                    FluentIcons.home_24_filled,
+                    color: Theme.of(context).colorScheme.primary,
+                    size: 24.sc,
                   );
-                },
-              ),
-            ),
+                case NavigationBarItemState.UNSELECTED:
+                  return Icon(
+                    FluentIcons.home_24_regular,
+                    color: Theme.of(context).colorScheme.primary,
+                    size: 24.sc,
+                  );
+                case NavigationBarItemState.DISABLED:
+                  return Icon(
+                    FluentIcons.home_24_regular,
+                    color: Theme.of(context).colorScheme.primary.withSaturation(0.0),
+                    size: 24.sc,
+                  );
+              }
+            },
           ),
 
-          NavigationBarItem(
-            properties: NavigationBarItemProperties(
-              selected: true,
-              selectedIcon: Icon(
-                FluentIcons.home_24_filled,
-                color: Colors.blue.shade900,
-              ),
-              unselectedIcon: Icon(
-                FluentIcons.home_24_regular,
-                color: Colors.blue.shade900,
-              ),
-              tapBoxProperties: TapBox.theme.copyWith(
-                builder: (context, state, child) {
-                  return ExtrudedBox(
-                    properties: ExtrudedBox.theme.copyWith(
-                      max: 8.sc,
-                      color: Colors.blue.shade900,
-                      value: state != TapBoxState.TAP_DOWN ? 1.0 : 0.5,
-                    ),
-                    child: ColoredBox(
-                      color: state == TapBoxState.IDLE
-                          ? Colors.blue.shade500
-                          : state == TapBoxState.TAP_DOWN
-                              ? Colors.blue.shade700
-                              : Colors.blue.shade400,
-                      child: child,
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),
+          // NavigationBarItem(
+          //   properties: NavigationBarItemProperties(
+          //     selected: true,
+          //     selectedIcon: Icon(
+          //       FluentIcons.home_24_filled,
+          //       color: Colors.blue.shade900,
+          //     ),
+          //     unselectedIcon: Icon(
+          //       FluentIcons.home_24_regular,
+          //       color: Colors.blue.shade900,
+          //     ),
+          //     tapBoxProperties: TapBox.theme.copyWith(
+          //       builder: (context, state, child) {
+          //         return ExtrudedBox(
+          //           properties: ExtrudedBox.theme.copyWith(
+          //             max: 8.sc,
+          //             color: Colors.blue.shade900,
+          //             value: state != TapBoxState.TAP_DOWN ? 1.0 : 0.5,
+          //           ),
+          //           child: ColoredBox(
+          //             color: state == TapBoxState.IDLE
+          //                 ? Colors.blue.shade500
+          //                 : state == TapBoxState.TAP_DOWN
+          //                     ? Colors.blue.shade700
+          //                     : Colors.blue.shade400,
+          //             child: child,
+          //           ),
+          //         );
+          //       },
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
