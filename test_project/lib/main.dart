@@ -1,5 +1,4 @@
 import 'package:df_widgets/_common.dart';
-import 'package:df_widgets/df_widgets.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -21,59 +20,120 @@ class _HomeState extends State<Home> {
           //   label: Text('HELLO'),
           //   child: Icon(Icons.add),
           // ),
-          TapBox(
-            properties: TapBox.DEFAULT_PROPERTIES.copyWith(
-              builder: (context, state, child) {
-                print(state);
-                return Extruded(
-                  properties: Extruded.DEFAULT_PROPERTIES.copyWith(
-                    showExtrusion: state != TapBoxState.TAP_DOWN,
-                  ),
-                  child: ColoredBox(
-                    color: state == TapBoxState.IDLE
-                        ? Colors.yellow.shade600
-                        : state == TapBoxState.TAP_DOWN
-                            ? Colors.yellow.shade500
-                            : Colors.yellow.shade400,
-                    child: child,
-                  ),
-                );
-              },
-            ),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
-              child: Text(
-                'LOG IN',
-                style: TextStyle(fontWeight: FontWeight.bold),
+          PlasticCheckBtn(
+            pState: Pod(false),
+            onTap: (pState) => pState.update((e) => !e),
+          ),
+          PlasticCheckBtn(
+            pState: Pod(false),
+          ),
+          // ToggleBtn(
+          //   pState: Pod(false),
+          //   childBuilder: (context, state) {
+          //     if (state) {
+          //       return Icon(
+          //         FluentIcons.checkbox_checked_24_filled,
+          //         color: Colors.green.shade900,
+          //         size: 24.sc,
+          //       );
+          //     } else {
+          //       return Icon(
+          //         FluentIcons.checkbox_unchecked_24_filled,
+          //         color: Colors.blueGrey.shade800,
+          //         size: 24.sc,
+          //       );
+          //     }
+          //   },
+          //   onTap: (pState) {
+          //     pState.update((e) => !e);
+          //   },
+          //   tapBoxProperyBuilder: (s, defaultTapBoxProperties) => defaultTapBoxProperties.copyWith(
+          //     builder: (context, state, child) {
+          //       return ExtrudedBox(
+          //         properties: ExtrudedBox.DEFAULT_PROPERTIES.copyWith(
+          //           max: 8.sc,
+          //           color: !s ? Colors.blueGrey.shade800 : Colors.green.shade900,
+          //           value: !s ? 1.0 : 0.5,
+          //         ),
+          //         child: ColoredBox(
+          //           color: s
+          //               ? Colors.green.shade400
+          //               : state == TapBoxState.TAP_DOWN
+          //                   ? !s
+          //                       ? Colors.blueGrey.shade600
+          //                       : Colors.green.shade700
+          //                   : !s
+          //                       ? Colors.blueGrey.shade300
+          //                       : Colors.green.shade400,
+          //           child: child,
+          //         ),
+          //       );
+          //     },
+          //   ),
+          // ),
+
+          NavigationBarItem(
+            properties: NavigationBarItemProperties(
+              selected: true,
+              selectedIcon: Icon(
+                FluentIcons.home_24_filled,
+                color: Colors.blue.shade900,
+              ),
+              unselectedIcon: Icon(
+                FluentIcons.home_24_regular,
+                color: Colors.blue.shade900,
+              ),
+              tapBoxProperties: TapBox.theme.copyWith(
+                builder: (context, state, child) {
+                  return ExtrudedBox(
+                    properties: ExtrudedBox.theme.copyWith(
+                      max: 8.sc,
+                      color: Colors.blue.shade900,
+                      value: state != TapBoxState.TAP_DOWN ? 1.0 : 0.5,
+                    ),
+                    child: ColoredBox(
+                      color: state == TapBoxState.IDLE
+                          ? Colors.blue.shade400
+                          : state == TapBoxState.TAP_DOWN
+                              ? Colors.blue.shade700
+                              : Colors.blue.shade400,
+                      child: child,
+                    ),
+                  );
+                },
               ),
             ),
           ),
 
-          Padding(
-            padding: const EdgeInsets.all(100),
-            child: NavigationBarItem(
-              properties: NavigationBarItemProperties(
-                selected: true,
-                size: 80,
-                selectedIcon: Icon(FluentIcons.home_24_filled),
-                unselectedIcon: Icon(FluentIcons.home_24_regular),
-                tapBoxProperties: TapBox.DEFAULT_PROPERTIES.copyWith(
-                  builder: (context, state, child) {
-                    return Extruded(
-                      properties: Extruded.DEFAULT_PROPERTIES.copyWith(
-                        showExtrusion: state != TapBoxState.TAP_DOWN,
-                      ),
-                      child: ColoredBox(
-                        color: state == TapBoxState.IDLE
-                            ? Colors.blue.shade600
-                            : state == TapBoxState.TAP_DOWN
-                                ? Colors.blue.shade500
-                                : Colors.blue.shade400,
-                        child: child,
-                      ),
-                    );
-                  },
-                ),
+          NavigationBarItem(
+            properties: NavigationBarItemProperties(
+              selected: true,
+              selectedIcon: Icon(
+                FluentIcons.home_24_filled,
+                color: Colors.blue.shade900,
+              ),
+              unselectedIcon: Icon(
+                FluentIcons.home_24_regular,
+                color: Colors.blue.shade900,
+              ),
+              tapBoxProperties: TapBox.theme.copyWith(
+                builder: (context, state, child) {
+                  return ExtrudedBox(
+                    properties: ExtrudedBox.theme.copyWith(
+                      max: 8.sc,
+                      color: Colors.blue.shade900,
+                      value: state != TapBoxState.TAP_DOWN ? 1.0 : 0.5,
+                    ),
+                    child: ColoredBox(
+                      color: state == TapBoxState.IDLE
+                          ? Colors.blue.shade500
+                          : state == TapBoxState.TAP_DOWN
+                              ? Colors.blue.shade700
+                              : Colors.blue.shade400,
+                      child: child,
+                    ),
+                  );
+                },
               ),
             ),
           ),

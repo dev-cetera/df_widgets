@@ -17,19 +17,21 @@ part '_tap_box_properties.g.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 class TapBox extends StatefulWidget {
-  final TapBoxProperties properties;
+  final TapBoxProperties? properties;
   final VoidCallback? onTap;
   final GestureTapDownCallback? onTapDown;
   final Widget? child;
 
-  static const DEFAULT_PROPERTIES = TapBoxProperties(
+  static const _default = TapBoxProperties(
     decoration: BoxDecoration(),
     foregroundDecoration: BoxDecoration(),
   );
 
+  static TapBoxProperties get theme => DI.theme.getSyncOrNull<TapBoxProperties>() ?? _default;
+
   const TapBox({
     super.key,
-    this.properties = DEFAULT_PROPERTIES,
+    this.properties,
     this.onTap,
     this.onTapDown,
     this.child,
@@ -49,7 +51,9 @@ enum TapBoxState {
 }
 
 class _State extends State<TapBox> {
-  TapBoxState _state = TapBoxState.IDLE;
+  var _state = TapBoxState.IDLE;
+
+  TapBoxProperties get _p => widget.properties ?? TapBox.theme;
 
   void _handleTapDown(TapDownDetails details) {
     setState(() {
@@ -75,15 +79,21 @@ class _State extends State<TapBox> {
     });
   }
 
-  void _handleMouseEnter(PointerEnterEvent event) {
-    setState(() {
-      _state = TapBoxState.HOVER;
-    });
-  }
+  // void _handleMouseEnter(PointerEnterEvent event) {
+  //   setState(() {
+  //     _state = TapBoxState.HOVER;
+  //   });
+  // }
 
   void _handleMouseExit(PointerExitEvent event) {
     setState(() {
       _state = TapBoxState.IDLE;
+    });
+  }
+
+  void _handleMouseHover(PointerHoverEvent event) {
+    setState(() {
+      _state = TapBoxState.HOVER;
     });
   }
 
@@ -94,17 +104,18 @@ class _State extends State<TapBox> {
       onTapUp: _handleTapUp,
       onTapCancel: _handleTapCancel,
       child: MouseRegion(
-        onEnter: _handleMouseEnter,
+        //onEnter: _handleMouseEnter,
         onExit: _handleMouseExit,
+        onHover: _handleMouseHover,
         child: Builder(
           builder: (context) {
             return IntrinsicHeight(
               child: IntrinsicWidth(
                 child: Container(
                   clipBehavior: Clip.antiAlias,
-                  decoration: widget.properties.decoration$,
-                  foregroundDecoration: widget.properties.foregroundDecoration,
-                  child: widget.properties.builder?.call(context, _state, widget.child) ??
+                  decoration: _p.decoration$,
+                  foregroundDecoration: _p.foregroundDecoration,
+                  child: _p.builder?.call(context, _state, widget.child) ??
                       widget.child ??
                       const SizedBox.shrink(),
                 ),

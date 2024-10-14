@@ -10,24 +10,27 @@
 // ignore_for_file: annotate_overrides
 // ignore_for_file: overridden_fields
 
-part of 'extruded.dart';
+part of 'extruded_box.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-/// Generated class for [_ExtrudedProperties].
-class ExtrudedProperties extends _ExtrudedProperties {
+/// Generated class for [_ExtrudedBoxProperties].
+class ExtrudedBoxProperties extends _ExtrudedBoxProperties {
   //
   //
   //
 
   /// No description provided.
-  final bool? showExtrusion;
+  final double? perspectiveDepth;
 
   /// No description provided.
   final Color? color;
 
   /// No description provided.
-  final double? extrusion;
+  final double? value;
+
+  /// No description provided.
+  final double? max;
 
   /// No description provided.
   final double? angle;
@@ -35,55 +38,60 @@ class ExtrudedProperties extends _ExtrudedProperties {
   /// No description provided.
   final ShapeBorder? border;
 
-  /// Constructs a new instance of [ExtrudedProperties]
+  /// Constructs a new instance of [ExtrudedBoxProperties]
   /// from optional and required parameters.
-  const ExtrudedProperties({
-    required this.showExtrusion,
+  const ExtrudedBoxProperties({
+    required this.perspectiveDepth,
     required this.color,
-    this.extrusion,
+    required this.value,
+    this.max,
     required this.angle,
     this.border,
   });
 
   /// Creates a copy of this instance, replacing the specified fields.
-  ExtrudedProperties copyWith({
-    bool? showExtrusion,
+  ExtrudedBoxProperties copyWith({
+    double? perspectiveDepth,
     Color? color,
-    double? extrusion,
+    double? value,
+    double? max,
     double? angle,
     ShapeBorder? border,
   }) {
-    return ExtrudedProperties(
-      showExtrusion: showExtrusion ?? this.showExtrusion,
+    return ExtrudedBoxProperties(
+      perspectiveDepth: perspectiveDepth ?? this.perspectiveDepth,
       color: color ?? this.color,
-      extrusion: extrusion ?? this.extrusion,
+      value: value ?? this.value,
+      max: max ?? this.max,
       angle: angle ?? this.angle,
       border: border ?? this.border,
     );
   }
 
   /// Creates a copy of this instance, removing the specified fields.
-  ExtrudedProperties copyWithout({
-    bool showExtrusion = true,
+  ExtrudedBoxProperties copyWithout({
+    bool perspectiveDepth = true,
     bool color = true,
-    bool extrusion = true,
+    bool value = true,
+    bool max = true,
     bool angle = true,
     bool border = true,
   }) {
-    return ExtrudedProperties(
-      showExtrusion: showExtrusion ? this.showExtrusion : null,
+    return ExtrudedBoxProperties(
+      perspectiveDepth: perspectiveDepth ? this.perspectiveDepth : null,
       color: color ? this.color : null,
-      extrusion: extrusion ? this.extrusion : null,
+      value: value ? this.value : null,
+      max: max ? this.max : null,
       angle: angle ? this.angle : null,
       border: border ? this.border : null,
     );
   }
 
-  /// Returns the value of the [showExtrusion] field.
+  /// Returns the value of the [perspectiveDepth] field.
   /// If the field is nullable, the return value may be null; otherwise, it
   /// will always return a non-null value.
   @pragma('vm:prefer-inline')
-  bool get showExtrusion$ => showExtrusion!;
+  double get perspectiveDepth$ => perspectiveDepth!;
 
   /// Returns the value of the [color] field.
   /// If the field is nullable, the return value may be null; otherwise, it
@@ -91,11 +99,17 @@ class ExtrudedProperties extends _ExtrudedProperties {
   @pragma('vm:prefer-inline')
   Color get color$ => color!;
 
-  /// Returns the value of the [extrusion] field.
+  /// Returns the value of the [value] field.
   /// If the field is nullable, the return value may be null; otherwise, it
   /// will always return a non-null value.
   @pragma('vm:prefer-inline')
-  double? get extrusion$ => extrusion;
+  double get value$ => value!;
+
+  /// Returns the value of the [max] field.
+  /// If the field is nullable, the return value may be null; otherwise, it
+  /// will always return a non-null value.
+  @pragma('vm:prefer-inline')
+  double? get max$ => max;
 
   /// Returns the value of the [angle] field.
   /// If the field is nullable, the return value may be null; otherwise, it

@@ -17,30 +17,35 @@ part '_navigation_bar_item_properties.g.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 class NavigationBarItem extends StatelessWidget {
-  final NavigationBarItemProperties properties;
+  final NavigationBarItemProperties? properties;
   final VoidCallback? onTap;
   final GestureTapDownCallback? onTapDown;
 
-  static const DEFAULT_PROPERTIES = NavigationBarItemProperties(
+  static final _default = NavigationBarItemProperties(
     selected: false,
-    tapBoxProperties: TapBox.DEFAULT_PROPERTIES,
+    tapBoxProperties: TapBox.theme,
   );
+
+  static NavigationBarItemProperties get theme =>
+      DI.theme.getSyncOrNull<NavigationBarItemProperties>() ?? _default;
+
   const NavigationBarItem({
     super.key,
     this.onTap,
     this.onTapDown,
-    this.properties = DEFAULT_PROPERTIES,
+    this.properties,
   });
 
   @override
   Widget build(BuildContext context) {
+    final p = properties ?? theme;
     return TapBox(
-      properties: properties.tapBoxProperties$,
+      properties: p.tapBoxProperties$,
       onTap: onTap,
       onTapDown: onTapDown,
       child: SizedBox.square(
-        dimension: properties.size,
-        child: properties.selected$ ? properties.selectedIcon : properties.unselectedIcon,
+        dimension: p.size,
+        child: p.selected$ ? p.selectedIcon : p.unselectedIcon,
       ),
     );
   }
