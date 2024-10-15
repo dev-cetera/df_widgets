@@ -13,7 +13,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const BasicHeader(),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           // Badge(
           //   backgroundColor: Colors.yellow,
@@ -29,8 +32,7 @@ class _HomeState extends State<Home> {
             onTap: () {},
           ),
           BasicBackBtn(
-            pState: Pod(false),
-            onTap: (pState) => pState.update((e) => !e),
+            onTap: () {},
           ),
           BasicCheckBtn(
             pState: Pod(false),
@@ -90,7 +92,7 @@ class _HomeState extends State<Home> {
 
           BasicNavigationBarBtn(
             pState: Pod(true),
-            onTap: (s) {},
+            onTap: () {},
             iconBuilder: (state) {
               switch (state) {
                 case NavigationBarItemState.SELECTED:
@@ -162,7 +164,11 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.dark,
+      debugShowCheckedModeBanner: false,
       home: Home(),
     );
   }

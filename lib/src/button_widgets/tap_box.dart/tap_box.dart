@@ -10,6 +10,8 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
+import 'package:visibility_detector/visibility_detector.dart';
+
 import '/_common.dart';
 
 part '_tap_box_properties.g.dart';
@@ -54,6 +56,16 @@ class _State extends State<TapBox> {
 
   TapBoxProperties get _p => widget.properties ?? TapBox.theme;
 
+  void _handleVisibilityChange(VisibilityInfo visibilityInfo) {
+    if (visibilityInfo.visibleFraction != 1.0) {
+      if (mounted) {
+        setState(() {
+          _states = {};
+        });
+      }
+    }
+  }
+
   void _handleTapDown(TapDownDetails details) {
     setState(() {
       _states = {TapBoxState.HOVER, TapBoxState.TAP_DOWN};
@@ -78,12 +90,6 @@ class _State extends State<TapBox> {
     });
   }
 
-  void _handleMouseEnter(PointerEnterEvent event) {
-    setState(() {
-       _states = {TapBoxState.HOVER};
-    });
-  }
-
   void _handleMouseExit(PointerExitEvent event) {
     setState(() {
       _states = {};
@@ -103,24 +109,20 @@ class _State extends State<TapBox> {
       onTapUp: _handleTapUp,
       onTapCancel: _handleTapCancel,
       child: MouseRegion(
-        onEnter: _handleMouseEnter,
+        opaque: true,
         onExit: _handleMouseExit,
         onHover: _handleMouseHover,
-        child: Builder(
-          builder: (context) {
-            return IntrinsicHeight(
-              child: IntrinsicWidth(
-                child: Container(
-                  clipBehavior: Clip.antiAlias,
-                  decoration: _p.decoration$,
-                  foregroundDecoration: _p.foregroundDecoration,
-                  child: _p.builder?.call(context, _states, widget.child) ??
-                      widget.child ??
-                      const SizedBox.shrink(),
-                ),
-              ),
-            );
-          },
+        child: VisibilityDetector(
+          key: UniqueKey(),
+          onVisibilityChanged: _handleVisibilityChange,
+          child: Container(
+            clipBehavior: Clip.antiAlias,
+            decoration: _p.decoration$,
+            foregroundDecoration: _p.foregroundDecoration,
+            child: _p.builder?.call(context, _states, widget.child) ??
+                widget.child ??
+                const SizedBox.shrink(),
+          ),
         ),
       ),
     );
@@ -153,4 +155,5 @@ class _TapBoxProperties {
   const _TapBoxProperties();
 }
 
-typedef _WidgetBuilder = Widget Function(BuildContext context, Set<TapBoxState> states, Widget? child);
+typedef _WidgetBuilder = Widget Function(
+    BuildContext context, Set<TapBoxState> states, Widget? child);

@@ -14,7 +14,7 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class Overlayed extends StatefulWidget {
+class AnchoredOverlay extends StatefulWidget {
   //
   //
   //
@@ -25,7 +25,7 @@ class Overlayed extends StatefulWidget {
   //
   //
 
-  const Overlayed({
+  const AnchoredOverlay({
     super.key,
     this.child,
   });
@@ -40,7 +40,7 @@ class Overlayed extends StatefulWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class _State extends State<Overlayed> {
+class _State extends State<AnchoredOverlay> {
   //
   //
   //
@@ -92,8 +92,7 @@ class _State extends State<Overlayed> {
   //
 
   void _measureAndOverlay(_) {
-    final renderBox =
-        _offstageKey.currentContext?.findRenderObject() as RenderBox;
+    final renderBox = _offstageKey.currentContext?.findRenderObject() as RenderBox;
     final childSize = renderBox.size;
     final position = renderBox.localToGlobal(Offset.zero);
     _positionOverlay(childSize, position);

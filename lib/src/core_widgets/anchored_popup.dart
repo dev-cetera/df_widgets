@@ -10,11 +10,13 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
+import 'package:flutter/material.dart';
+
 import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class OverlayPopup extends StatefulWidget {
+class AnchoredPopup extends StatefulWidget {
   //
   //
   //
@@ -27,18 +29,24 @@ class OverlayPopup extends StatefulWidget {
     BuildContext context,
     VoidCallback close,
   )? itemBuilder;
-  final Color? backgroundColor;
-  final void Function()? onTapDownBackground;
+  final Widget Function(
+    BuildContext context,
+    VoidCallback close,
+  )? backgroundBuilder;
+
+  final void Function(
+    VoidCallback close,
+  )? onTapDownBackground;
 
   //
   //
   //
 
-  const OverlayPopup({
+  const AnchoredPopup({
     super.key,
     this.buttonBuilder,
     this.itemBuilder,
-    this.backgroundColor,
+    this.backgroundBuilder,
     this.onTapDownBackground,
   });
 
@@ -47,17 +55,25 @@ class OverlayPopup extends StatefulWidget {
   //
 
   @override
-  State<OverlayPopup> createState() => _State();
+  State<AnchoredPopup> createState() => _State();
 }
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class _State extends State<OverlayPopup> {
+class _State extends State<AnchoredPopup> {
   //
   //
   //
 
   var _open = false;
+
+  void _openPopup() {
+    setState(() => _open = true);
+  }
+
+  void _closePopup() {
+    setState(() => _open = false);
+  }
 
   //
   //
@@ -65,41 +81,38 @@ class _State extends State<OverlayPopup> {
 
   @override
   Widget build(BuildContext context) {
-    final button = widget.buttonBuilder?.call(
-          context,
-          () => setState(() => _open = true),
-        ) ??
-        const SizedBox.shrink();
-
-    final item = widget.itemBuilder?.call(
-          context,
-          () => setState(() => _open = false),
-        ) ??
-        const SizedBox.shrink();
-
-    final $screenSize = MediaQuery.of(context).size;
     return Stack(
       children: [
-        button,
+        widget.buttonBuilder?.call(
+              context,
+              _openPopup,
+            ) ??
+            const SizedBox.shrink(),
         if (_open) ...[
-          GlobalOverlay(
+          PositionedOverlay(
             child: GestureDetector(
               behavior: HitTestBehavior.translucent,
-              onTapDown: (details) {
-                setState(() => _open = false);
-                widget.onTapDownBackground?.call();
-              },
-              child: FadeAnimator(
-                layer2: Container(
-                  color: widget.backgroundColor,
-                  width: $screenSize.width,
-                  height: $screenSize.height,
+              onTapDown: (details) => widget.onTapDownBackground?.call(
+                _closePopup,
+              ),
+              child: Builder(
+                builder: (context) => SizedBox.fromSize(
+                  size: MediaQuery.sizeOf(context),
+                  child: widget.backgroundBuilder?.call(
+                        context,
+                        _closePopup,
+                      ) ??
+                      const BlurryContainer(),
                 ),
               ),
             ),
           ),
-          Overlayed(
-            child: item,
+          AnchoredOverlay(
+            child: widget.itemBuilder?.call(
+                  context,
+                  _closePopup,
+                ) ??
+                const SizedBox.shrink(),
           ),
         ],
       ],

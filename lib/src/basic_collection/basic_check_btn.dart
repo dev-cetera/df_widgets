@@ -48,11 +48,9 @@ class BasicCheckBtn extends StatelessWidget {
             width: 48.sc,
             height: 48.sc,
             decoration: ShapeDecoration(
-              color: (Theme.of(context)
-                      .colorScheme
-                      .primary
-                      .withAlpha(enabled && states.contains(TapBoxState.HOVER) ? 96 : 48))
-                  .withSaturation(enabled ? 1.0 : 0.0),
+              color: enabled && states.contains(TapBoxState.HOVER)
+                  ? Theme.of(context).colorScheme.primary.withAlpha(32)
+                  : Colors.transparent,
               shape: shape,
             ),
             child: checked

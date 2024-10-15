@@ -17,13 +17,11 @@ import '/_common.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 class BasicBackBtn extends StatelessWidget {
-  final Pod<bool> pState;
-  final _OnTap? onTap;
-  final _OnTapDown? onTapDown;
+  final VoidCallback? onTap;
+  final GestureTapDownCallback? onTapDown;
 
   const BasicBackBtn({
     super.key,
-    required this.pState,
     this.onTap,
     this.onTapDown,
   });
@@ -37,8 +35,3 @@ class BasicBackBtn extends StatelessWidget {
     );
   }
 }
-
-// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-
-typedef _OnTap = void Function(Pod<bool> pState);
-typedef _OnTapDown = void Function(TapDownDetails details, Pod<bool> pState);

@@ -37,6 +37,8 @@ class BasicIconBtn extends StatelessWidget {
     final enabled = onTap != null || onTapDown != null;
     assert(child != null || iconData != null);
     return TapBox(
+      onTap: onTap,
+      onTapDown: onTapDown,
       properties: TapBox.theme.copyWith(
         builder: (context, states, child) {
           return Container(
@@ -45,11 +47,9 @@ class BasicIconBtn extends StatelessWidget {
               minWidth: 48.sc,
             ),
             decoration: ShapeDecoration(
-              color: (Theme.of(context)
-                      .colorScheme
-                      .primary
-                      .withAlpha(enabled && states.contains(TapBoxState.HOVER) ? 96 : 48))
-                  .withSaturation(enabled ? 1.0 : 0.0),
+              color: enabled && states.contains(TapBoxState.HOVER)
+                  ? Theme.of(context).colorScheme.primary.withAlpha(32)
+                  : Colors.transparent,
               shape: shape,
             ),
             child: child,
@@ -68,5 +68,5 @@ class BasicIconBtn extends StatelessWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-typedef _OnTap = void Function(Pod<bool> pState);
-typedef _OnTapDown = void Function(TapDownDetails details, Pod<bool> pState);
+typedef _OnTap = void Function();
+typedef _OnTapDown = void Function(TapDownDetails details);

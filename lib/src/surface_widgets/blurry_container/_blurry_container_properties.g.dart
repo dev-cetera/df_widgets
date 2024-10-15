@@ -55,8 +55,8 @@ class BlurryContainerProperties extends _BlurryContainerProperties {
   const BlurryContainerProperties({
     this.width,
     this.height,
-    required this.sigma,
-    required this.alpha,
+    this.sigma,
+    this.alpha,
     this.color,
     required this.decoration,
     required this.foregroundDecoration,
@@ -136,13 +136,13 @@ class BlurryContainerProperties extends _BlurryContainerProperties {
   /// If the field is nullable, the return value may be null; otherwise, it
   /// will always return a non-null value.
   @pragma('vm:prefer-inline')
-  double get sigma$ => sigma!;
+  double? get sigma$ => sigma;
 
   /// Returns the value of the [alpha] field.
   /// If the field is nullable, the return value may be null; otherwise, it
   /// will always return a non-null value.
   @pragma('vm:prefer-inline')
-  int get alpha$ => alpha!;
+  int? get alpha$ => alpha;
 
   /// Returns the value of the [color] field.
   /// If the field is nullable, the return value may be null; otherwise, it

@@ -14,7 +14,7 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class GlobalOverlay extends StatefulWidget {
+class PositionedOverlay extends StatefulWidget {
   //
   //
   //
@@ -30,7 +30,7 @@ class GlobalOverlay extends StatefulWidget {
   //
   //
 
-  const GlobalOverlay({
+  const PositionedOverlay({
     super.key,
     this.left,
     this.right,
@@ -50,7 +50,7 @@ class GlobalOverlay extends StatefulWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class _State extends State<GlobalOverlay> {
+class _State extends State<PositionedOverlay> {
   //
   //
   //
@@ -89,8 +89,7 @@ class _State extends State<GlobalOverlay> {
         final t = widget.top ?? 0.0;
         final b = widget.bottom;
         final x = l + (r != null ? MediaQuery.of(context).size.width - r : 0.0);
-        final y =
-            t + (b != null ? MediaQuery.of(context).size.height - b : 0.0);
+        final y = t + (b != null ? MediaQuery.of(context).size.height - b : 0.0);
         return Stack(
           children: [
             if (widget.background != null) widget.background!,

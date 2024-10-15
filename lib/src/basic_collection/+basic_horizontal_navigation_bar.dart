@@ -15,16 +15,3 @@ import 'package:flutter/material.dart';
 import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-
-class BasicHeader extends StatelessWidget {
-  const BasicHeader({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return BlurrySurface(
-      child: Wrap(),
-    );
-  }
-}

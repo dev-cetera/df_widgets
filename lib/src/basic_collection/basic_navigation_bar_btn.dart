@@ -15,8 +15,8 @@ import '/_common.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 class BasicNavigationBarBtn extends StatelessWidget {
-  final _OnTap? onTap;
-  final _OnTapDown? onTapDown;
+  final VoidCallback? onTap;
+  final GestureTapDownCallback? onTapDown;
   final Pod<bool> pState;
 
   final _IconBuilder? iconBuilder;
@@ -59,8 +59,6 @@ class BasicNavigationBarBtn extends StatelessWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-typedef _OnTap = void Function(Pod<bool> pState);
-typedef _OnTapDown = void Function(TapDownDetails details, Pod<bool> pState);
 typedef _IconBuilder = Widget Function(NavigationBarItemState state);
 
 enum NavigationBarItemState {

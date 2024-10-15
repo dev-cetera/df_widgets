@@ -17,8 +17,8 @@ import '/_common.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 class BasicErrBtn extends StatelessWidget {
-  final _OnTap? onTap;
-  final _OnTapDown? onTapDown;
+  final VoidCallback? onTap;
+  final GestureTapDownCallback? onTapDown;
   final String? text;
   final Widget? child;
 
@@ -39,17 +39,19 @@ class BasicErrBtn extends StatelessWidget {
           return Container(
             constraints: BoxConstraints(minWidth: 48.sc, minHeight: 48.sc),
             decoration: BoxDecoration(
-              color: (Theme.of(context)
-                      .colorScheme
-                      .error
-                      .withAlpha(enabled && states.contains(TapBoxState.HOVER) ? 96 : 48))
-                  .withSaturation(enabled ? 1.0 : 0.0),
+              color: enabled && states.contains(TapBoxState.HOVER)
+                  ? Theme.of(context).colorScheme.error.withAlpha(32)
+                  : Colors.transparent,
               borderRadius: BorderRadius.circular(24.sc),
             ),
-            child: Center(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.sc),
-                child: child,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.sc),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  child!,
+                ],
               ),
             ),
           );
@@ -69,8 +71,3 @@ class BasicErrBtn extends StatelessWidget {
     );
   }
 }
-
-// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-
-typedef _OnTap = void Function();
-typedef _OnTapDown = void Function(TapDownDetails details);

@@ -18,7 +18,7 @@ part '_blurry_container_properties.g.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class BlurrySurface extends StatelessWidget {
+class BlurryContainer extends StatelessWidget {
   //
   //
   //
@@ -26,11 +26,13 @@ class BlurrySurface extends StatelessWidget {
   final BlurryContainerProperties? properties;
   final Widget? child;
 
+  //
+  //
+  //
+
   static const _default = BlurryContainerProperties(
     decoration: BoxDecoration(),
     foregroundDecoration: BoxDecoration(),
-    sigma: 8.0,
-    alpha: 192,
     padding: EdgeInsets.zero,
     constraints: BoxConstraints(),
     borderRadius: BorderRadius.zero,
@@ -43,7 +45,7 @@ class BlurrySurface extends StatelessWidget {
   //
   //
 
-  const BlurrySurface({
+  const BlurryContainer({
     super.key,
     this.properties,
     this.child,
@@ -56,19 +58,21 @@ class BlurrySurface extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final p = properties ?? theme;
+    final sigma = p.sigma ?? 3.0;
+    final alpha = p.alpha ?? 128;
     return ClipRRect(
       borderRadius: p.borderRadius$,
       child: BackdropFilter(
         filter: ImageFilter.blur(
-          sigmaX: p.sigma$,
-          sigmaY: p.sigma$,
+          sigmaX: sigma,
+          sigmaY: sigma,
         ),
         child: Container(
           width: p.width,
           height: p.height,
           constraints: p.constraints,
           decoration: p.decoration$.copyWith(
-            color: p.color?.withAlpha(p.alpha$),
+            color: p.color?.withAlpha(alpha),
             borderRadius: p.borderRadius,
           ),
           padding: p.padding ?? EdgeInsets.zero,
@@ -96,12 +100,12 @@ class BlurrySurface extends StatelessWidget {
     Field(
       fieldPath: ['sigma'],
       fieldType: double,
-      nullable: false,
+      nullable: true,
     ),
     Field(
       fieldPath: ['alpha'],
       fieldType: int,
-      nullable: false,
+      nullable: true,
     ),
     Field(
       fieldPath: ['color'],

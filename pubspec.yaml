@@ -41,6 +41,7 @@ dependencies:
   df_scalable: ^0.7.0
 
   fluentui_system_icons: ^1.1.260
+  visibility_detector: ^0.4.0+2
 
 ## -----------------------------------------------------------------------------
 
