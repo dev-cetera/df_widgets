@@ -10,8 +10,6 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-import 'package:visibility_detector/visibility_detector.dart';
-
 import '/_common.dart';
 
 part '_tap_box_properties.g.dart';
@@ -24,12 +22,13 @@ class TapBox extends StatefulWidget {
   final GestureTapDownCallback? onTapDown;
   final Widget? child;
 
-  static const _default = TapBoxProperties(
-    decoration: BoxDecoration(),
-    foregroundDecoration: BoxDecoration(),
-  );
+  static TapBoxProperties get _default => const TapBoxProperties(
+        decoration: BoxDecoration(),
+        foregroundDecoration: BoxDecoration(),
+      );
 
-  static TapBoxProperties get theme => DI.theme.getSyncOrNull<TapBoxProperties>() ?? _default;
+  static TapBoxProperties get theme =>
+      DI.theme.getSyncOrNull<TapBoxProperties>()?.copyWith() ?? _default;
 
   const TapBox({
     super.key,
@@ -45,26 +44,10 @@ class TapBox extends StatefulWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-enum TapBoxState {
-  HOVER,
-  TAP_UP,
-  TAP_DOWN,
-}
-
 class _State extends State<TapBox> {
   var _states = <TapBoxState>{};
 
   TapBoxProperties get _p => widget.properties ?? TapBox.theme;
-
-  void _handleVisibilityChange(VisibilityInfo visibilityInfo) {
-    if (visibilityInfo.visibleFraction != 1.0) {
-      if (mounted) {
-        setState(() {
-          _states = {};
-        });
-      }
-    }
-  }
 
   void _handleTapDown(TapDownDetails details) {
     setState(() {
@@ -77,7 +60,7 @@ class _State extends State<TapBox> {
 
   void _handleTapUp(TapUpDetails details) {
     setState(() {
-      _states = {TapBoxState.HOVER, TapBoxState.TAP_UP};
+      _states = {TapBoxState.TAP_UP};
     });
     if (widget.onTap != null) {
       widget.onTap!();
@@ -87,6 +70,12 @@ class _State extends State<TapBox> {
   void _handleTapCancel() {
     setState(() {
       _states = {};
+    });
+  }
+
+  void _handleMouseEnter(PointerEnterEvent event) {
+    setState(() {
+      _states = {TapBoxState.HOVER};
     });
   }
 
@@ -109,24 +98,29 @@ class _State extends State<TapBox> {
       onTapUp: _handleTapUp,
       onTapCancel: _handleTapCancel,
       child: MouseRegion(
-        opaque: true,
+        cursor: MouseCursor.uncontrolled,
+        onEnter: _handleMouseEnter,
         onExit: _handleMouseExit,
         onHover: _handleMouseHover,
-        child: VisibilityDetector(
-          key: UniqueKey(),
-          onVisibilityChanged: _handleVisibilityChange,
-          child: Container(
-            clipBehavior: Clip.antiAlias,
-            decoration: _p.decoration$,
-            foregroundDecoration: _p.foregroundDecoration,
-            child: _p.builder?.call(context, _states, widget.child) ??
-                widget.child ??
-                const SizedBox.shrink(),
-          ),
+        child: Container(
+          clipBehavior: Clip.antiAlias,
+          decoration: _p.decoration$,
+          foregroundDecoration: _p.foregroundDecoration,
+          child: _p.builder?.call(context, _states, widget.child) ??
+              widget.child ??
+              const SizedBox.shrink(),
         ),
       ),
     );
   }
+}
+
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+enum TapBoxState {
+  HOVER,
+  TAP_UP,
+  TAP_DOWN,
 }
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -155,5 +149,10 @@ class _TapBoxProperties {
   const _TapBoxProperties();
 }
 
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
 typedef _WidgetBuilder = Widget Function(
-    BuildContext context, Set<TapBoxState> states, Widget? child);
+  BuildContext context,
+  Set<TapBoxState> states,
+  Widget? child,
+);

@@ -37,7 +37,7 @@ class BasicErrBtn extends StatelessWidget {
       properties: TapBox.theme.copyWith(
         builder: (context, states, child) {
           return Container(
-            constraints: BoxConstraints(minWidth: 48.sc, minHeight: 48.sc),
+            constraints: const BoxConstraints(minWidth: 48.0, minHeight: 48.0),
             decoration: BoxDecoration(
               color: enabled && states.contains(TapBoxState.HOVER)
                   ? Theme.of(context).colorScheme.error.withAlpha(32)

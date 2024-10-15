@@ -39,6 +39,7 @@ dependencies:
   df_generate_dart_models_core: ^0.6.4
   df_pod: ^0.14.0
   df_scalable: ^0.7.0
+  df_debouncer:
 
   fluentui_system_icons: ^1.1.260
   visibility_detector: ^0.4.0+2

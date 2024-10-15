@@ -21,27 +21,27 @@ part '_plastic_check_btn_properties.g.dart';
 
 class PlasticCheckBtn extends StatelessWidget {
   final PlasticCheckBtnProperties? properties;
-  static final defaultProperties = PlasticCheckBtnProperties(
-    checkedColor: Colors.green.shade300,
-    checkedHoverColor: Colors.green.shade200,
-    checkedHoverIconColor: Colors.green.shade600,
-    checkedHoverIconData: FluentIcons.checkbox_checked_24_filled,
-    checkedHoverShadowColor: Colors.green.shade600,
-    checkedIconColor: Colors.green.shade700,
-    checkedIconData: FluentIcons.checkbox_checked_24_filled,
-    checkedShadowColor: Colors.green.shade700,
-    uncheckedColor: Colors.blueGrey.shade300,
-    uncheckedHoverColor: Colors.blueGrey.shade200,
-    uncheckedHoverIconColor: Colors.blueGrey.shade600,
-    uncheckedHoverIconData: FluentIcons.checkbox_unchecked_24_filled,
-    uncheckedHoverShadowColor: Colors.blueGrey.shade600,
-    uncheckedIconColor: Colors.blueGrey.shade700,
-    uncheckedIconData: FluentIcons.checkbox_unchecked_24_filled,
-    uncheckedShadowColor: Colors.blueGrey.shade700,
-  );
+  static PlasticCheckBtnProperties get _default => PlasticCheckBtnProperties(
+        checkedColor: Colors.green.shade300,
+        checkedHoverColor: Colors.green.shade200,
+        checkedHoverIconColor: Colors.green.shade600,
+        checkedHoverIconData: FluentIcons.checkbox_checked_24_filled,
+        checkedHoverShadowColor: Colors.green.shade600,
+        checkedIconColor: Colors.green.shade700,
+        checkedIconData: FluentIcons.checkbox_checked_24_filled,
+        checkedShadowColor: Colors.green.shade700,
+        uncheckedColor: Colors.blueGrey.shade300,
+        uncheckedHoverColor: Colors.blueGrey.shade200,
+        uncheckedHoverIconColor: Colors.blueGrey.shade600,
+        uncheckedHoverIconData: FluentIcons.checkbox_unchecked_24_filled,
+        uncheckedHoverShadowColor: Colors.blueGrey.shade600,
+        uncheckedIconColor: Colors.blueGrey.shade700,
+        uncheckedIconData: FluentIcons.checkbox_unchecked_24_filled,
+        uncheckedShadowColor: Colors.blueGrey.shade700,
+      );
 
   static PlasticCheckBtnProperties get theme =>
-      DI.theme.getSyncOrNull<PlasticCheckBtnProperties>() ?? defaultProperties;
+      DI.theme.getSyncOrNull<PlasticCheckBtnProperties>()?.copyWith() ?? _default;
 
   final Pod<bool> pState;
   final _OnTap? onTap;

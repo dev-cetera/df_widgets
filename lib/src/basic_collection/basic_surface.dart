@@ -16,49 +16,28 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class BasicIconBtn extends StatelessWidget {
-  final VoidCallback? onTap;
-  final GestureTapDownCallback? onTapDown;
-  final ShapeBorder shape;
-  final IconData? iconData;
+class BasicSurface extends StatelessWidget {
   final Widget? child;
 
-  const BasicIconBtn({
+  const BasicSurface({
     super.key,
-    this.onTap,
-    this.onTapDown,
-    this.shape = const CircleBorder(),
-    this.iconData,
     this.child,
   });
 
   @override
   Widget build(BuildContext context) {
-    final enabled = onTap != null || onTapDown != null;
-    assert(child != null || iconData != null);
-    return TapBox(
-      onTap: onTap,
-      onTapDown: onTapDown,
-      properties: TapBox.theme.copyWith(
-        builder: (context, states, child) {
-          return Container(
-            constraints: const BoxConstraints(minWidth: 48.0, minHeight: 48.0),
-            decoration: ShapeDecoration(
-              color: enabled && states.contains(TapBoxState.HOVER)
-                  ? Theme.of(context).colorScheme.primary.withAlpha(32)
-                  : Colors.transparent,
-              shape: shape,
-            ),
-            child: child,
-          );
-        },
+    return Container(
+      constraints: BoxConstraints(minWidth: 48.sc, minHeight: 48.sc),
+      decoration: BoxDecoration(
+        // border: Border.all(
+        //   width: 1.sc,
+        //   color: Theme.of(context).colorScheme.primary,
+        // ),
+        color: Theme.of(context).colorScheme.surfaceContainer,
+        borderRadius: BorderRadius.circular(24.sc),
       ),
-      child: child ??
-          Icon(
-            iconData,
-            color: Theme.of(context).colorScheme.primary.withSaturation(enabled ? 1.0 : 0.0),
-            size: 24.sc,
-          ),
+      clipBehavior: Clip.antiAlias,
+      child: child,
     );
   }
 }

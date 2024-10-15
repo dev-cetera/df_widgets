@@ -26,17 +26,17 @@ class ExtrudedBox extends StatelessWidget {
 
   final ExtrudedBoxProperties? properties;
 
-  static final _default = ExtrudedBoxProperties(
-    value: 1.0,
-    color: const Color.fromARGB(128, 0, 0, 0),
-    angle: 55.0,
-    border: const OutlineInputBorder(),
-    perspectiveDepth: 0.0,
-    max: 6.sc,
-  );
+  static ExtrudedBoxProperties get _default => ExtrudedBoxProperties(
+        value: 1.0,
+        color: const Color.fromARGB(128, 0, 0, 0),
+        angle: 55.0,
+        border: const OutlineInputBorder(),
+        perspectiveDepth: 0.0,
+        max: 6.sc,
+      );
 
   static ExtrudedBoxProperties get theme =>
-      DI.theme.getSyncOrNull<ExtrudedBoxProperties>() ?? _default;
+      DI.theme.getSyncOrNull<ExtrudedBoxProperties>()?.copyWith() ?? _default;
 
   const ExtrudedBox({
     super.key,
