@@ -53,8 +53,8 @@ abstract class WFormFieldStatefulWidget<T> extends StatefulWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class WFormFieldStatefulWidgetState<T, W extends WFormFieldStatefulWidget<T>>
-    extends State<W> {
+abstract class WFormFieldStatefulWidgetState<T,
+    W extends WFormFieldStatefulWidget<T>> extends State<W> {
   //
   //
   //

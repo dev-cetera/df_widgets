@@ -30,7 +30,8 @@ class BlurryContainer extends StatelessWidget {
   //
   //
 
-  static BlurryContainerProperties get _default => const BlurryContainerProperties(
+  static BlurryContainerProperties get _default =>
+      const BlurryContainerProperties(
         decoration: BoxDecoration(),
         foregroundDecoration: BoxDecoration(),
         padding: EdgeInsets.zero,
@@ -39,7 +40,8 @@ class BlurryContainer extends StatelessWidget {
       );
 
   static BlurryContainerProperties get theme =>
-      DI.theme.getSyncOrNull<BlurryContainerProperties>()?.copyWith() ?? _default;
+      DI.theme.getSyncOrNull<BlurryContainerProperties>()?.copyWith() ??
+      _default;
 
   //
   //

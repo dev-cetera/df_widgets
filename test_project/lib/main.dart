@@ -62,7 +62,7 @@ class _HomeState extends State<Home> {
           ),
           Padding(
             padding: EdgeInsets.all(24.sc),
-            child: BasicSurface(
+            child: const BasicSurface(
               child: SizedBox(
                 width: double.infinity,
                 child: Column(
@@ -76,7 +76,7 @@ class _HomeState extends State<Home> {
           ),
           Padding(
             padding: EdgeInsets.all(24.sc),
-            child: BasicSurface(
+            child: const BasicSurface(
               child: SizedBox(
                 width: double.infinity,
               ),
@@ -241,7 +241,8 @@ class _HomeState extends State<Home> {
             case NavigationBarItemState.DISABLED:
               return Icon(
                 FluentIcons.home_24_regular,
-                color: Theme.of(context).colorScheme.primary.withSaturation(0.0),
+                color:
+                    Theme.of(context).colorScheme.primary.withSaturation(0.0),
                 size: 24.sc,
               );
           }
@@ -301,7 +302,7 @@ class App extends StatelessWidget {
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: const Home(),
     );
   }
 }

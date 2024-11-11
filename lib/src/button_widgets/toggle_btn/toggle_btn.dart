@@ -42,7 +42,9 @@ class ToggleBtn extends StatelessWidget {
         return TapBox(
           properties: tapBoxProperyBuilder?.call(state, p),
           onTap: onTap != null ? () => onTap?.call(pState) : null,
-          onTapDown: onTapDown != null ? (details) => onTapDown?.call(details, pState) : null,
+          onTapDown: onTapDown != null
+              ? (details) => onTapDown?.call(details, pState)
+              : null,
           child: childBuilder?.call(context, state),
         );
       },

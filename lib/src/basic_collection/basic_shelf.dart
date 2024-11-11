@@ -144,7 +144,9 @@ class BasicShelfItemWidget extends StatelessWidget {
                       item.bodyText!,
                       softWrap: true,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: Theme.of(context).colorScheme.onSecondaryContainer,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSecondaryContainer,
                           ),
                     ),
                 ],
@@ -155,7 +157,8 @@ class BasicShelfItemWidget extends StatelessWidget {
               item.trailingIcon!
             else
               BasicIconBtn(
-                iconData: item.trailingIconData ?? FluentIcons.chevron_right_24_regular,
+                iconData: item.trailingIconData ??
+                    FluentIcons.chevron_right_24_regular,
                 onTap: item.onTap,
                 onTapDown: item.onTapDown,
               ),
