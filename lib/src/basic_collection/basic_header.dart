@@ -98,7 +98,7 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
 
   @override
   Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+      BuildContext context, double shrinkOffset, bool overlapsContent,) {
     // Calculate the current height based on the shrinkOffset
     final currentHeight = (80.sc - shrinkOffset).clamp(48.sc, 80.sc);
     final heightf = (2.0 + currentHeight / 80.sc) / 3.0;
