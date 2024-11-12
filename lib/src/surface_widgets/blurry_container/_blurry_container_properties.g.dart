@@ -2,7 +2,7 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
 // GENERATED - DO NOT MODIFY BY HAND
-// See: https://github.com/robmllze/df_generate_dart_models
+// See: https://github.com/DevCetra/df_generate_dart_models
 //
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
@@ -112,8 +112,7 @@ class BlurryContainerProperties extends _BlurryContainerProperties {
       alpha: alpha ? this.alpha : null,
       color: color ? this.color : null,
       decoration: decoration ? this.decoration : null,
-      foregroundDecoration:
-          foregroundDecoration ? this.foregroundDecoration : null,
+      foregroundDecoration: foregroundDecoration ? this.foregroundDecoration : null,
       padding: padding ? this.padding : null,
       constraints: constraints ? this.constraints : null,
       borderRadius: borderRadius ? this.borderRadius : null,

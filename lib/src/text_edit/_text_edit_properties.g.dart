@@ -2,7 +2,7 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
 // GENERATED - DO NOT MODIFY BY HAND
-// See: https://github.com/robmllze/df_generate_dart_models
+// See: https://github.com/DevCetra/df_generate_dart_models
 //
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
@@ -58,8 +58,7 @@ class TextEditProperties extends _TextEditProperties {
       focusNode: focusNode ?? this.focusNode,
       style: style ?? this.style,
       cursorColor: cursorColor ?? this.cursorColor,
-      backgroundCursorColor:
-          backgroundCursorColor ?? this.backgroundCursorColor,
+      backgroundCursorColor: backgroundCursorColor ?? this.backgroundCursorColor,
     );
   }
 
@@ -76,8 +75,7 @@ class TextEditProperties extends _TextEditProperties {
       focusNode: focusNode ? this.focusNode : null,
       style: style ? this.style : null,
       cursorColor: cursorColor ? this.cursorColor : null,
-      backgroundCursorColor:
-          backgroundCursorColor ? this.backgroundCursorColor : null,
+      backgroundCursorColor: backgroundCursorColor ? this.backgroundCursorColor : null,
     );
   }
 
