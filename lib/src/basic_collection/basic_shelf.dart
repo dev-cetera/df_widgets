@@ -126,10 +126,10 @@ class BasicShelfItemWidget extends StatelessWidget {
           children: [
             SizedBox(width: 12.sc),
             Expanded(
-              child: Column(
+              child: DividedColumn(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
-                spacing: 4.sc,
+                divider: SizedBox(height: 12.sc),
                 children: [
                   if (item.titleText != null)
                     Text(

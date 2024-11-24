@@ -2,7 +2,7 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
 // GENERATED - DO NOT MODIFY BY HAND
-// See: https://github.com/DevCetra/df_gen
+// See: https://github.com/robmllze/df_gen
 //
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
@@ -35,6 +35,7 @@ export 'plastic_collection/plastic_check_btn/plastic_check_btn.dart';
 export 'surface_widgets/blurry_container/blurry_container.dart';
 export 'text_edit/text_edit.dart';
 export 'theme/text_style.dart';
+export 'new/horizontal_swipable.dart';
 export 'widgets/titled/titled.dart';
 export 'widgets/popup/popup.dart';
 export 'widgets/blur/blur.dart';
