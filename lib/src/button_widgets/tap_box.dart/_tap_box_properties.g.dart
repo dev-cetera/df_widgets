@@ -58,7 +58,8 @@ class TapBoxProperties extends _TapBoxProperties {
   }) {
     return TapBoxProperties(
       decoration: decoration ? this.decoration : null,
-      foregroundDecoration: foregroundDecoration ? this.foregroundDecoration : null,
+      foregroundDecoration:
+          foregroundDecoration ? this.foregroundDecoration : null,
       builder: builder ? this.builder : null,
     );
   }

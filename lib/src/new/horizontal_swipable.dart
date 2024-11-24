@@ -32,7 +32,8 @@ class HorizonralSwipable extends StatefulWidget {
   _HorizonralSwipableState createState() => _HorizonralSwipableState();
 }
 
-class _HorizonralSwipableState extends State<HorizonralSwipable> with TickerProviderStateMixin {
+class _HorizonralSwipableState extends State<HorizonralSwipable>
+    with TickerProviderStateMixin {
   late AnimationController _animationController;
   double _maxWidth = 0.0;
 
@@ -84,8 +85,8 @@ class _HorizonralSwipableState extends State<HorizonralSwipable> with TickerProv
   void _onDragUpdate(DragUpdateDetails details) {
     final delta = details.primaryDelta! / (_maxWidth - _dragExtent);
     _animationController.value += delta;
-    _animationController.value =
-        _animationController.value.clamp(_canDragLeft ? -1.0 : 0.0, _canDragRight ? 1.0 : 0.0);
+    _animationController.value = _animationController.value
+        .clamp(_canDragLeft ? -1.0 : 0.0, _canDragRight ? 1.0 : 0.0);
 
     widget.onDrag?.call(details.primaryDelta!);
   }
@@ -94,7 +95,8 @@ class _HorizonralSwipableState extends State<HorizonralSwipable> with TickerProv
     var targetValue = 0.0;
 
     if (_direction.snapFactor != null) {
-      if (_animationController.value.abs() >= _direction.snapFactor!.clamp(0.0, 1.0)) {
+      if (_animationController.value.abs() >=
+          _direction.snapFactor!.clamp(0.0, 1.0)) {
         targetValue = _animationController.value > 0 ? 1.0 : -1.0;
       }
     }

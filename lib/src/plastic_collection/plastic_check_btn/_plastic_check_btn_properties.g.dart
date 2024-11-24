@@ -129,14 +129,20 @@ class PlasticCheckBtnProperties extends _PlasticCheckBtnProperties {
       uncheckedColor: uncheckedColor ?? this.uncheckedColor,
       uncheckedShadowColor: uncheckedShadowColor ?? this.uncheckedShadowColor,
       checkedHoverIconData: checkedHoverIconData ?? this.checkedHoverIconData,
-      checkedHoverIconColor: checkedHoverIconColor ?? this.checkedHoverIconColor,
+      checkedHoverIconColor:
+          checkedHoverIconColor ?? this.checkedHoverIconColor,
       checkedHoverColor: checkedHoverColor ?? this.checkedHoverColor,
-      checkedHoverShadowColor: checkedHoverShadowColor ?? this.checkedHoverShadowColor,
-      uncheckedHoverIconData: uncheckedHoverIconData ?? this.uncheckedHoverIconData,
-      uncheckedHoverIconColor: uncheckedHoverIconColor ?? this.uncheckedHoverIconColor,
+      checkedHoverShadowColor:
+          checkedHoverShadowColor ?? this.checkedHoverShadowColor,
+      uncheckedHoverIconData:
+          uncheckedHoverIconData ?? this.uncheckedHoverIconData,
+      uncheckedHoverIconColor:
+          uncheckedHoverIconColor ?? this.uncheckedHoverIconColor,
       uncheckedHoverColor: uncheckedHoverColor ?? this.uncheckedHoverColor,
-      uncheckedHoverShadowColor: uncheckedHoverShadowColor ?? this.uncheckedHoverShadowColor,
-      extrudedBoxProperties: extrudedBoxProperties ?? this.extrudedBoxProperties,
+      uncheckedHoverShadowColor:
+          uncheckedHoverShadowColor ?? this.uncheckedHoverShadowColor,
+      extrudedBoxProperties:
+          extrudedBoxProperties ?? this.extrudedBoxProperties,
     );
   }
 
@@ -170,16 +176,25 @@ class PlasticCheckBtnProperties extends _PlasticCheckBtnProperties {
       uncheckedIconData: uncheckedIconData ? this.uncheckedIconData : null,
       uncheckedIconColor: uncheckedIconColor ? this.uncheckedIconColor : null,
       uncheckedColor: uncheckedColor ? this.uncheckedColor : null,
-      uncheckedShadowColor: uncheckedShadowColor ? this.uncheckedShadowColor : null,
-      checkedHoverIconData: checkedHoverIconData ? this.checkedHoverIconData : null,
-      checkedHoverIconColor: checkedHoverIconColor ? this.checkedHoverIconColor : null,
+      uncheckedShadowColor:
+          uncheckedShadowColor ? this.uncheckedShadowColor : null,
+      checkedHoverIconData:
+          checkedHoverIconData ? this.checkedHoverIconData : null,
+      checkedHoverIconColor:
+          checkedHoverIconColor ? this.checkedHoverIconColor : null,
       checkedHoverColor: checkedHoverColor ? this.checkedHoverColor : null,
-      checkedHoverShadowColor: checkedHoverShadowColor ? this.checkedHoverShadowColor : null,
-      uncheckedHoverIconData: uncheckedHoverIconData ? this.uncheckedHoverIconData : null,
-      uncheckedHoverIconColor: uncheckedHoverIconColor ? this.uncheckedHoverIconColor : null,
-      uncheckedHoverColor: uncheckedHoverColor ? this.uncheckedHoverColor : null,
-      uncheckedHoverShadowColor: uncheckedHoverShadowColor ? this.uncheckedHoverShadowColor : null,
-      extrudedBoxProperties: extrudedBoxProperties ? this.extrudedBoxProperties : null,
+      checkedHoverShadowColor:
+          checkedHoverShadowColor ? this.checkedHoverShadowColor : null,
+      uncheckedHoverIconData:
+          uncheckedHoverIconData ? this.uncheckedHoverIconData : null,
+      uncheckedHoverIconColor:
+          uncheckedHoverIconColor ? this.uncheckedHoverIconColor : null,
+      uncheckedHoverColor:
+          uncheckedHoverColor ? this.uncheckedHoverColor : null,
+      uncheckedHoverShadowColor:
+          uncheckedHoverShadowColor ? this.uncheckedHoverShadowColor : null,
+      extrudedBoxProperties:
+          extrudedBoxProperties ? this.extrudedBoxProperties : null,
     );
   }
 

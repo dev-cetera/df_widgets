@@ -112,7 +112,8 @@ class BlurryContainerProperties extends _BlurryContainerProperties {
       alpha: alpha ? this.alpha : null,
       color: color ? this.color : null,
       decoration: decoration ? this.decoration : null,
-      foregroundDecoration: foregroundDecoration ? this.foregroundDecoration : null,
+      foregroundDecoration:
+          foregroundDecoration ? this.foregroundDecoration : null,
       padding: padding ? this.padding : null,
       constraints: constraints ? this.constraints : null,
       borderRadius: borderRadius ? this.borderRadius : null,
