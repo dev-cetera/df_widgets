@@ -24,8 +24,8 @@ class BasicHeaderSearchBar extends StatefulWidget {
 
   final Pod<bool>? pCollapsed;
   final Pod<String> pSearchQuery;
-  final List<ScSearchBarItem> sortOptionItems;
-  final List<ScSearchBarItem> filterOptionItems;
+  final List<BasicSearchBarItem> sortOptionItems;
+  final List<BasicSearchBarItem> filterOptionItems;
   final FocusNode focusNode;
 
   //
@@ -167,8 +167,7 @@ class _State extends State<BasicHeaderSearchBar> {
                         ),
                       );
                     },
-                    childrenBuilder: (context, close) => widget
-                        .filterOptionItems
+                    childrenBuilder: (context, close) => widget.filterOptionItems
                         .map(
                           (e) => TextButton.icon(
                             onPressed: () {
@@ -227,7 +226,7 @@ class _State extends State<BasicHeaderSearchBar> {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class ScSearchBarItem {
+class BasicSearchBarItem {
   //
   //
   //
@@ -240,7 +239,7 @@ class ScSearchBarItem {
   //
   //
 
-  const ScSearchBarItem({
+  const BasicSearchBarItem({
     required this.title,
     required this.onTap,
     required this.selected,
