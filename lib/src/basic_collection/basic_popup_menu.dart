@@ -22,7 +22,8 @@ class BasicPopupMenu extends StatelessWidget {
   //
 
   final Widget Function(BuildContext context, VoidCallback open) buttonBuilder;
-  final List<Widget> Function(BuildContext context, VoidCallback close) childrenBuilder;
+  final List<Widget> Function(BuildContext context, VoidCallback close)
+      childrenBuilder;
   final void Function(VoidCallback close)? onTapDownBackground;
 
   //

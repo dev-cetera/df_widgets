@@ -167,7 +167,8 @@ class _State extends State<BasicHeaderSearchBar> {
                         ),
                       );
                     },
-                    childrenBuilder: (context, close) => widget.filterOptionItems
+                    childrenBuilder: (context, close) => widget
+                        .filterOptionItems
                         .map(
                           (e) => TextButton.icon(
                             onPressed: () {
