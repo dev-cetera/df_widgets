@@ -10,4 +10,18 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
+import 'package:df_scalable/df_scalable.dart';
+import 'package:flutter/material.dart';
+
+import '../no_outline_input_border.dart';
+
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+class MessageBoxInputDecorationA extends InputDecoration {
+  MessageBoxInputDecorationA()
+      : super(
+          contentPadding: EdgeInsets.symmetric(vertical: 12.sc),
+          focusedBorder: const NoOutlineInputBorder(),
+          enabledBorder: const NoOutlineInputBorder(),
+        );
+}

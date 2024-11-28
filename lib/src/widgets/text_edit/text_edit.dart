@@ -10,7 +10,9 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-import '/_common.dart';
+import 'package:df_di/df_di.dart';
+import 'package:df_generate_dart_models_core/df_generate_dart_models_core.dart';
+import 'package:flutter/widgets.dart';
 
 part '_text_edit_properties.g.dart';
 
@@ -46,6 +48,9 @@ class TextEdit extends StatelessWidget {
       backgroundCursorColor: properties.backgroundCursorColor$,
       selectionColor: properties.cursorColor$,
       showSelectionHandles: true,
+      onSubmitted: properties.onSubmitted,
+      onTapOutside: properties.onTapOutside,
+      onChanged: properties.onChanged,
     );
   }
 }
@@ -79,9 +84,27 @@ class TextEdit extends StatelessWidget {
       fieldType: Color,
       nullable: false,
     ),
+    Field(
+      fieldPath: ['onSubmitted'],
+      fieldType: 'OnChanged',
+      nullable: true,
+    ),
+    Field(
+      fieldPath: ['onChanged'],
+      fieldType: 'OnChanged',
+      nullable: true,
+    ),
+    Field(
+      fieldPath: ['onTapOutside'],
+      fieldType: 'OnTapOutside',
+      nullable: true,
+    ),
   },
   shouldInherit: true,
 )
 class _TextEditProperties {
   const _TextEditProperties();
 }
+
+typedef OnChanged = void Function(String text);
+typedef OnTapOutside = void Function(PointerDownEvent event);

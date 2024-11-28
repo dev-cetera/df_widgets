@@ -12,7 +12,9 @@
 
 import 'dart:ui' show ImageFilter;
 
-import '/_common.dart';
+import 'package:df_di/df_di.dart';
+import 'package:df_generate_dart_models_core/df_generate_dart_models_core.dart';
+import 'package:flutter/widgets.dart';
 
 part '_blurry_container_properties.g.dart';
 
@@ -30,8 +32,7 @@ class BlurryContainer extends StatelessWidget {
   //
   //
 
-  static BlurryContainerProperties get _default =>
-      const BlurryContainerProperties(
+  static BlurryContainerProperties get _default => const BlurryContainerProperties(
         decoration: BoxDecoration(),
         foregroundDecoration: BoxDecoration(),
         padding: EdgeInsets.zero,
@@ -40,8 +41,7 @@ class BlurryContainer extends StatelessWidget {
       );
 
   static BlurryContainerProperties get theme =>
-      DI.theme.getSyncOrNull<BlurryContainerProperties>()?.copyWith() ??
-      _default;
+      DI.theme.getSyncOrNull<BlurryContainerProperties>()?.copyWith() ?? _default;
 
   //
   //

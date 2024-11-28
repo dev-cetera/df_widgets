@@ -14,7 +14,7 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-extension TextStyleExtension on TextStyle {
+extension TextStyleX on TextStyle {
   TextStyle get wBlack => copyWith(fontWeight: FONT_WEIGHT_BLACK);
   TextStyle get wExtraBold => copyWith(fontWeight: FONT_WEIGHT_EXTRA_BOLD);
   TextStyle get wBold => copyWith(fontWeight: FONT_WEIGHT_BOLD);

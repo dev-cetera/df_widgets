@@ -1,9 +1,11 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// JobXcel
+// Dart/Flutter (DF) Packages by DevCetra.com & contributors. The use of this
+// source code is governed by an MIT-style license described in the LICENSE
+// file located in this project's root directory.
 //
-// Licencing details are in the LICENSE file in the root directory.
+// See: https://opensource.org/license/mit
 //
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
@@ -29,11 +31,12 @@ class HorizonralSwipable extends StatefulWidget {
   });
 
   @override
-  _HorizonralSwipableState createState() => _HorizonralSwipableState();
+  _State createState() => _State();
 }
 
-class _HorizonralSwipableState extends State<HorizonralSwipable>
-    with TickerProviderStateMixin {
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
   late AnimationController _animationController;
   double _maxWidth = 0.0;
 
@@ -85,8 +88,8 @@ class _HorizonralSwipableState extends State<HorizonralSwipable>
   void _onDragUpdate(DragUpdateDetails details) {
     final delta = details.primaryDelta! / (_maxWidth - _dragExtent);
     _animationController.value += delta;
-    _animationController.value = _animationController.value
-        .clamp(_canDragLeft ? -1.0 : 0.0, _canDragRight ? 1.0 : 0.0);
+    _animationController.value =
+        _animationController.value.clamp(_canDragLeft ? -1.0 : 0.0, _canDragRight ? 1.0 : 0.0);
 
     widget.onDrag?.call(details.primaryDelta!);
   }
@@ -95,8 +98,7 @@ class _HorizonralSwipableState extends State<HorizonralSwipable>
     var targetValue = 0.0;
 
     if (_direction.snapFactor != null) {
-      if (_animationController.value.abs() >=
-          _direction.snapFactor!.clamp(0.0, 1.0)) {
+      if (_animationController.value.abs() >= _direction.snapFactor!.clamp(0.0, 1.0)) {
         targetValue = _animationController.value > 0 ? 1.0 : -1.0;
       }
     }

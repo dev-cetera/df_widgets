@@ -12,7 +12,10 @@
 
 import 'dart:math' as math;
 
-import '/_common.dart';
+import 'package:df_scalable/df_scalable.dart';
+import 'package:flutter/widgets.dart';
+
+import 'package:flutter/material.dart' show Theme;
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
@@ -27,7 +30,7 @@ class ContentDivider extends StatelessWidget {
   final Axis? orientation;
   final bool? overflow;
   final double? childMainAxisPadding;
-  final MDividerAlignment? childAlignment;
+  final ContentDividerAlignment? childAlignment;
   final BoxDecoration? childDecoration;
   final Widget? child;
 
@@ -58,10 +61,10 @@ class ContentDivider extends StatelessWidget {
     Color? color,
     double? size,
     bool? overflow,
-    Widget? child,
     double? childMainAxisPadding,
-    MDividerAlignment? childAlignment,
+    ContentDividerAlignment? childAlignment,
     BoxDecoration? childDecoration,
+    Widget? child,
   }) {
     return ContentDivider(
       key: key,
@@ -87,10 +90,10 @@ class ContentDivider extends StatelessWidget {
     Color? color,
     double? size,
     bool? overflow,
-    Widget? child,
     double? childMainAxisPadding,
-    MDividerAlignment? childAlignment,
+    ContentDividerAlignment? childAlignment,
     BoxDecoration? childDecoration,
+    Widget? child,
   }) {
     return ContentDivider(
       key: key,
@@ -116,8 +119,8 @@ class ContentDivider extends StatelessWidget {
     final thickness1 = thickness ?? 1.sc;
     final size1 = math.max(thickness1, size ?? thickness1);
     final spacing1 = childMainAxisPadding ?? 8.sc;
-    final childAlignment1 =
-        childAlignment?.toAlignment(orientation1) ?? Alignment.center;
+    final color1 = color ?? Theme.of(context).colorScheme.outline;
+    final childAlignment1 = childAlignment?.toAlignment(orientation1) ?? Alignment.center;
     final vertical = orientation1 == Axis.vertical;
     final horizontal = orientation1 == Axis.horizontal;
     final screenSize = MediaQuery.of(context).size;
@@ -125,12 +128,12 @@ class ContentDivider extends StatelessWidget {
         ? Container(
             width: double.infinity,
             height: thickness1,
-            color: color,
+            color: color1,
           )
         : Container(
             width: thickness1,
             height: double.infinity,
-            color: color,
+            color: color1,
           );
     final $overflow = overflow ?? false;
     final stack = Stack(
@@ -150,8 +153,7 @@ class ContentDivider extends StatelessWidget {
                   child: Container(
                     height: horizontal ? size1 : null,
                     width: vertical ? size1 : null,
-                    decoration:
-                        (childDecoration ?? const BoxDecoration()).copyWith(
+                    decoration: (childDecoration ?? const BoxDecoration()).copyWith(
                       color: childDecoration?.color,
                       borderRadius: childDecoration?.borderRadius ??
                           BorderRadius.circular(math.max(8.sc, 0.25 * size1)),
@@ -183,7 +185,7 @@ class ContentDivider extends StatelessWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-enum MDividerAlignment {
+enum ContentDividerAlignment {
   //
   //
   //
@@ -198,16 +200,12 @@ enum MDividerAlignment {
 
   Alignment toAlignment(Axis axis) {
     switch (this) {
-      case MDividerAlignment.START:
-        return axis == Axis.horizontal
-            ? Alignment.centerLeft
-            : Alignment.topCenter;
-      case MDividerAlignment.CENTER:
+      case ContentDividerAlignment.START:
+        return axis == Axis.horizontal ? Alignment.centerLeft : Alignment.topCenter;
+      case ContentDividerAlignment.CENTER:
         return Alignment.center;
-      case MDividerAlignment.END:
-        return axis == Axis.horizontal
-            ? Alignment.centerRight
-            : Alignment.bottomCenter;
+      case ContentDividerAlignment.END:
+        return axis == Axis.horizontal ? Alignment.centerRight : Alignment.bottomCenter;
     }
   }
 }

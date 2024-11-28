@@ -17,26 +17,59 @@ import '/_common.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 class BasicSurface extends StatelessWidget {
+  //
+  //
+  //
+
   final Widget? child;
+  final BorderRadius? borderRadius;
+  final BoxConstraints? constraints;
+  final BoxDecoration? decoration;
+  final EdgeInsets? padding;
+  final Color? color;
+  final double? width;
+  final double? height;
+
+  //
+  //
+  //
 
   const BasicSurface({
     super.key,
     this.child,
+    this.borderRadius = BorderRadius.zero,
+    this.constraints,
+    this.decoration,
+    this.padding,
+    this.color,
+    this.height,
+    this.width,
   });
+
+  //
+  //
+  //
 
   @override
   Widget build(BuildContext context) {
+    final color1 = decoration?.color ?? color ?? Theme.of(context).colorScheme.surfaceContainer;
+    final borderRadius1 = decoration?.borderRadius ?? borderRadius ?? BorderRadius.circular(24.sc);
+    final decoration1 = decoration?.copyWith(
+          color: color1,
+          borderRadius: borderRadius1,
+        ) ??
+        BoxDecoration(
+          color: color1,
+          borderRadius: borderRadius1,
+        );
+    final constraints1 = constraints ?? const BoxConstraints(minWidth: 48.0, minHeight: 48.0);
     return Container(
-      constraints: BoxConstraints(minWidth: 48.sc, minHeight: 48.sc),
-      decoration: BoxDecoration(
-        // border: Border.all(
-        //   width: 1.sc,
-        //   color: Theme.of(context).colorScheme.primary,
-        // ),
-        color: Theme.of(context).colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(24.sc),
-      ),
-      clipBehavior: Clip.antiAlias,
+      width: width,
+      height: height,
+      constraints: constraints1,
+      decoration: decoration1,
+      padding: padding ?? EdgeInsets.zero,
+      clipBehavior: Clip.hardEdge,
       child: child,
     );
   }

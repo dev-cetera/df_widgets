@@ -87,7 +87,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  @override
+  //@override
   Widget build1(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
@@ -241,8 +241,7 @@ class _HomeState extends State<Home> {
             case NavigationBarItemState.DISABLED:
               return Icon(
                 FluentIcons.home_24_regular,
-                color:
-                    Theme.of(context).colorScheme.primary.withSaturation(0.0),
+                color: Theme.of(context).colorScheme.primary.withSaturation(0.0),
                 size: 24.sc,
               );
           }
