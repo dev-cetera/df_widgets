@@ -8,12 +8,11 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show Theme;
 
-import 'package:df_scalable/df_scalable.dart';
+import '/_common.dart';
+
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
-
-import 'show_bottom_message_overlay.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
@@ -42,8 +41,7 @@ Future<void> showBottomErrorOverlay(
         ),
     iconSpacing: iconSpacing,
     remover: remover,
-    backgroundColor:
-        backgroundColor ?? Theme.of(context).colorScheme.errorContainer,
+    backgroundColor: backgroundColor ?? Theme.of(context).colorScheme.errorContainer,
     duration: duration,
     padding: padding,
     borderRadius: borderRadius,

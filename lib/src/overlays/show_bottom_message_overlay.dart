@@ -10,6 +10,8 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
+import 'package:flutter/material.dart' show Theme;
+
 import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -46,7 +48,9 @@ Future<void> showBottomMessageOverlay(
                 extent: 0.5,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: backgroundColor,
+                    color: backgroundColor ??
+                        backgroundColor ??
+                        Theme.of(context).colorScheme.errorContainer,
                     borderRadius: borderRadius ?? BorderRadius.circular(24.sc),
                   ),
                   clipBehavior: Clip.antiAlias,
