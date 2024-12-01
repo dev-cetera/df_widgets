@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.5]
+
+- Released @ 12/2024 (UTC)
+- chore: Refactor imports, fix backgroundColor fallback
+
 ## [0.1.4]
 
 - Released @ 12/2024 (UTC)

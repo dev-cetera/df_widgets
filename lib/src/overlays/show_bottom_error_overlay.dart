@@ -41,7 +41,8 @@ Future<void> showBottomErrorOverlay(
         ),
     iconSpacing: iconSpacing,
     remover: remover,
-    backgroundColor: backgroundColor ?? Theme.of(context).colorScheme.errorContainer,
+    backgroundColor:
+        backgroundColor ?? Theme.of(context).colorScheme.errorContainer,
     duration: duration,
     padding: padding,
     borderRadius: borderRadius,
