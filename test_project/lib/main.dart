@@ -14,75 +14,95 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       //appBar: ,
-      body: Column(
-        children: [
-          BasicHeader(
-            title: 'Home',
-            optionsMenuTitle: 'Options',
-            optionsMenuBuilder: (context) {
-              return [
-                BasicBtn(
-                  text: 'Profile',
-                  onTap: () {},
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            BasicHeader(
+              title: 'Home',
+              optionsMenuTitle: 'Options',
+              optionsMenuBuilder: (context) {
+                return [
+                  BasicBtn(
+                    text: 'Profile',
+                    onTap: () {},
+                  ),
+                  BasicBtn(
+                    text: 'Settings',
+                    onTap: () {},
+                  ),
+                  ContentDivider(
+                    color: Theme.of(context).colorScheme.surfaceBright,
+                  ),
+                  BasicErrBtn(
+                    text: 'Logout',
+                    onTap: () {},
+                  ),
+                ];
+              },
+              onTapDownBack: (_) {},
+            ),
+            Padding(
+              padding: EdgeInsets.all(12.sc),
+              child: BasicShelf(
+                items: [
+                  BasicShelfItem(
+                    titleText: 'Q&A',
+                    bodyText: 'Common questions and answers',
+                    onTap: () {},
+                  ),
+                  BasicShelfItem(
+                    titleText: 'Text',
+                    onTap: () {},
+                  ),
+                  BasicShelfItem(
+                    titleText: 'Text',
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            ),
+            ContentDivider.horizontal(
+              children: const [
+                ContentDividerChild(
+                  alignment: ContentDividerAlignment.END,
+                  child: Text(
+                    'Hello',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
-                BasicBtn(
-                  text: 'Settings',
-                  onTap: () {},
-                ),
-                ContentDivider(
-                  color: Theme.of(context).colorScheme.surfaceBright,
-                ),
-                BasicErrBtn(
-                  text: 'Logout',
-                  onTap: () {},
-                ),
-              ];
-            },
-            onTapDownBack: (_) {},
-          ),
-          Padding(
-            padding: EdgeInsets.all(12.sc),
-            child: BasicShelf(
-              items: [
-                BasicShelfItem(
-                  titleText: 'Q&A',
-                  bodyText: 'Common questions and answers',
-                  onTap: () {},
-                ),
-                BasicShelfItem(
-                  titleText: 'Text',
-                  onTap: () {},
-                ),
-                BasicShelfItem(
-                  titleText: 'Text',
-                  onTap: () {},
+                ContentDividerChild(
+                  child: Text(
+                    'World',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ],
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(24.sc),
-            child: const BasicSurface(
-              child: SizedBox(
-                width: double.infinity,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextEdit(),
-                  ],
+            Padding(
+              padding: EdgeInsets.all(24.sc),
+              child: const BasicSurface(
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextEdit(),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(24.sc),
-            child: const BasicSurface(
-              child: SizedBox(
-                width: double.infinity,
+            Padding(
+              padding: EdgeInsets.all(24.sc),
+              child: const BasicSurface(
+                child: SizedBox(
+                  width: double.infinity,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -241,8 +261,7 @@ class _HomeState extends State<Home> {
             case NavigationBarItemState.DISABLED:
               return Icon(
                 FluentIcons.home_24_regular,
-                color:
-                    Theme.of(context).colorScheme.primary.withSaturation(0.0),
+                color: Theme.of(context).colorScheme.primary.withSaturation(0.0),
                 size: 24.sc,
               );
           }
