@@ -17,45 +17,48 @@ import '/_common.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 class BasicCircularProgressIndicator extends StatelessWidget {
-  //
-  //
-  //
-
   final double? minSize;
   final double? maxSize;
+  final Duration delay;
 
   const BasicCircularProgressIndicator({
     super.key,
     this.minSize,
     this.maxSize,
+    this.delay = const Duration(seconds: 2),
   });
-
-  //
-  //
-  //
 
   @override
   Widget build(BuildContext context) {
     final minSize1 = minSize ?? 32.sc;
     final maxSize1 = maxSize ?? 48.sc;
-    return Center(
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minWidth: minSize1,
-          minHeight: minSize1,
-          maxWidth: maxSize1,
-          maxHeight: maxSize1,
-        ),
-        child: Center(
-          child: CircularProgressIndicator.adaptive(
-            backgroundColor: Colors.transparent,
-            valueColor: AlwaysStoppedAnimation<Color>(
-              Theme.of(context).colorScheme.primary,
+
+    return FutureBuilder(
+      future: Future<dynamic>.delayed(delay),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minWidth: minSize1,
+                minHeight: minSize1,
+                maxWidth: maxSize1,
+                maxHeight: maxSize1,
+              ),
+              child: Center(
+                child: CircularProgressIndicator.adaptive(
+                  backgroundColor: Colors.transparent,
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    Theme.of(context).colorScheme.primary,
+                  ),
+                  strokeWidth: 4.sc,
+                ),
+              ),
             ),
-            strokeWidth: 4.sc,
-          ),
-        ),
-      ),
+          );
+        }
+        return const SizedBox.shrink();
+      },
     );
   }
 }

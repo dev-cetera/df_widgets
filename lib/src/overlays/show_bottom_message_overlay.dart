@@ -50,7 +50,7 @@ Future<void> showBottomMessageOverlay(
                   decoration: BoxDecoration(
                     color: backgroundColor ??
                         backgroundColor ??
-                        Theme.of(context).colorScheme.errorContainer,
+                        Theme.of(context).colorScheme.surfaceContainerLow,
                     borderRadius: borderRadius ?? BorderRadius.circular(24.sc),
                   ),
                   clipBehavior: Clip.antiAlias,
