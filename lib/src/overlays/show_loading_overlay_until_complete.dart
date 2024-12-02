@@ -10,8 +10,6 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-import 'package:flutter/material.dart';
-
 import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -30,7 +28,9 @@ void showLoadingOverlayUntilComplete(
   });
   showMessageOverlay(
     context,
-    leading: CircularProgressIndicator.adaptive(strokeWidth: 4.sc),
+    leading: const BasicDelayedCircularProgressIndicator(
+      delay: Duration.zero,
+    ),
     remover: (r) async {
       remove = r;
       await future;

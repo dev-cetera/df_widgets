@@ -16,12 +16,12 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class BasicCircularProgressIndicator extends StatelessWidget {
+class BasicDelayedCircularProgressIndicator extends StatelessWidget {
   final double? minSize;
   final double? maxSize;
   final Duration delay;
 
-  const BasicCircularProgressIndicator({
+  const BasicDelayedCircularProgressIndicator({
     super.key,
     this.minSize,
     this.maxSize,

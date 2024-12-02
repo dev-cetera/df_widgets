@@ -25,7 +25,7 @@ export 'basic_collection/basic_surface.dart';
 export 'basic_collection/basic_err_btn.dart';
 export 'basic_collection/basic_tooltip.dart';
 export 'basic_collection/basic_popup_menu.dart';
-export 'basic_collection/basic_circular_progress_indicator.dart';
+export 'basic_collection/basic_delayed_circular_progress_indicator.dart';
 export 'basic_collection/basic_btn.dart';
 export 'builders/view_insets_builder.dart';
 export 'overlays/show_blurry_overlay.dart';
