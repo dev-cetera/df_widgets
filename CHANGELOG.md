@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.6]
+
+- Released @ 12/2024 (UTC)
+- feat: Add delay to CircularProgressIndicator
+
 ## [0.1.5]
 
 - Released @ 12/2024 (UTC)
