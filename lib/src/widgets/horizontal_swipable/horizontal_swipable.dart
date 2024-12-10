@@ -12,13 +12,14 @@
 
 import 'package:flutter/widgets.dart';
 
+import 'package:df_scalable/df_scalable.dart';
+
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 class HorizonralSwipable extends StatefulWidget {
   final Widget child;
   final HorizonralSwipableDirection left;
   final HorizonralSwipableDirection right;
-  final void Function(double)? onDrag;
   final Alignment stackAlignment;
 
   const HorizonralSwipable({
@@ -26,7 +27,6 @@ class HorizonralSwipable extends StatefulWidget {
     required this.child,
     this.left = const HorizonralSwipableDirection(),
     this.right = const HorizonralSwipableDirection(),
-    this.onDrag,
     this.stackAlignment = Alignment.center,
   });
 
@@ -42,22 +42,31 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
 
   late FocusNode _focusNode;
 
-  bool get _canDragLeft => widget.left.child != null;
-  bool get _canDragRight => widget.right.child != null;
+  bool get _canDragLeft => widget.left.builder != null || widget.left.child != null;
+  bool get _canDragRight => widget.right.builder != null || widget.right.child != null;
+  bool get _isLeft => _animationController.value < 0;
+  bool get _isRight => _animationController.value > 0;
 
-  HorizonralSwipableDirection get _direction {
-    if (_animationController.value > 0) {
+  HorizonralSwipableDirection? get _direction {
+    if (_isLeft) {
       return widget.left;
-    } else {
+    } else if (_isRight) {
       return widget.right;
+    } else {
+      return null;
     }
   }
 
-  double get _dragExtent {
-    if (_direction.dragFactor != null) {
-      return _direction.dragFactor! * _maxWidth;
+  double _dragExtent() {
+    final dragFactor = _direction?.dragFactor;
+    if (dragFactor != null) {
+      return dragFactor * _maxWidth;
     }
-    return _direction.dragExtent ?? 160.0;
+    return _direction?.dragExtent ?? 160.sc;
+  }
+
+  double _dragOffset() {
+    return _animationController.value * _dragExtent();
   }
 
   @override
@@ -86,20 +95,22 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
   }
 
   void _onDragUpdate(DragUpdateDetails details) {
-    final delta = details.primaryDelta! / (_maxWidth - _dragExtent);
-    _animationController.value += delta;
-    _animationController.value = _animationController.value
-        .clamp(_canDragLeft ? -1.0 : 0.0, _canDragRight ? 1.0 : 0.0);
-
-    widget.onDrag?.call(details.primaryDelta!);
+    final dragExtent = _dragExtent();
+    final primaryDelta = details.primaryDelta!;
+    final d = primaryDelta / (_maxWidth - dragExtent);
+    _animationController.value += d;
+    _animationController.value =
+        _animationController.value.clamp(_canDragLeft ? -1.0 : 0.0, _canDragRight ? 1.0 : 0.0);
   }
 
   void _onDragEnd(DragEndDetails details) {
+    if (_dragOffset() == _dragExtent()) {
+      _direction?.onDragEnd?.call();
+    }
     var targetValue = 0.0;
-
-    if (_direction.snapFactor != null) {
-      if (_animationController.value.abs() >=
-          _direction.snapFactor!.clamp(0.0, 1.0)) {
+    final snapFactor = _direction?.snapFactor;
+    if (snapFactor != null) {
+      if (_animationController.value.abs() >= snapFactor.clamp(0.0, 1.0)) {
         targetValue = _animationController.value > 0 ? 1.0 : -1.0;
       }
     }
@@ -131,7 +142,35 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
                 ValueListenableBuilder(
                   valueListenable: _animationController,
                   builder: (context, value, _) {
-                    return _direction.child ?? const SizedBox();
+                    if (_isLeft) {
+                      final dragExtent = _dragExtent();
+                      return Align(
+                        alignment: Alignment.centerRight,
+                        child: SizedBox(
+                          width: dragExtent,
+                          child: _direction?.build(
+                            context,
+                            _dragOffset(),
+                            dragExtent,
+                          ),
+                        ),
+                      );
+                    } else if (_isRight) {
+                      final dragExtent = _dragExtent();
+                      return Align(
+                        alignment: Alignment.centerLeft,
+                        child: SizedBox(
+                          width: dragExtent,
+                          child: _direction?.build(
+                            context,
+                            _dragOffset(),
+                            dragExtent,
+                          ),
+                        ),
+                      );
+                    } else {
+                      return const SizedBox.shrink();
+                    }
                   },
                 ),
                 GestureDetector(
@@ -142,10 +181,15 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
                   child: AnimatedBuilder(
                     animation: _animationController,
                     builder: (context, child) {
-                      final offset = _animationController.value * _dragExtent;
                       return Transform.translate(
-                        offset: Offset(offset, 0),
-                        child: widget.child,
+                        offset: Offset(_dragOffset(), 0),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: widget.child,
+                            ),
+                          ],
+                        ),
                       );
                     },
                   ),
@@ -163,28 +207,58 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
 
 class HorizonralSwipableDirection {
   final Widget? child;
+  final HorizonralSwipableDirectionBuilder? builder;
   final double? dragExtent;
   final double? dragFactor;
   final double? snapFactor;
+  final VoidCallback? onDragEnd;
 
   const HorizonralSwipableDirection({
     this.child,
+    this.builder,
     this.dragExtent,
     this.dragFactor,
     this.snapFactor = 0.5,
+    this.onDragEnd,
   });
 
   HorizonralSwipableDirection copyWith({
     Widget? child,
+    HorizonralSwipableDirectionBuilder? builder,
     double? dragExtent,
     double? dragFactor,
     double? snapFactor,
+    VoidCallback? onDragEnd,
   }) {
     return HorizonralSwipableDirection(
       child: child ?? this.child,
+      builder: builder ?? this.builder,
       dragExtent: dragExtent ?? this.dragExtent,
       dragFactor: dragFactor ?? this.dragFactor,
       snapFactor: snapFactor ?? this.snapFactor,
+      onDragEnd: onDragEnd ?? this.onDragEnd,
     );
   }
+
+  Widget build(
+    BuildContext context,
+    double dragOffset,
+    double dragExtent,
+  ) {
+    return builder?.call(
+          context,
+          dragOffset,
+          dragExtent,
+          child,
+        ) ??
+        child ??
+        const SizedBox.shrink();
+  }
 }
+
+typedef HorizonralSwipableDirectionBuilder = Widget Function(
+  BuildContext context,
+  double dragOffset,
+  double dragExtent,
+  Widget? child,
+);

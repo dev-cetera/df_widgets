@@ -25,7 +25,7 @@ class BasicDelayedCircularProgressIndicator extends StatelessWidget {
     super.key,
     this.minSize,
     this.maxSize,
-    this.delay = const Duration(seconds: 2),
+    this.delay = const Duration(milliseconds: 600),
   });
 
   @override

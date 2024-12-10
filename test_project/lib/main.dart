@@ -79,6 +79,47 @@ class _HomeState extends State<Home> {
                 ),
               ],
             ),
+            HorizonralSwipable(
+              right: HorizonralSwipableDirection(
+                builder: (context, dragOffset, dragExtent, child) {
+                  final opacity = dragOffset / dragExtent;
+                  return Opacity(
+                    opacity: opacity,
+                    child: Container(
+                      color: Colors.green, //.withOpacity(opacity),
+                      height: 80.0,
+                      alignment: Alignment.center,
+                      child: const Text(
+                        'Right',
+                      ),
+                    ),
+                  );
+                },
+                snapFactor: null,
+              ),
+              left: HorizonralSwipableDirection(
+                child: Container(
+                  color: Colors.red,
+                  height: 80.0,
+                  alignment: Alignment.center,
+                  child: const Text(
+                    'Left',
+                  ),
+                ),
+                builder: (context, dragOffset, dragExtent, child) {
+                  return child!;
+                },
+                snapFactor: null,
+              ),
+              child: Container(
+                color: Colors.brown,
+                height: 80.0,
+                alignment: Alignment.center,
+                child: const Text(
+                  'Hello',
+                ),
+              ),
+            ),
             Padding(
               padding: EdgeInsets.all(24.sc),
               child: const BasicSurface(
@@ -261,8 +302,7 @@ class _HomeState extends State<Home> {
             case NavigationBarItemState.DISABLED:
               return Icon(
                 FluentIcons.home_24_regular,
-                color:
-                    Theme.of(context).colorScheme.primary.withSaturation(0.0),
+                color: Theme.of(context).colorScheme.primary.withSaturation(0.0),
                 size: 24.sc,
               );
           }
