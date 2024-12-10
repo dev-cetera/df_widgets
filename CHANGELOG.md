@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.7]
+
+- Released @ 12/2024 (UTC)
+- chore: Update HorizontalSwipable
+
 ## [0.1.6]
 
 - Released @ 12/2024 (UTC)
