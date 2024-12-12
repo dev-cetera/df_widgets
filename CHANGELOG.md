@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.10]
+
+- Released @ 12/2024 (UTC)
+- chore: Update dependencies
+
 ## [0.1.9]
 
 - Released @ 12/2024 (UTC)
