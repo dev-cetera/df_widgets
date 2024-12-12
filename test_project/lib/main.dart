@@ -374,7 +374,7 @@ class _HomeState extends State<Home> {
       // ),
 
       BasicNavigationBarBtn(
-        pState: Pod(true),
+        pState: Pod<bool>(true),
         onTap: () {},
         iconBuilder: (state) {
           switch (state) {
@@ -393,8 +393,7 @@ class _HomeState extends State<Home> {
             case NavigationBarItemState.DISABLED:
               return Icon(
                 FluentIcons.home_24_regular,
-                color:
-                    Theme.of(context).colorScheme.primary.withSaturation(0.0),
+                color: Theme.of(context).colorScheme.primary.withSaturation(0.0),
                 size: 24.sc,
               );
           }

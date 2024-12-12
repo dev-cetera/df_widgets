@@ -17,7 +17,7 @@ import '/_common.dart';
 class BasicNavigationBarBtn extends StatelessWidget {
   final VoidCallback? onTap;
   final GestureTapDownCallback? onTapDown;
-  final Pod<bool> pState;
+  final ValueListenable<bool> pState;
 
   final _IconBuilder? iconBuilder;
   final Widget? child;
