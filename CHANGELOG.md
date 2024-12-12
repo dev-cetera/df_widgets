@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.9]
+
+- Released @ 12/2024 (UTC)
+- feat: Add Btn widget
+
 ## [0.1.8]
 
 - Released @ 12/2024 (UTC)
