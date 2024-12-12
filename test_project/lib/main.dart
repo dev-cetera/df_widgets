@@ -142,6 +142,97 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
+            Row(
+              children: [
+                Btn(
+                  properties: Btn.theme.copyWith(
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(4.sc),
+                        bottomLeft: Radius.circular(4.sc),
+                      ),
+                    ),
+                    disabledDecoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(4.sc),
+                        bottomLeft: Radius.circular(4.sc),
+                      ),
+                    ),
+                    hoverDecoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(4.sc),
+                        bottomLeft: Radius.circular(4.sc),
+                      ),
+                    ),
+                  ),
+                  child: Icon(
+                    Icons.login_outlined,
+                    color: Colors.white,
+                  ),
+                ),
+                Container(
+                  color: Colors.transparent,
+                  height: 48.sc,
+                  width: 1.sc,
+                ),
+                Btn(
+                  properties: Btn.theme.copyWith(
+                    textStyle: const TextStyle(
+                      color: Colors.white,
+                    ),
+                    decoration: const BoxDecoration(
+                      color: Colors.red,
+                    ),
+                    disabledDecoration: const BoxDecoration(
+                      color: Colors.grey,
+                    ),
+                    hoverDecoration: const BoxDecoration(
+                      color: Colors.white,
+                    ),
+                  ),
+                  text: 'Sign Up',
+                  onTap: () {},
+                ),
+                Container(
+                  color: Colors.transparent,
+                  height: 48.sc,
+                  width: 1.sc,
+                ),
+                Btn(
+                  properties: Btn.theme.copyWith(
+                    textStyle: const TextStyle(
+                      color: Colors.white,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(4.sc),
+                        bottomRight: Radius.circular(4.sc),
+                      ),
+                    ),
+                    disabledDecoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(4.sc),
+                        bottomRight: Radius.circular(4.sc),
+                      ),
+                    ),
+                    hoverDecoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(4.sc),
+                        bottomRight: Radius.circular(4.sc),
+                      ),
+                    ),
+                  ),
+                  text: 'Log In',
+                  onTap: () {},
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -302,8 +393,7 @@ class _HomeState extends State<Home> {
             case NavigationBarItemState.DISABLED:
               return Icon(
                 FluentIcons.home_24_regular,
-                color:
-                    Theme.of(context).colorScheme.primary.withSaturation(0.0),
+                color: Theme.of(context).colorScheme.primary.withSaturation(0.0),
                 size: 24.sc,
               );
           }

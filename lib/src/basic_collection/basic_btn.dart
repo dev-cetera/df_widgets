@@ -32,41 +32,35 @@ class BasicBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final enabled = onTap != null || onTapDown != null;
-    return TapBox(
-      properties: TapBox.theme.copyWith(
-        builder: (context, states, child) {
-          return Container(
-            constraints: const BoxConstraints(minWidth: 48.0, minHeight: 48.0),
-            decoration: BoxDecoration(
-              color: enabled && states.contains(TapBoxState.HOVER)
-                  ? Theme.of(context).colorScheme.primary.withAlpha(32)
-                  : Colors.transparent,
-              borderRadius: BorderRadius.circular(24.sc),
-            ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.sc),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  child!,
-                ],
-              ),
-            ),
-          );
-        },
+    final baseDecoration = BoxDecoration(
+      borderRadius: BorderRadius.circular(24.sc),
+    );
+    final baseTextStyle = Theme.of(context).textTheme.bodyMedium?.copyWith(
+          fontWeight: FONT_WEIGHT_BLACK,
+          color: Theme.of(context).colorScheme.primary,
+        );
+    return Btn(
+      properties: Btn.theme.copyWith(
+        decoration: baseDecoration,
+        disabledDecoration: baseDecoration,
+        hoverDecoration: baseDecoration.copyWith(
+          color: Theme.of(context).colorScheme.primary.withAlpha(32),
+        ),
+        textStyle: baseTextStyle,
+        disabledTextStyle: baseTextStyle?.copyWith(
+          color: Theme.of(context).colorScheme.primary.withAlpha(32),
+        ),
+        hoverTextStyle: baseTextStyle,
       ),
+      onTap: onTap,
+      onTapDown: onTapDown,
       child: child ??
           (text != null
               ? Text(
                   text!,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontWeight: FONT_WEIGHT_BLACK,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .primary
-                            .withSaturation(enabled ? 1.0 : 0.0),
+                        color: Theme.of(context).colorScheme.primary.withSaturation(1.0),
                       ),
                 )
               : null),
