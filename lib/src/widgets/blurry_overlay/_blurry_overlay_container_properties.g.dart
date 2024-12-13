@@ -7,48 +7,64 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
+// ignore_for_file: annotate_overrides
+// ignore_for_file: overridden_fields
+
 part of 'blurry_overlay.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-/// Generated class for [BlurryOverlay].
-class BlurryOverlayProperties {
+/// Generated class for [_BlurryOverlayContainerProperties].
+class BlurryOverlayContainerProperties
+    extends _BlurryOverlayContainerProperties {
   //
   //
   //
-
-  /// No description provided.
-  final Color? color;
 
   /// No description provided.
   final double? sigma;
 
-  /// Constructs a new instance of [BlurryOverlayProperties]
+  /// No description provided.
+  final Color? color;
+
+  /// Constructs a new instance of [BlurryOverlayContainerProperties]
   /// from optional and required parameters.
-  const BlurryOverlayProperties({
-    this.color,
-    this.sigma,
+  const BlurryOverlayContainerProperties({
+    required this.sigma,
+    required this.color,
   });
 
   /// Creates a copy of this instance, replacing the specified fields.
-  BlurryOverlayProperties copyWith({
-    Color? color,
+  BlurryOverlayContainerProperties copyWith({
     double? sigma,
+    Color? color,
   }) {
-    return BlurryOverlayProperties(
-      color: color ?? this.color,
+    return BlurryOverlayContainerProperties(
       sigma: sigma ?? this.sigma,
+      color: color ?? this.color,
     );
   }
 
   /// Creates a copy of this instance, removing the specified fields.
-  BlurryOverlayProperties copyWithout({
-    bool color = true,
+  BlurryOverlayContainerProperties copyWithout({
     bool sigma = true,
+    bool color = true,
   }) {
-    return BlurryOverlayProperties(
-      color: color ? this.color : null,
+    return BlurryOverlayContainerProperties(
       sigma: sigma ? this.sigma : null,
+      color: color ? this.color : null,
     );
   }
+
+  /// Returns the value of the [sigma] field.
+  /// If the field is nullable, the return value may be null; otherwise, it
+  /// will always return a non-null value.
+  @pragma('vm:prefer-inline')
+  double get sigma$ => sigma!;
+
+  /// Returns the value of the [color] field.
+  /// If the field is nullable, the return value may be null; otherwise, it
+  /// will always return a non-null value.
+  @pragma('vm:prefer-inline')
+  Color get color$ => color!;
 }

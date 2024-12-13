@@ -12,9 +12,7 @@
 
 import 'dart:ui' show ImageFilter;
 
-import 'package:df_di/df_di.dart';
-import 'package:df_generate_dart_models_core/df_generate_dart_models_core.dart';
-import 'package:flutter/widgets.dart';
+import '../../../_common.dart';
 
 part '_blurry_container_properties.g.dart';
 
@@ -32,18 +30,17 @@ class BlurryContainer extends StatelessWidget {
   //
   //
 
-  static BlurryContainerProperties get _default =>
-      const BlurryContainerProperties(
-        decoration: BoxDecoration(),
-        foregroundDecoration: BoxDecoration(),
+  static BlurryContainerProperties get _default => BlurryContainerProperties(
+        decoration: const BoxDecoration(),
+        foregroundDecoration: const BoxDecoration(),
         padding: EdgeInsets.zero,
-        constraints: BoxConstraints(minWidth: 48.0, minHeight: 48.0),
+        constraints: const BoxConstraints(minWidth: 48.0, minHeight: 48.0),
         borderRadius: BorderRadius.zero,
+        containerProperties: BlurryOverlay.theme,
       );
-
+  // TODO: Ensure copyWith() elsewhere in codebase too!
   static BlurryContainerProperties get theme =>
-      DI.theme.getSyncOrNull<BlurryContainerProperties>()?.copyWith() ??
-      _default;
+      DI.theme.getSyncOrNull<BlurryContainerProperties>()?.copyWith() ?? _default;
 
   //
   //
@@ -62,8 +59,9 @@ class BlurryContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final p = properties ?? theme;
-    final sigma = p.sigma ?? 3.0;
-    final alpha = p.alpha ?? 128;
+    final containerProperties = p.containerProperties$;
+    final sigma = containerProperties.sigma$;
+    final color = containerProperties.color$;
     return ClipRRect(
       borderRadius: p.borderRadius$,
       child: BackdropFilter(
@@ -76,7 +74,7 @@ class BlurryContainer extends StatelessWidget {
           height: p.height,
           constraints: p.constraints,
           decoration: p.decoration$.copyWith(
-            color: p.color?.withAlpha(alpha),
+            color: color,
             borderRadius: p.borderRadius,
           ),
           padding: p.padding ?? EdgeInsets.zero,
@@ -102,19 +100,9 @@ class BlurryContainer extends StatelessWidget {
       nullable: true,
     ),
     Field(
-      fieldPath: ['sigma'],
-      fieldType: double,
-      nullable: true,
-    ),
-    Field(
-      fieldPath: ['alpha'],
-      fieldType: int,
-      nullable: true,
-    ),
-    Field(
-      fieldPath: ['color'],
-      fieldType: Color,
-      nullable: true,
+      fieldPath: ['containerProperties'],
+      fieldType: BlurryOverlayContainerProperties,
+      nullable: false,
     ),
     Field(
       fieldPath: ['decoration'],

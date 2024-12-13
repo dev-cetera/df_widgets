@@ -80,7 +80,9 @@ class _State extends State<BasicHeaderSearchBar> {
   Widget build(BuildContext context) {
     final child = BlurryContainer(
       properties: BlurryContainer.theme.copyWith(
-        color: Theme.of(context).colorScheme.surfaceContainerLow,
+        containerProperties: BlurryContainer.theme.containerProperties$.copyWith(
+          color: Theme.of(context).colorScheme.surfaceContainerLow,
+        ),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(16.sc),
           bottomRight: Radius.circular(16.sc),
@@ -167,8 +169,7 @@ class _State extends State<BasicHeaderSearchBar> {
                         ),
                       );
                     },
-                    childrenBuilder: (context, close) => widget
-                        .filterOptionItems
+                    childrenBuilder: (context, close) => widget.filterOptionItems
                         .map(
                           (e) => TextButton.icon(
                             onPressed: () {

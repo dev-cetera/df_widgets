@@ -14,7 +14,7 @@ import 'dart:ui' show ImageFilter;
 
 import '/_common.dart';
 
-part 'blurry_overlay.g.dart';
+part '_blurry_overlay_container_properties.g.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
@@ -24,8 +24,15 @@ class BlurryOverlay extends StatelessWidget {
   //
 
   final VoidCallback? onTapBackground;
-  final BlurryOverlayProperties properties;
+  final BlurryOverlayContainerProperties? properties;
   final Widget? child;
+
+  static BlurryOverlayContainerProperties get _default => const BlurryOverlayContainerProperties(
+        sigma: 1.0,
+        color: Color.fromARGB(128, 0, 0, 0),
+      );
+  static BlurryOverlayContainerProperties get theme =>
+      DI.theme.getSyncOrNull<BlurryOverlayContainerProperties>()?.copyWith() ?? _default;
 
   //
   //
@@ -33,10 +40,7 @@ class BlurryOverlay extends StatelessWidget {
 
   const BlurryOverlay({
     super.key,
-    this.properties = const BlurryOverlayProperties(
-      sigma: 1.0,
-      color: Color.fromARGB(128, 0, 0, 0),
-    ),
+    this.properties,
     this.onTapBackground,
     this.child,
   });
@@ -47,6 +51,7 @@ class BlurryOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final p = properties ?? theme;
     return Stack(
       fit: StackFit.expand,
       alignment: Alignment.center,
@@ -55,12 +60,12 @@ class BlurryOverlay extends StatelessWidget {
           behavior: HitTestBehavior.opaque,
           onTap: onTapBackground,
           child: Container(
-            color: properties.color,
+            color: p.color,
           ),
         ),
         Builder(
           builder: (context) {
-            final sigma = properties.sigma ?? 1.0;
+            final sigma = p.sigma$;
             return BackdropFilter(
               filter: ImageFilter.blur(
                 sigmaX: sigma,
@@ -75,4 +80,25 @@ class BlurryOverlay extends StatelessWidget {
       ],
     );
   }
+}
+
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+@GenerateDartModel(
+  fields: {
+    Field(
+      fieldPath: ['sigma'],
+      fieldType: double,
+      nullable: false,
+    ),
+    Field(
+      fieldPath: ['color'],
+      fieldType: Color,
+      nullable: false,
+    ),
+  },
+  shouldInherit: true,
+)
+class _BlurryOverlayContainerProperties {
+  const _BlurryOverlayContainerProperties();
 }

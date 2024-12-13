@@ -21,7 +21,7 @@ Future<void> showBlurryOverlay(
     BuildContext context,
     void Function() remove,
   ) builder,
-  BlurryOverlayProperties properties = const BlurryOverlayProperties(
+  BlurryOverlayContainerProperties properties = const BlurryOverlayContainerProperties(
     sigma: 1.0,
     color: Color.fromARGB(128, 0, 0, 0),
   ),

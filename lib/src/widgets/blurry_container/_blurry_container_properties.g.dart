@@ -27,13 +27,7 @@ class BlurryContainerProperties extends _BlurryContainerProperties {
   final double? height;
 
   /// No description provided.
-  final double? sigma;
-
-  /// No description provided.
-  final int? alpha;
-
-  /// No description provided.
-  final Color? color;
+  final BlurryOverlayContainerProperties? containerProperties;
 
   /// No description provided.
   final BoxDecoration? decoration;
@@ -55,9 +49,7 @@ class BlurryContainerProperties extends _BlurryContainerProperties {
   const BlurryContainerProperties({
     this.width,
     this.height,
-    this.sigma,
-    this.alpha,
-    this.color,
+    required this.containerProperties,
     required this.decoration,
     required this.foregroundDecoration,
     required this.padding,
@@ -69,9 +61,7 @@ class BlurryContainerProperties extends _BlurryContainerProperties {
   BlurryContainerProperties copyWith({
     double? width,
     double? height,
-    double? sigma,
-    int? alpha,
-    Color? color,
+    BlurryOverlayContainerProperties? containerProperties,
     BoxDecoration? decoration,
     BoxDecoration? foregroundDecoration,
     EdgeInsets? padding,
@@ -81,9 +71,7 @@ class BlurryContainerProperties extends _BlurryContainerProperties {
     return BlurryContainerProperties(
       width: width ?? this.width,
       height: height ?? this.height,
-      sigma: sigma ?? this.sigma,
-      alpha: alpha ?? this.alpha,
-      color: color ?? this.color,
+      containerProperties: containerProperties ?? this.containerProperties,
       decoration: decoration ?? this.decoration,
       foregroundDecoration: foregroundDecoration ?? this.foregroundDecoration,
       padding: padding ?? this.padding,
@@ -96,9 +84,7 @@ class BlurryContainerProperties extends _BlurryContainerProperties {
   BlurryContainerProperties copyWithout({
     bool width = true,
     bool height = true,
-    bool sigma = true,
-    bool alpha = true,
-    bool color = true,
+    bool containerProperties = true,
     bool decoration = true,
     bool foregroundDecoration = true,
     bool padding = true,
@@ -108,9 +94,8 @@ class BlurryContainerProperties extends _BlurryContainerProperties {
     return BlurryContainerProperties(
       width: width ? this.width : null,
       height: height ? this.height : null,
-      sigma: sigma ? this.sigma : null,
-      alpha: alpha ? this.alpha : null,
-      color: color ? this.color : null,
+      containerProperties:
+          containerProperties ? this.containerProperties : null,
       decoration: decoration ? this.decoration : null,
       foregroundDecoration:
           foregroundDecoration ? this.foregroundDecoration : null,
@@ -132,23 +117,12 @@ class BlurryContainerProperties extends _BlurryContainerProperties {
   @pragma('vm:prefer-inline')
   double? get height$ => height;
 
-  /// Returns the value of the [sigma] field.
+  /// Returns the value of the [containerProperties] field.
   /// If the field is nullable, the return value may be null; otherwise, it
   /// will always return a non-null value.
   @pragma('vm:prefer-inline')
-  double? get sigma$ => sigma;
-
-  /// Returns the value of the [alpha] field.
-  /// If the field is nullable, the return value may be null; otherwise, it
-  /// will always return a non-null value.
-  @pragma('vm:prefer-inline')
-  int? get alpha$ => alpha;
-
-  /// Returns the value of the [color] field.
-  /// If the field is nullable, the return value may be null; otherwise, it
-  /// will always return a non-null value.
-  @pragma('vm:prefer-inline')
-  Color? get color$ => color;
+  BlurryOverlayContainerProperties get containerProperties$ =>
+      containerProperties!;
 
   /// Returns the value of the [decoration] field.
   /// If the field is nullable, the return value may be null; otherwise, it
