@@ -14,50 +14,53 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-Future<void> showBlurryOverlay(
-  BuildContext context, {
-  bool tapBackgroundToDismiss = true,
-  required FutureOr<Widget> Function(
-    BuildContext context,
-    void Function() remove,
-  ) builder,
-  BlurryOverlayContainerProperties properties = const BlurryOverlayContainerProperties(
-    sigma: 1.0,
-    color: Color.fromARGB(128, 0, 0, 0),
-  ),
-}) {
-  final completer = Completer<dynamic>();
-  late final OverlayEntry overlayEntry;
+// TODO: Add theme, add builders with remover passed
+sealed class ShowBlurryOverlay {
+  static Future<void> show(
+    BuildContext context, {
+    bool tapBackgroundToDismiss = true,
+    required FutureOr<Widget> Function(
+      BuildContext context,
+      void Function() remove,
+    ) builder,
+    BlurryOverlayContainerProperties properties = const BlurryOverlayContainerProperties(
+      sigma: 1.0,
+      color: Color.fromARGB(128, 0, 0, 0),
+    ),
+  }) {
+    final completer = Completer<dynamic>();
+    late final OverlayEntry overlayEntry;
 
-  void complete() {
-    if (overlayEntry.mounted) {
-      overlayEntry.remove();
+    void complete() {
+      if (overlayEntry.mounted) {
+        overlayEntry.remove();
+      }
+      if (!completer.isCompleted) {
+        completer.complete();
+      }
     }
-    if (!completer.isCompleted) {
-      completer.complete();
-    }
+
+    overlayEntry = OverlayEntry(
+      builder: (context) {
+        return BlurryOverlay(
+          properties: properties,
+          onTapBackground: tapBackgroundToDismiss ? complete : null,
+          child: FutureBuilder(
+            future: () async {
+              return await builder(context, complete);
+            }(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return snapshot.data as Widget;
+              }
+              return const SizedBox.shrink();
+            },
+          ),
+        );
+      },
+    );
+
+    Overlay.of(context).insert(overlayEntry);
+    return completer.future;
   }
-
-  overlayEntry = OverlayEntry(
-    builder: (context) {
-      return BlurryOverlay(
-        properties: properties,
-        onTapBackground: tapBackgroundToDismiss ? complete : null,
-        child: FutureBuilder(
-          future: () async {
-            return await builder(context, complete);
-          }(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return snapshot.data as Widget;
-            }
-            return const SizedBox.shrink();
-          },
-        ),
-      );
-    },
-  );
-
-  Overlay.of(context).insert(overlayEntry);
-  return completer.future;
 }

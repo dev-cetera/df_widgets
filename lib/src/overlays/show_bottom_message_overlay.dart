@@ -16,74 +16,77 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-Future<void> showBottomMessageOverlay(
-  BuildContext context, {
-  required Object? message,
-  TextStyle? messageStyle,
-  Widget? icon,
-  double? iconSpacing,
-  void Function(void Function() remove)? remover,
-  Color? backgroundColor,
-  Duration? duration = const Duration(seconds: 3),
-  EdgeInsets? padding,
-  BorderRadius? borderRadius,
-  double? bottomSpacing,
-}) {
-  return showAlignedOverlay(
-    context,
-    alignment: Alignment.bottomCenter,
-    builder: (context, remove) {
-      remover?.call(remove);
-      if (duration != null) {
-        Future.delayed(duration, remove);
-      }
-      return GestureDetector(
-        behavior: HitTestBehavior.translucent,
-        onTap: remove,
-        child: Column(
-          children: [
-            const Spacer(),
-            IntrinsicWidth(
-              child: SlideAnimator(
-                extent: 0.5,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: backgroundColor ??
-                        backgroundColor ??
-                        Theme.of(context).colorScheme.surfaceContainerLow,
-                    borderRadius: borderRadius ?? BorderRadius.circular(24.sc),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  padding: padding ??
-                      EdgeInsets.symmetric(
-                        horizontal: 20.sc,
-                        vertical: 12.sc,
-                      ),
-                  child: Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                      if (icon != null) ...[
-                        icon,
-                        SizedBox(
-                          width: iconSpacing ?? 8.sc,
+// TODO: Add theme, add builders with remover passed
+sealed class ShowBottomMessageOverlay {
+  static Future<void> show(
+    BuildContext context, {
+    required Object? message,
+    TextStyle? messageStyle,
+    Widget? icon,
+    double? iconSpacing,
+    void Function(void Function() remove)? remover,
+    Color? backgroundColor,
+    Duration? duration = const Duration(seconds: 3),
+    EdgeInsets? padding,
+    BorderRadius? borderRadius,
+    double? bottomSpacing,
+  }) {
+    return ShowAlignedOverlay.show(
+      context,
+      alignment: Alignment.bottomCenter,
+      builder: (context, remove) {
+        remover?.call(remove);
+        if (duration != null) {
+          Future.delayed(duration, remove);
+        }
+        return GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onTap: remove,
+          child: Column(
+            children: [
+              const Spacer(),
+              IntrinsicWidth(
+                child: SlideAnimator(
+                  extent: 0.5,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: backgroundColor ??
+                          backgroundColor ??
+                          Theme.of(context).colorScheme.surfaceContainerLow,
+                      borderRadius: borderRadius ?? BorderRadius.circular(24.sc),
+                    ),
+                    clipBehavior: Clip.antiAlias,
+                    padding: padding ??
+                        EdgeInsets.symmetric(
+                          horizontal: 20.sc,
+                          vertical: 12.sc,
+                        ),
+                    child: Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        if (icon != null) ...[
+                          icon,
+                          SizedBox(
+                            width: iconSpacing ?? 8.sc,
+                          ),
+                        ],
+                        Text(
+                          message.toString(),
+                          style: messageStyle,
+                          softWrap: true,
                         ),
                       ],
-                      Text(
-                        message.toString(),
-                        style: messageStyle,
-                        softWrap: true,
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: bottomSpacing ?? 40.sc,
-            ),
-          ],
-        ),
-      );
-    },
-  );
+              SizedBox(
+                height: bottomSpacing ?? 40.sc,
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 }

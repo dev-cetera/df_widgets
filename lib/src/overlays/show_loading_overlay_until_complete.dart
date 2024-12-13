@@ -14,27 +14,29 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-void showLoadingOverlayUntilComplete(
-  BuildContext context,
-  Future<void> future,
-  void Function(Object? e) onError,
-) {
-  VoidCallback? remove;
-  future.onError((e, stackTrace) {
-    if (context.mounted) {
-      remove?.call();
-      onError.call(e);
-    }
-  });
-  showMessageOverlay(
-    context,
-    leading: const BasicDelayedCircularProgressIndicator(
-      delay: Duration.zero,
-    ),
-    remover: (r) async {
-      remove = r;
-      await future;
-      r();
-    },
-  );
+sealed class ShowLoadingOverlayUntilComplete {
+  Future<void> show(
+    BuildContext context,
+    Future<void> future,
+    void Function(Object? e) onError,
+  ) {
+    VoidCallback? remove;
+    future.onError((e, stackTrace) {
+      if (context.mounted) {
+        remove?.call();
+        onError.call(e);
+      }
+    });
+    return ShowMessageOverlay.show(
+      context,
+      leading: const BasicDelayedCircularProgressIndicator(
+        delay: Duration.zero,
+      ),
+      remover: (r) async {
+        remove = r;
+        await future;
+        r();
+      },
+    );
+  }
 }

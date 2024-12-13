@@ -14,42 +14,44 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-Future<void> showAlignedOverlay(
-  BuildContext context, {
-  Alignment alignment = Alignment.bottomCenter,
-  required FutureOr<Widget> Function(
-    BuildContext context,
-    void Function() remove,
-  ) builder,
-}) {
-  final completer = Completer<dynamic>();
-  late final OverlayEntry overlayEntry;
-  overlayEntry = OverlayEntry(
-    builder: (context) {
-      return Align(
-        alignment: alignment,
-        child: FutureBuilder(
-          future: () async {
-            return await builder(context, () {
-              if (overlayEntry.mounted) {
-                overlayEntry.remove();
+sealed class ShowAlignedOverlay {
+  static Future<void> show(
+    BuildContext context, {
+    Alignment alignment = Alignment.bottomCenter,
+    required FutureOr<Widget> Function(
+      BuildContext context,
+      void Function() remove,
+    ) builder,
+  }) {
+    final completer = Completer<dynamic>();
+    late final OverlayEntry overlayEntry;
+    overlayEntry = OverlayEntry(
+      builder: (context) {
+        return Align(
+          alignment: alignment,
+          child: FutureBuilder(
+            future: () async {
+              return await builder(context, () {
+                if (overlayEntry.mounted) {
+                  overlayEntry.remove();
+                }
+                if (!completer.isCompleted) {
+                  completer.complete();
+                }
+              });
+            }(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return snapshot.data as Widget;
               }
-              if (!completer.isCompleted) {
-                completer.complete();
-              }
-            });
-          }(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return snapshot.data as Widget;
-            }
-            return const SizedBox.shrink();
-          },
-        ),
-      );
-    },
-  );
+              return const SizedBox.shrink();
+            },
+          ),
+        );
+      },
+    );
 
-  Overlay.of(context).insert(overlayEntry);
-  return completer.future;
+    Overlay.of(context).insert(overlayEntry);
+    return completer.future;
+  }
 }

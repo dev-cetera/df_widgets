@@ -12,7 +12,7 @@
 
 import 'dart:ui' show ImageFilter;
 
-import '../../../_common.dart';
+import '/_common.dart';
 
 part '_blurry_container_properties.g.dart';
 
