@@ -40,7 +40,8 @@ class BlurryContainer extends StatelessWidget {
       );
   // TODO: Ensure copyWith() elsewhere in codebase too!
   static BlurryContainerProperties get theme =>
-      DI.theme.getSyncOrNull<BlurryContainerProperties>()?.copyWith() ?? _default;
+      DI.theme.getSyncOrNull<BlurryContainerProperties>()?.copyWith() ??
+      _default;
 
   //
   //

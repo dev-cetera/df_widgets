@@ -53,7 +53,8 @@ sealed class ShowBottomMessageOverlay {
                       color: backgroundColor ??
                           backgroundColor ??
                           Theme.of(context).colorScheme.surfaceContainerLow,
-                      borderRadius: borderRadius ?? BorderRadius.circular(24.sc),
+                      borderRadius:
+                          borderRadius ?? BorderRadius.circular(24.sc),
                     ),
                     clipBehavior: Clip.antiAlias,
                     padding: padding ??

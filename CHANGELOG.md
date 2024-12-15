@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.11]
+
+- Released @ 12/2024 (UTC)
+- chore: Small updates
+
 ## [0.1.10]
 
 - Released @ 12/2024 (UTC)

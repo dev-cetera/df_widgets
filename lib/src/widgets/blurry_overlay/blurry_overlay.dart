@@ -27,12 +27,14 @@ class BlurryOverlay extends StatelessWidget {
   final BlurryOverlayContainerProperties? properties;
   final Widget? child;
 
-  static BlurryOverlayContainerProperties get _default => const BlurryOverlayContainerProperties(
+  static BlurryOverlayContainerProperties get _default =>
+      const BlurryOverlayContainerProperties(
         sigma: 1.0,
         color: Color.fromARGB(128, 0, 0, 0),
       );
   static BlurryOverlayContainerProperties get theme =>
-      DI.theme.getSyncOrNull<BlurryOverlayContainerProperties>()?.copyWith() ?? _default;
+      DI.theme.getSyncOrNull<BlurryOverlayContainerProperties>()?.copyWith() ??
+      _default;
 
   //
   //
