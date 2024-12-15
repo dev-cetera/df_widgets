@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.12]
+
+- Released @ 12/2024 (UTC)
+- fix: Fix layout issuw with AnchoredPopup
+
 ## [0.1.11]
 
 - Released @ 12/2024 (UTC)
