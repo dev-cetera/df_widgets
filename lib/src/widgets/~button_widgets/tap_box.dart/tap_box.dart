@@ -26,7 +26,7 @@ class TapBox extends StatefulWidget {
   final GestureTapDownCallback? onTapDown;
   final Widget? child;
 
-  static TapBoxProperties themeOf([BuildContext? context]) {
+  static TapBoxProperties themeOf(BuildContext? context) {
     return DefaultThemes.of(context)?.themeOrNull<TapBoxProperties>() ??
         const TapBoxProperties(
           decoration: BoxDecoration(),

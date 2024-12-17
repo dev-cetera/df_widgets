@@ -23,7 +23,7 @@ class Btn extends StatelessWidget {
   final String? text;
   final Widget? child;
 
-  static BtnProperties themeOf([BuildContext? context]) {
+  static BtnProperties themeOf(BuildContext? context) {
     return DefaultThemes.of(context)?.themeOrNull<BtnProperties>() ??
         BtnProperties(
           decoration: BoxDecoration(

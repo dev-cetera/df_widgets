@@ -19,7 +19,7 @@ part '_text_edit_properties.g.dart';
 class TextEdit extends StatelessWidget {
   final TextEditProperties? properties;
 
-  static TextEditProperties themeOf([BuildContext? context]) {
+  static TextEditProperties themeOf(BuildContext? context) {
     return DefaultThemes.of(context)?.themeOrNull<TextEditProperties>() ??
         TextEditProperties(
           controller: TextEditingController(),

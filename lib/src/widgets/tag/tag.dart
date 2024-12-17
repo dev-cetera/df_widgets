@@ -31,7 +31,7 @@ class Tag extends StatelessWidget {
   //
   //
 
-  static TagProperties themeOf([BuildContext? context]) {
+  static TagProperties themeOf(BuildContext? context) {
     return DefaultThemes.of(context)?.themeOrNull<TagProperties>() ??
         TagProperties(
           backgroundColor: null,
@@ -65,17 +65,14 @@ class Tag extends StatelessWidget {
             onTap: onTap,
             child: Container(
               decoration: BoxDecoration(
-                color: p.backgroundColor ??
-                    Theme.of(context).colorScheme.secondary.withAlpha(64),
+                color: p.backgroundColor ?? Theme.of(context).colorScheme.secondary.withAlpha(64),
                 borderRadius: p.borderRadius ?? BorderRadius.circular(4.sc),
               ),
               margin: p.margin ?? EdgeInsets.zero,
-              padding: p.padding ??
-                  EdgeInsets.symmetric(vertical: 4.sc, horizontal: 6.sc),
+              padding: p.padding ?? EdgeInsets.symmetric(vertical: 4.sc, horizontal: 6.sc),
               child: Text(
                 text,
-                style: p.textStyle ??
-                    Theme.of(context).textTheme.bodySmall?.wMedium,
+                style: p.textStyle ?? Theme.of(context).textTheme.bodySmall?.wMedium,
               ),
             ),
           )

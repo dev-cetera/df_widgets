@@ -27,9 +27,8 @@ class BlurryOverlay extends StatelessWidget {
   final BlurryOverlayContainerProperties? properties;
   final Widget? child;
 
-  static BlurryOverlayContainerProperties themeOf([BuildContext? context]) {
-    return DefaultThemes.of(context)
-            ?.themeOrNull<BlurryOverlayContainerProperties>() ??
+  static BlurryOverlayContainerProperties themeOf(BuildContext? context) {
+    return DefaultThemes.of(context)?.themeOrNull<BlurryOverlayContainerProperties>() ??
         const BlurryOverlayContainerProperties(
           sigma: 1.0,
           color: Color.fromARGB(128, 0, 0, 0),
