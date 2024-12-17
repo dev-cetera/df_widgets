@@ -81,6 +81,9 @@ class _HomeState extends State<Home> {
             ),
             HorizonralSwipable(
               right: HorizonralSwipableDirection(
+                onDragEnd: () {
+                  print('RIGHT');
+                },
                 builder: (context, dragOffset, dragExtent, child) {
                   final opacity = dragOffset / dragExtent;
                   return Opacity(
@@ -98,6 +101,9 @@ class _HomeState extends State<Home> {
                 snapFactor: null,
               ),
               left: HorizonralSwipableDirection(
+                onDragEnd: () {
+                  print('LEFT');
+                },
                 child: Container(
                   color: Colors.red,
                   height: 80.0,
@@ -393,8 +399,7 @@ class _HomeState extends State<Home> {
             case NavigationBarItemState.DISABLED:
               return Icon(
                 FluentIcons.home_24_regular,
-                color:
-                    Theme.of(context).colorScheme.primary.withSaturation(0.0),
+                color: Theme.of(context).colorScheme.primary.withSaturation(0.0),
                 size: 24.sc,
               );
           }
