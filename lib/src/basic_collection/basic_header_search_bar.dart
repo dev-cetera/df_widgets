@@ -79,11 +79,10 @@ class _State extends State<BasicHeaderSearchBar> {
   @override
   Widget build(BuildContext context) {
     final child = BlurryContainer(
-      properties: BlurryContainer.theme.copyWith(
-        containerProperties:
-            BlurryContainer.theme.containerProperties$.copyWith(
-          color: Theme.of(context).colorScheme.surfaceContainerLow,
-        ),
+      properties: BlurryContainer.themeOf(context).copyWith(
+        containerProperties: BlurryContainer.themeOf(context).containerProperties$.copyWith(
+              color: Theme.of(context).colorScheme.surfaceContainerLow,
+            ),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(16.sc),
           bottomRight: Radius.circular(16.sc),
@@ -111,7 +110,7 @@ class _State extends State<BasicHeaderSearchBar> {
                 ),
                 Expanded(
                   child: TextEdit(
-                    properties: TextEdit.theme.copyWith(
+                    properties: TextEdit.themeOf(context).copyWith(
                       controller: _textEditingController,
                       focusNode: widget.focusNode,
                       onSubmitted: (text) {
@@ -170,8 +169,7 @@ class _State extends State<BasicHeaderSearchBar> {
                         ),
                       );
                     },
-                    childrenBuilder: (context, close) => widget
-                        .filterOptionItems
+                    childrenBuilder: (context, close) => widget.filterOptionItems
                         .map(
                           (e) => TextButton.icon(
                             onPressed: () {

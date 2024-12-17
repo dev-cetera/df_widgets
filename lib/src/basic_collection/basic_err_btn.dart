@@ -34,7 +34,7 @@ class BasicErrBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     final enabled = onTap != null || onTapDown != null;
     return TapBox(
-      properties: TapBox.theme.copyWith(
+      properties: TapBox.themeOf(context).copyWith(
         builder: (context, states, child) {
           return Container(
             constraints: const BoxConstraints(minWidth: 48.0, minHeight: 48.0),
@@ -63,10 +63,8 @@ class BasicErrBtn extends StatelessWidget {
                   text!,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontWeight: FONT_WEIGHT_BLACK,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .error
-                            .withSaturation(enabled ? 1.0 : 0.0),
+                        color:
+                            Theme.of(context).colorScheme.error.withSaturation(enabled ? 1.0 : 0.0),
                       ),
                 )
               : null),

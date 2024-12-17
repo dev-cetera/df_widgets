@@ -21,28 +21,28 @@ part '_plastic_check_btn_properties.g.dart';
 
 class PlasticCheckBtn extends StatelessWidget {
   final PlasticCheckBtnProperties? properties;
-  static PlasticCheckBtnProperties get _default => PlasticCheckBtnProperties(
-        checkedColor: Colors.green.shade300,
-        checkedHoverColor: Colors.green.shade200,
-        checkedHoverIconColor: Colors.green.shade600,
-        checkedHoverIconData: FluentIcons.checkbox_checked_24_filled,
-        checkedHoverShadowColor: Colors.green.shade600,
-        checkedIconColor: Colors.green.shade700,
-        checkedIconData: FluentIcons.checkbox_checked_24_filled,
-        checkedShadowColor: Colors.green.shade700,
-        uncheckedColor: Colors.blueGrey.shade300,
-        uncheckedHoverColor: Colors.blueGrey.shade200,
-        uncheckedHoverIconColor: Colors.blueGrey.shade600,
-        uncheckedHoverIconData: FluentIcons.checkbox_unchecked_24_filled,
-        uncheckedHoverShadowColor: Colors.blueGrey.shade600,
-        uncheckedIconColor: Colors.blueGrey.shade700,
-        uncheckedIconData: FluentIcons.checkbox_unchecked_24_filled,
-        uncheckedShadowColor: Colors.blueGrey.shade700,
-      );
 
-  static PlasticCheckBtnProperties get theme =>
-      DI.theme.getSyncOrNull<PlasticCheckBtnProperties>()?.copyWith() ??
-      _default;
+  static PlasticCheckBtnProperties themeOf([BuildContext? context]) {
+    return DefaultThemes.of(context)?.themeOrNull<PlasticCheckBtnProperties>() ??
+        PlasticCheckBtnProperties(
+          checkedColor: Colors.green.shade300,
+          checkedHoverColor: Colors.green.shade200,
+          checkedHoverIconColor: Colors.green.shade600,
+          checkedHoverIconData: FluentIcons.checkbox_checked_24_filled,
+          checkedHoverShadowColor: Colors.green.shade600,
+          checkedIconColor: Colors.green.shade700,
+          checkedIconData: FluentIcons.checkbox_checked_24_filled,
+          checkedShadowColor: Colors.green.shade700,
+          uncheckedColor: Colors.blueGrey.shade300,
+          uncheckedHoverColor: Colors.blueGrey.shade200,
+          uncheckedHoverIconColor: Colors.blueGrey.shade600,
+          uncheckedHoverIconData: FluentIcons.checkbox_unchecked_24_filled,
+          uncheckedHoverShadowColor: Colors.blueGrey.shade600,
+          uncheckedIconColor: Colors.blueGrey.shade700,
+          uncheckedIconData: FluentIcons.checkbox_unchecked_24_filled,
+          uncheckedShadowColor: Colors.blueGrey.shade700,
+        );
+  }
 
   final Pod<bool> pState;
   final _OnTap? onTap;
@@ -58,18 +58,17 @@ class PlasticCheckBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final p = properties ?? theme;
+    final p = properties ?? themeOf(context);
     final iconSize = p.iconSize ?? 24.sc;
     return ToggleBtn(
       pState: pState,
       onTap: onTap,
       onTapDown: onTapDown,
-      tapBoxProperyBuilder: (checked, defaultTapBoxProperties) =>
-          defaultTapBoxProperties.copyWith(
+      tapBoxProperyBuilder: (checked, defaultTapBoxProperties) => defaultTapBoxProperties.copyWith(
         builder: (context, states, _) {
           final notIdling = states.isNotEmpty;
           return ExtrudedBox(
-            properties: (p.extrudedBoxProperties ?? ExtrudedBox.theme).copyWith(
+            properties: (p.extrudedBoxProperties ?? ExtrudedBox.themeOf(context)).copyWith(
               color: checked
                   ? notIdling
                       ? p.checkedHoverShadowColor
@@ -91,17 +90,13 @@ class PlasticCheckBtn extends StatelessWidget {
                 if (checked) {
                   return Icon(
                     notIdling ? p.checkedHoverIconData$ : p.checkedIconData,
-                    color: notIdling
-                        ? p.checkedHoverIconColor$
-                        : p.checkedIconColor$,
+                    color: notIdling ? p.checkedHoverIconColor$ : p.checkedIconColor$,
                     size: iconSize,
                   );
                 } else {
                   return Icon(
                     notIdling ? p.uncheckedHoverIconData$ : p.uncheckedIconData,
-                    color: notIdling
-                        ? p.uncheckedHoverIconColor$
-                        : p.uncheckedIconColor$,
+                    color: notIdling ? p.uncheckedHoverIconColor$ : p.uncheckedIconColor$,
                     size: iconSize,
                   );
                 }

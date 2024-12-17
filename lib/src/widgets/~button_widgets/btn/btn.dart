@@ -23,20 +23,20 @@ class Btn extends StatelessWidget {
   final String? text;
   final Widget? child;
 
-  static BtnProperties get _default => BtnProperties(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(24.sc),
-        ),
-        disabledDecoration: const BoxDecoration(),
-        hoverDecoration: const BoxDecoration(),
-        padding: EdgeInsets.symmetric(horizontal: 24.sc),
-        textStyle: const TextStyle(),
-        disabledTextStyle: const TextStyle(),
-        hoverTextStyle: const TextStyle(),
-      );
-
-  static BtnProperties get theme =>
-      DI.theme.getSyncOrNull<BtnProperties>()?.copyWith() ?? _default;
+  static BtnProperties themeOf([BuildContext? context]) {
+    return DefaultThemes.of(context)?.themeOrNull<BtnProperties>() ??
+        BtnProperties(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(24.sc),
+          ),
+          disabledDecoration: const BoxDecoration(),
+          hoverDecoration: const BoxDecoration(),
+          padding: EdgeInsets.symmetric(horizontal: 24.sc),
+          textStyle: const TextStyle(),
+          disabledTextStyle: const TextStyle(),
+          hoverTextStyle: const TextStyle(),
+        );
+  }
 
   const Btn({
     super.key,
@@ -49,10 +49,10 @@ class Btn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final p = properties ?? Btn.theme;
+    final p = properties ?? themeOf(context);
     final enabled = onTap != null || onTapDown != null;
     return TapBox(
-      properties: TapBox.theme.copyWith(
+      properties: TapBox.themeOf(context).copyWith(
         builder: (context, states, child) {
           return Container(
             constraints: const BoxConstraints(minWidth: 48.0, minHeight: 48.0),

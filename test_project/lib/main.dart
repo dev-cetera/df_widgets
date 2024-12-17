@@ -145,7 +145,7 @@ class _HomeState extends State<Home> {
             Row(
               children: [
                 Btn(
-                  properties: Btn.theme.copyWith(
+                  properties: Btn.themeOf(context).copyWith(
                     decoration: BoxDecoration(
                       color: Colors.red,
                       borderRadius: BorderRadius.only(
@@ -168,7 +168,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
-                  child: Icon(
+                  child: const Icon(
                     Icons.login_outlined,
                     color: Colors.white,
                   ),
@@ -179,7 +179,7 @@ class _HomeState extends State<Home> {
                   width: 1.sc,
                 ),
                 Btn(
-                  properties: Btn.theme.copyWith(
+                  properties: Btn.themeOf(context).copyWith(
                     textStyle: const TextStyle(
                       color: Colors.white,
                     ),
@@ -202,7 +202,7 @@ class _HomeState extends State<Home> {
                   width: 1.sc,
                 ),
                 Btn(
-                  properties: Btn.theme.copyWith(
+                  properties: Btn.themeOf(context).copyWith(
                     textStyle: const TextStyle(
                       color: Colors.white,
                     ),
@@ -393,8 +393,7 @@ class _HomeState extends State<Home> {
             case NavigationBarItemState.DISABLED:
               return Icon(
                 FluentIcons.home_24_regular,
-                color:
-                    Theme.of(context).colorScheme.primary.withSaturation(0.0),
+                color: Theme.of(context).colorScheme.primary.withSaturation(0.0),
                 size: 24.sc,
               );
           }
@@ -439,7 +438,7 @@ class _HomeState extends State<Home> {
 
 void main() {
   DI.theme.register(
-    TextEdit.theme.copyWith(cursorColor: Colors.white),
+    TextEdit.themeOf().copyWith(cursorColor: Colors.white),
   );
   runApp(const App());
 }

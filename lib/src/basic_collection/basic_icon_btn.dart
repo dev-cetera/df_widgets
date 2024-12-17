@@ -39,7 +39,7 @@ class BasicIconBtn extends StatelessWidget {
     return TapBox(
       onTap: onTap,
       onTapDown: onTapDown,
-      properties: TapBox.theme.copyWith(
+      properties: TapBox.themeOf(context).copyWith(
         builder: (context, states, child) {
           return Container(
             constraints: const BoxConstraints(minWidth: 48.0, minHeight: 48.0),
@@ -56,10 +56,7 @@ class BasicIconBtn extends StatelessWidget {
       child: child ??
           Icon(
             iconData,
-            color: Theme.of(context)
-                .colorScheme
-                .primary
-                .withSaturation(enabled ? 1.0 : 0.0),
+            color: Theme.of(context).colorScheme.primary.withSaturation(enabled ? 1.0 : 0.0),
             size: 24.sc,
           ),
     );

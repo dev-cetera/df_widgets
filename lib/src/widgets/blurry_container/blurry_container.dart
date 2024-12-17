@@ -26,22 +26,17 @@ class BlurryContainer extends StatelessWidget {
   final BlurryContainerProperties? properties;
   final Widget? child;
 
-  //
-  //
-  //
-
-  static BlurryContainerProperties get _default => BlurryContainerProperties(
-        decoration: const BoxDecoration(),
-        foregroundDecoration: const BoxDecoration(),
-        padding: EdgeInsets.zero,
-        constraints: const BoxConstraints(minWidth: 48.0, minHeight: 48.0),
-        borderRadius: BorderRadius.zero,
-        containerProperties: BlurryOverlay.theme,
-      );
-  // TODO: Ensure copyWith() elsewhere in codebase too!
-  static BlurryContainerProperties get theme =>
-      DI.theme.getSyncOrNull<BlurryContainerProperties>()?.copyWith() ??
-      _default;
+  static BlurryContainerProperties themeOf([BuildContext? context]) {
+    return DefaultThemes.of(context)?.themeOrNull<BlurryContainerProperties>() ??
+        BlurryContainerProperties(
+          decoration: const BoxDecoration(),
+          foregroundDecoration: const BoxDecoration(),
+          padding: EdgeInsets.zero,
+          constraints: const BoxConstraints(minWidth: 48.0, minHeight: 48.0),
+          borderRadius: BorderRadius.zero,
+          containerProperties: BlurryOverlay.themeOf(context),
+        );
+  }
 
   //
   //
@@ -59,7 +54,7 @@ class BlurryContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final p = properties ?? theme;
+    final p = properties ?? themeOf(context);
     final containerProperties = p.containerProperties$;
     final sigma = containerProperties.sigma$;
     final color = containerProperties.color$;
@@ -102,7 +97,7 @@ class BlurryContainer extends StatelessWidget {
     ),
     Field(
       fieldPath: ['containerProperties'],
-      fieldType: BlurryOverlayContainerProperties,
+      fieldType: BlurryContainerProperties,
       nullable: false,
     ),
     Field(

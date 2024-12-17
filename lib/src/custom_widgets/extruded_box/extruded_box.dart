@@ -26,17 +26,17 @@ class ExtrudedBox extends StatelessWidget {
 
   final ExtrudedBoxProperties? properties;
 
-  static ExtrudedBoxProperties get _default => ExtrudedBoxProperties(
-        value: 1.0,
-        color: const Color.fromARGB(128, 0, 0, 0),
-        angle: 55.0,
-        border: const OutlineInputBorder(),
-        perspectiveDepth: 0.0,
-        max: 6.sc,
-      );
-
-  static ExtrudedBoxProperties get theme =>
-      DI.theme.getSyncOrNull<ExtrudedBoxProperties>()?.copyWith() ?? _default;
+  static ExtrudedBoxProperties themeOf([BuildContext? context]) {
+    return DefaultThemes.of(context)?.themeOrNull<ExtrudedBoxProperties>() ??
+        ExtrudedBoxProperties(
+          value: 1.0,
+          color: const Color.fromARGB(128, 0, 0, 0),
+          angle: 55.0,
+          border: const OutlineInputBorder(),
+          perspectiveDepth: 0.0,
+          max: 6.sc,
+        );
+  }
 
   const ExtrudedBox({
     super.key,
@@ -47,11 +47,10 @@ class ExtrudedBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final p = properties ?? theme;
+    final p = properties ?? themeOf(context);
     final max = (p.max ?? 12.sc).round();
     final extrusion = (max * p.value$).round();
-    final border = p.border ??
-        OutlineInputBorder(borderRadius: BorderRadius.circular(8.sc));
+    final border = p.border ?? OutlineInputBorder(borderRadius: BorderRadius.circular(8.sc));
     final angleInRadians = (p.angle$ % 360) * pi / 180;
     final ax = cos(angleInRadians);
     final ay = sin(angleInRadians);
@@ -155,8 +154,7 @@ class ExtrudedBoxPainter extends CustomPainter {
     final paint = Paint()..color = color;
 
     // Get the path based on the given shapeBorder.
-    final path =
-        border.getOuterPath(Rect.fromLTWH(0, 0, size.width, size.height));
+    final path = border.getOuterPath(Rect.fromLTWH(0, 0, size.width, size.height));
 
     // Convert angle to radians for trigonometric calculations.
     final angleInRadians = (angle % 360) * pi / 180;
@@ -171,8 +169,7 @@ class ExtrudedBoxPainter extends CustomPainter {
       canvas.save();
 
       // Create a scaled-down path for the extrusion effect
-      final scaleFactor =
-          max(0, 1 - (i * perspectiveDepth / 1000.0)).toDouble();
+      final scaleFactor = max(0, 1 - (i * perspectiveDepth / 1000.0)).toDouble();
       final shiftedPath = Path.from(path);
 
       // Translate the path inward based on the extrusion

@@ -10,10 +10,11 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-import 'package:df_di/df_di.dart';
 import 'package:df_generate_dart_models_core/df_generate_dart_models_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+
+import '../../../_index.g.dart';
 
 part '_tap_box_properties.g.dart';
 
@@ -25,13 +26,13 @@ class TapBox extends StatefulWidget {
   final GestureTapDownCallback? onTapDown;
   final Widget? child;
 
-  static TapBoxProperties get _default => const TapBoxProperties(
-        decoration: BoxDecoration(),
-        foregroundDecoration: BoxDecoration(),
-      );
-
-  static TapBoxProperties get theme =>
-      DI.theme.getSyncOrNull<TapBoxProperties>()?.copyWith() ?? _default;
+  static TapBoxProperties themeOf([BuildContext? context]) {
+    return DefaultThemes.of(context)?.themeOrNull<TapBoxProperties>() ??
+        const TapBoxProperties(
+          decoration: BoxDecoration(),
+          foregroundDecoration: BoxDecoration(),
+        );
+  }
 
   const TapBox({
     super.key,
@@ -50,7 +51,7 @@ class TapBox extends StatefulWidget {
 class _State extends State<TapBox> {
   var _states = <TapBoxState>{};
 
-  TapBoxProperties get _p => widget.properties ?? TapBox.theme;
+  TapBoxProperties get _p => widget.properties ?? TapBox.themeOf(context);
 
   void _handleTapDown(TapDownDetails details) {
     setState(() {

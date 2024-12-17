@@ -10,9 +10,7 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-import 'package:df_di/df_di.dart';
-import 'package:df_generate_dart_models_core/df_generate_dart_models_core.dart';
-import 'package:flutter/widgets.dart';
+import '/_common.dart';
 
 part '_text_edit_properties.g.dart';
 
@@ -21,16 +19,16 @@ part '_text_edit_properties.g.dart';
 class TextEdit extends StatelessWidget {
   final TextEditProperties? properties;
 
-  static TextEditProperties get _default => TextEditProperties(
-        controller: TextEditingController(),
-        focusNode: FocusNode(),
-        style: const TextStyle(color: Color.fromARGB(255, 192, 192, 192)),
-        cursorColor: const Color.fromARGB(255, 128, 128, 128),
-        backgroundCursorColor: const Color.fromARGB(255, 128, 128, 128),
-      );
-
-  static TextEditProperties get theme =>
-      DI.theme.getSyncOrNull<TextEditProperties>()?.copyWith() ?? _default;
+  static TextEditProperties themeOf([BuildContext? context]) {
+    return DefaultThemes.of(context)?.themeOrNull<TextEditProperties>() ??
+        TextEditProperties(
+          controller: TextEditingController(),
+          focusNode: FocusNode(),
+          style: const TextStyle(color: Color.fromARGB(255, 192, 192, 192)),
+          cursorColor: const Color.fromARGB(255, 128, 128, 128),
+          backgroundCursorColor: const Color.fromARGB(255, 128, 128, 128),
+        );
+  }
 
   const TextEdit({
     super.key,
@@ -39,18 +37,18 @@ class TextEdit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final properties = theme;
+    final p = properties ?? themeOf(context);
     return EditableText(
-      controller: properties.controller$,
-      focusNode: properties.focusNode$,
-      style: properties.style$,
-      cursorColor: properties.cursorColor$,
-      backgroundCursorColor: properties.backgroundCursorColor$,
-      selectionColor: properties.cursorColor$,
+      controller: p.controller$,
+      focusNode: p.focusNode$,
+      style: p.style$,
+      cursorColor: p.cursorColor$,
+      backgroundCursorColor: p.backgroundCursorColor$,
+      selectionColor: p.cursorColor$,
       showSelectionHandles: true,
-      onSubmitted: properties.onSubmitted,
-      onTapOutside: properties.onTapOutside,
-      onChanged: properties.onChanged,
+      onSubmitted: p.onSubmitted,
+      onTapOutside: p.onTapOutside,
+      onChanged: p.onChanged,
     );
   }
 }

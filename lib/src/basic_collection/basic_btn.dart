@@ -40,7 +40,7 @@ class BasicBtn extends StatelessWidget {
           color: Theme.of(context).colorScheme.primary,
         );
     return Btn(
-      properties: Btn.theme.copyWith(
+      properties: Btn.themeOf(context).copyWith(
         decoration: baseDecoration,
         disabledDecoration: baseDecoration,
         hoverDecoration: baseDecoration.copyWith(
@@ -60,10 +60,7 @@ class BasicBtn extends StatelessWidget {
                   text!,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontWeight: FONT_WEIGHT_BLACK,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .primary
-                            .withSaturation(1.0),
+                        color: Theme.of(context).colorScheme.primary.withSaturation(1.0),
                       ),
                 )
               : null),

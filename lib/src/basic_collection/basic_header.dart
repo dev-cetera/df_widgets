@@ -114,17 +114,15 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
     final maxHeight0 = maxHeight ?? 80.sc;
 
     // Calculate the current height based on the shrinkOffset
-    final currentHeight =
-        (maxHeight0 - shrinkOffset).clamp(minHeight0, maxHeight0);
+    final currentHeight = (maxHeight0 - shrinkOffset).clamp(minHeight0, maxHeight0);
     final heightf = (2.0 + currentHeight / maxHeight0 / 3.0);
 
     return BlurryContainer(
-      properties: BlurryContainer.theme.copyWith(
+      properties: BlurryContainer.themeOf(context).copyWith(
         height: currentHeight,
-        containerProperties:
-            BlurryContainer.theme.containerProperties$.copyWith(
-          color: Theme.of(context).colorScheme.surfaceContainer,
-        ),
+        containerProperties: BlurryContainer.themeOf(context).containerProperties$.copyWith(
+              color: Theme.of(context).colorScheme.surfaceContainer,
+            ),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(24.sc),
           bottomRight: Radius.circular(24.sc),
@@ -146,11 +144,7 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
                 child: Text(
                   title!,
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        fontSize: Theme.of(context)
-                                .textTheme
-                                .headlineSmall!
-                                .fontSize! *
-                            heightf,
+                        fontSize: Theme.of(context).textTheme.headlineSmall!.fontSize! * heightf,
                       ),
                 ),
               ),
@@ -170,14 +164,11 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
                     direction: SlideAnimatorDirection.RIGHT_TO_LEFT,
                     child: IntrinsicHeight(
                       child: BlurryContainer(
-                        properties: BlurryContainer.theme.copyWith(
-                          containerProperties: BlurryContainer
-                              .theme.containerProperties$
-                              .copyWith(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .surfaceContainerHighest,
-                          ),
+                        properties: BlurryContainer.themeOf(context).copyWith(
+                          containerProperties:
+                              BlurryContainer.themeOf(context).containerProperties$.copyWith(
+                                    color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                                  ),
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(24.sc),
                             bottomLeft: Radius.circular(24.sc),
@@ -194,23 +185,18 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
                               children: [
                                 Text(
                                   optionsMenuTitle!,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium
-                                      ?.copyWith(
+                                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                         fontWeight: FONT_WEIGHT_BLACK,
                                       ),
                                 ),
                                 BasicIconBtn(
-                                  iconData:
-                                      FluentIcons.chevron_right_24_regular,
+                                  iconData: FluentIcons.chevron_right_24_regular,
                                   onTapDown: (_) => close(),
                                 ),
                               ],
                             ),
                             ContentDivider(
-                              color:
-                                  Theme.of(context).colorScheme.surfaceBright,
+                              color: Theme.of(context).colorScheme.surfaceBright,
                             ),
                             ...optionsMenuBuilder!(context),
                           ],

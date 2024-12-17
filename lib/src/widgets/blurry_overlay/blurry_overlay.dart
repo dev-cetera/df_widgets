@@ -27,14 +27,13 @@ class BlurryOverlay extends StatelessWidget {
   final BlurryOverlayContainerProperties? properties;
   final Widget? child;
 
-  static BlurryOverlayContainerProperties get _default =>
-      const BlurryOverlayContainerProperties(
-        sigma: 1.0,
-        color: Color.fromARGB(128, 0, 0, 0),
-      );
-  static BlurryOverlayContainerProperties get theme =>
-      DI.theme.getSyncOrNull<BlurryOverlayContainerProperties>()?.copyWith() ??
-      _default;
+  static BlurryOverlayContainerProperties themeOf([BuildContext? context]) {
+    return DefaultThemes.of(context)?.themeOrNull<BlurryOverlayContainerProperties>() ??
+        const BlurryOverlayContainerProperties(
+          sigma: 1.0,
+          color: Color.fromARGB(128, 0, 0, 0),
+        );
+  }
 
   //
   //
@@ -53,7 +52,7 @@ class BlurryOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final p = properties ?? theme;
+    final p = properties ?? themeOf(context);
     return Stack(
       fit: StackFit.expand,
       alignment: Alignment.center,

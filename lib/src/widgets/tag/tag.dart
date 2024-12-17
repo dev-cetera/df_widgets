@@ -31,16 +31,16 @@ class Tag extends StatelessWidget {
   //
   //
 
-  static TagProperties get _default => TagProperties(
-        backgroundColor: null,
-        textStyle: null,
-        padding: EdgeInsets.symmetric(vertical: 4.sc, horizontal: 6.sc),
-        margin: EdgeInsets.zero,
-        borderRadius: BorderRadius.circular(4.sc),
-      );
-
-  static TagProperties get theme =>
-      DI.theme.getSyncOrNull<TagProperties>()?.copyWith() ?? _default;
+  static TagProperties themeOf([BuildContext? context]) {
+    return DefaultThemes.of(context)?.themeOrNull<TagProperties>() ??
+        TagProperties(
+          backgroundColor: null,
+          textStyle: null,
+          padding: EdgeInsets.symmetric(vertical: 4.sc, horizontal: 6.sc),
+          margin: EdgeInsets.zero,
+          borderRadius: BorderRadius.circular(4.sc),
+        );
+  }
 
   //
   //
@@ -59,23 +59,20 @@ class Tag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final p = properties ?? Tag.themeOf(context);
     return text.isNotEmpty
         ? TapBox(
             onTap: onTap,
             child: Container(
               decoration: BoxDecoration(
-                color: properties?.backgroundColor ??
-                    Theme.of(context).colorScheme.secondary.withAlpha(64),
-                borderRadius:
-                    properties?.borderRadius ?? BorderRadius.circular(4.sc),
+                color: p.backgroundColor ?? Theme.of(context).colorScheme.secondary.withAlpha(64),
+                borderRadius: p.borderRadius ?? BorderRadius.circular(4.sc),
               ),
-              margin: properties?.margin ?? EdgeInsets.zero,
-              padding: properties?.padding ??
-                  EdgeInsets.symmetric(vertical: 4.sc, horizontal: 6.sc),
+              margin: p.margin ?? EdgeInsets.zero,
+              padding: p.padding ?? EdgeInsets.symmetric(vertical: 4.sc, horizontal: 6.sc),
               child: Text(
                 text,
-                style: properties?.textStyle ??
-                    Theme.of(context).textTheme.bodySmall?.wMedium,
+                style: p.textStyle ?? Theme.of(context).textTheme.bodySmall?.wMedium,
               ),
             ),
           )
