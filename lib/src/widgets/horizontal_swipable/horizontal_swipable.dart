@@ -42,8 +42,10 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
 
   late FocusNode _focusNode;
 
-  bool get _canDragLeft => widget.left.builder != null || widget.left.child != null;
-  bool get _canDragRight => widget.right.builder != null || widget.right.child != null;
+  bool get _canDragLeft =>
+      widget.left.builder != null || widget.left.child != null;
+  bool get _canDragRight =>
+      widget.right.builder != null || widget.right.child != null;
   bool get _isLeft => _animationController.value < 0;
   bool get _isRight => _animationController.value > 0;
 
@@ -99,8 +101,8 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
     final primaryDelta = details.primaryDelta!;
     final d = primaryDelta / (_maxWidth - dragExtent);
     _animationController.value += d;
-    _animationController.value =
-        _animationController.value.clamp(_canDragLeft ? -1.0 : 0.0, _canDragRight ? 1.0 : 0.0);
+    _animationController.value = _animationController.value
+        .clamp(_canDragLeft ? -1.0 : 0.0, _canDragRight ? 1.0 : 0.0);
   }
 
   void _onDragEnd(DragEndDetails details) {
