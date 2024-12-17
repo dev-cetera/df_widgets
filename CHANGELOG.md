@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.14]
+
+- Released @ 12/2024 (UTC)
+- refactor: Remove optional param of themeOf
+
 ## [0.1.13]
 
 - Released @ 12/2024 (UTC)
