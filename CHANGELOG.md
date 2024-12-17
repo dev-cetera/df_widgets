@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.13]
+
+- Released @ 12/2024 (UTC)
+- chore: Add DefaultThemes widget, PulseAnimator and TypingText
+
 ## [0.1.12]
 
 - Released @ 12/2024 (UTC)

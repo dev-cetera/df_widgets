@@ -27,7 +27,8 @@ class BlurryContainer extends StatelessWidget {
   final Widget? child;
 
   static BlurryContainerProperties themeOf([BuildContext? context]) {
-    return DefaultThemes.of(context)?.themeOrNull<BlurryContainerProperties>() ??
+    return DefaultThemes.of(context)
+            ?.themeOrNull<BlurryContainerProperties>() ??
         BlurryContainerProperties(
           decoration: const BoxDecoration(),
           foregroundDecoration: const BoxDecoration(),
