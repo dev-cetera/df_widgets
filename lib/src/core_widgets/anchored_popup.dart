@@ -79,43 +79,41 @@ class _State extends State<AnchoredPopup> {
 
   @override
   Widget build(BuildContext context) {
-    return FittedBox(
-      child: Stack(
-        children: [
-          widget.buttonBuilder?.call(
-                context,
-                _openPopup,
-              ) ??
-              const SizedBox.shrink(),
-          if (_open) ...[
-            PositionedOverlay(
-              child: GestureDetector(
-                behavior: HitTestBehavior.translucent,
-                onTapDown: (details) => widget.onTapDownBackground?.call(
-                  _closePopup,
-                ),
-                child: Builder(
-                  builder: (context) => SizedBox.fromSize(
-                    size: MediaQuery.sizeOf(context),
-                    child: widget.backgroundBuilder?.call(
-                          context,
-                          _closePopup,
-                        ) ??
-                        const BlurryContainer(),
-                  ),
+    return Stack(
+      children: [
+        widget.buttonBuilder?.call(
+              context,
+              _openPopup,
+            ) ??
+            const SizedBox.shrink(),
+        if (_open) ...[
+          PositionedOverlay(
+            child: GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTapDown: (details) => widget.onTapDownBackground?.call(
+                _closePopup,
+              ),
+              child: Builder(
+                builder: (context) => SizedBox.fromSize(
+                  size: MediaQuery.sizeOf(context),
+                  child: widget.backgroundBuilder?.call(
+                        context,
+                        _closePopup,
+                      ) ??
+                      const BlurryContainer(),
                 ),
               ),
             ),
-            AnchoredOverlay(
-              child: widget.itemBuilder?.call(
-                    context,
-                    _closePopup,
-                  ) ??
-                  const SizedBox.shrink(),
-            ),
-          ],
+          ),
+          AnchoredOverlay(
+            child: widget.itemBuilder?.call(
+                  context,
+                  _closePopup,
+                ) ??
+                const SizedBox.shrink(),
+          ),
         ],
-      ),
+      ],
     );
   }
 }
