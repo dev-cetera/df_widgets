@@ -27,7 +27,7 @@ class PulseAnimator extends StatefulWidget {
     this.pulseDuration = const Duration(seconds: 1),
     this.delayBetweenPulses = const Duration(seconds: 2),
     this.curve = Curves.easeInOut,
-    this.pulseWidth = 0.05,
+    this.pulseWidth = 0.09,
   });
 
   @override
@@ -36,8 +36,7 @@ class PulseAnimator extends StatefulWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class _PulseAnimatorState extends State<PulseAnimator>
-    with SingleTickerProviderStateMixin {
+class _PulseAnimatorState extends State<PulseAnimator> with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _scaleAnimation;
 
@@ -54,8 +53,7 @@ class _PulseAnimatorState extends State<PulseAnimator>
         weight: 50,
       ),
       TweenSequenceItem(
-        tween:
-            Tween(begin: 1.0 - widget.pulseWidth, end: 1.0 + widget.pulseWidth),
+        tween: Tween(begin: 1.0 - widget.pulseWidth, end: 1.0 + widget.pulseWidth),
         weight: 50,
       ),
       TweenSequenceItem(
