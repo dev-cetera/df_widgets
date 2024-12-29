@@ -27,7 +27,7 @@ class PulseAnimator extends StatefulWidget {
     this.pulseDuration = const Duration(seconds: 1),
     this.delayBetweenPulses = const Duration(seconds: 2),
     this.curve = Curves.easeInOut,
-    this.pulseWidth = 0.09,
+    this.pulseWidth = 0.08,
   });
 
   @override
@@ -68,7 +68,9 @@ class _PulseAnimatorState extends State<PulseAnimator> with SingleTickerProvider
   Future<void> _startPulseCycle() async {
     while (mounted) {
       await _controller.forward();
-      await Future<dynamic>.delayed(widget.delayBetweenPulses);
+      if (!mounted) return;
+      await Future<void>.delayed(widget.delayBetweenPulses);
+      if (!mounted) return;
       _controller.reset();
     }
   }
