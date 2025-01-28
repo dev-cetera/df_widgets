@@ -58,7 +58,8 @@ class _TypingTextState extends State<TypingText> {
   Timer? _blinkingTimer;
   Timer? _typingTimer;
 
-  late final _texts = [widget.text, ...widget.lines].where((e) => e.isNotEmpty).toList();
+  late final _texts =
+      [widget.text, ...widget.lines].where((e) => e.isNotEmpty).toList();
   late final _textStyle = widget.style ?? const TextStyle();
 
   String _currentText() => _texts[_textIndex];

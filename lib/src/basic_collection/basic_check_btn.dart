@@ -42,7 +42,8 @@ class BasicCheckBtn extends StatelessWidget {
       pState: pState,
       onTap: onTap,
       onTapDown: onTapDown,
-      tapBoxProperyBuilder: (checked, defaultTapBoxProperties) => defaultTapBoxProperties.copyWith(
+      tapBoxProperyBuilder: (checked, defaultTapBoxProperties) =>
+          defaultTapBoxProperties.copyWith(
         builder: (context, states, _) {
           return Container(
             width: 48.sc,
@@ -57,15 +58,19 @@ class BasicCheckBtn extends StatelessWidget {
                 ? checkedIcon ??
                     Icon(
                       FluentIcons.checkbox_checked_24_regular,
-                      color:
-                          Theme.of(context).colorScheme.primary.withSaturation(enabled ? 1.0 : 0.0),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withSaturation(enabled ? 1.0 : 0.0),
                       size: 24.sc,
                     )
                 : unheckedIcon ??
                     Icon(
                       FluentIcons.checkbox_unchecked_24_regular,
-                      color:
-                          Theme.of(context).colorScheme.primary.withSaturation(enabled ? 1.0 : 0.0),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withSaturation(enabled ? 1.0 : 0.0),
                       size: 24.sc,
                     ),
           );

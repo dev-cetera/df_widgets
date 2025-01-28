@@ -36,7 +36,8 @@ class PulseAnimator extends StatefulWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class _PulseAnimatorState extends State<PulseAnimator> with SingleTickerProviderStateMixin {
+class _PulseAnimatorState extends State<PulseAnimator>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _scaleAnimation;
 
@@ -53,7 +54,8 @@ class _PulseAnimatorState extends State<PulseAnimator> with SingleTickerProvider
         weight: 50,
       ),
       TweenSequenceItem(
-        tween: Tween(begin: 1.0 - widget.pulseWidth, end: 1.0 + widget.pulseWidth),
+        tween:
+            Tween(begin: 1.0 - widget.pulseWidth, end: 1.0 + widget.pulseWidth),
         weight: 50,
       ),
       TweenSequenceItem(

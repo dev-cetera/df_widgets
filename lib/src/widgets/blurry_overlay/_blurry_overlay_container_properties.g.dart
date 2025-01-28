@@ -15,7 +15,8 @@ part of 'blurry_overlay.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 /// Generated class for [_BlurryOverlayContainerProperties].
-class BlurryOverlayContainerProperties extends _BlurryOverlayContainerProperties {
+class BlurryOverlayContainerProperties
+    extends _BlurryOverlayContainerProperties {
   //
   //
   //

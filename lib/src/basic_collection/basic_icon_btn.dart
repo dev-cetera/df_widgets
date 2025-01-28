@@ -56,7 +56,10 @@ class BasicIconBtn extends StatelessWidget {
       child: child ??
           Icon(
             iconData,
-            color: Theme.of(context).colorScheme.primary.withSaturation(enabled ? 1.0 : 0.0),
+            color: Theme.of(context)
+                .colorScheme
+                .primary
+                .withSaturation(enabled ? 1.0 : 0.0),
             size: 24.sc,
           ),
     );

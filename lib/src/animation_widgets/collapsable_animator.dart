@@ -48,7 +48,8 @@ class CollapsableAnimator extends StatefulWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class _State extends State<CollapsableAnimator> with SingleTickerProviderStateMixin {
+class _State extends State<CollapsableAnimator>
+    with SingleTickerProviderStateMixin {
   //
   //
   //
