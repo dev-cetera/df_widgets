@@ -1,10 +1,14 @@
 # Changelog
 
+## [0.1.17]
+
+- Released @ 1/2025 (UTC)
+- chore: Update dependencies
+
 ## [0.1.16]
 
 - Released @ 1/2025 (UTC)
 - fix: Fix bug
-- chore: Update dependencies
 
 ## [0.1.15]
 
