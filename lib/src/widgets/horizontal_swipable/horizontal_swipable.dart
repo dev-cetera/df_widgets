@@ -21,6 +21,7 @@ class HorizonralSwipable extends StatefulWidget {
   final HorizonralSwipableDirection left;
   final HorizonralSwipableDirection right;
   final Alignment stackAlignment;
+  final Duration slideDuration;
 
   const HorizonralSwipable({
     super.key,
@@ -28,6 +29,7 @@ class HorizonralSwipable extends StatefulWidget {
     this.left = const HorizonralSwipableDirection(),
     this.right = const HorizonralSwipableDirection(),
     this.stackAlignment = Alignment.center,
+    this.slideDuration = const Duration(milliseconds: 300),
   });
 
   @override
@@ -42,13 +44,12 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
 
   late FocusNode _focusNode;
 
-  bool get _canDragLeft =>
-      widget.left.builder != null || widget.left.child != null;
-  bool get _canDragRight =>
-      widget.right.builder != null || widget.right.child != null;
+  bool get _canDragLeft => widget.left.builder != null || widget.left.child != null;
+  bool get _canDragRight => widget.right.builder != null || widget.right.child != null;
   bool get _isLeft => _animationController.value < 0;
   bool get _isRight => _animationController.value > 0;
 
+  @pragma('vm:prefer-inline')
   HorizonralSwipableDirection? get _direction {
     if (_isLeft) {
       return widget.left;
@@ -67,17 +68,18 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
     return _direction?.dragExtent ?? 160.sc;
   }
 
+  @pragma('vm:prefer-inline')
   double _dragOffset() {
     return _animationController.value * _dragExtent();
   }
 
   void _onDragUpdate(DragUpdateDetails details) {
-    final dragExtent = _dragExtent();
     final primaryDelta = details.primaryDelta!;
-    final d = primaryDelta / (_maxWidth - dragExtent);
-    _animationController.value += d;
-    _animationController.value = _animationController.value
-        .clamp(_canDragLeft ? -1.0 : 0.0, _canDragRight ? 1.0 : 0.0);
+    final d = primaryDelta / _maxWidth;
+    _animationController.value = (_animationController.value + d).clamp(
+      _canDragLeft ? -1.0 : 0.0,
+      _canDragRight ? 1.0 : 0.0,
+    );
   }
 
   @override
@@ -91,7 +93,7 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
     });
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 300),
+      duration: widget.slideDuration,
       lowerBound: -1.0,
       upperBound: 1.0,
     );
@@ -119,7 +121,7 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
 
     _animationController.animateTo(
       targetValue,
-      duration: const Duration(milliseconds: 300),
+      duration: widget.slideDuration,
       curve: Curves.easeOutExpo,
     );
   }
@@ -137,67 +139,66 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
       child: LayoutBuilder(
         builder: (context, constraints) {
           _maxWidth = constraints.maxWidth;
-          return ClipRect(
-            child: Stack(
-              alignment: widget.stackAlignment,
-              children: [
-                AnimatedBuilder(
+          return Stack(
+            alignment: widget.stackAlignment,
+            children: [
+              AnimatedBuilder(
+                animation: _animationController,
+                builder: (context, _) {
+                  if (_isLeft) {
+                    final dragExtent = _dragExtent();
+                    return Align(
+                      alignment: Alignment.centerRight,
+                      child: SizedBox(
+                        width: dragExtent,
+                        child: _direction?.build(
+                          context,
+                          _dragOffset(),
+                          dragExtent,
+                        ),
+                      ),
+                    );
+                  } else if (_isRight) {
+                    final dragExtent = _dragExtent();
+                    return Align(
+                      alignment: Alignment.centerLeft,
+                      child: SizedBox(
+                        width: dragExtent,
+                        child: _direction?.build(
+                          context,
+                          _dragOffset(),
+                          dragExtent,
+                        ),
+                      ),
+                    );
+                  } else {
+                    return const SizedBox.shrink();
+                  }
+                },
+              ),
+              GestureDetector(
+                onHorizontalDragStart: _onDragStart,
+                onHorizontalDragUpdate: _onDragUpdate,
+                onHorizontalDragEnd: _onDragEnd,
+                behavior: HitTestBehavior.translucent,
+                child: AnimatedBuilder(
                   animation: _animationController,
-                  builder: (context, _) {
-                    if (_isLeft) {
-                      final dragExtent = _dragExtent();
-                      return Align(
-                        alignment: Alignment.centerRight,
-                        child: SizedBox(
-                          width: dragExtent,
-                          child: _direction?.build(
-                            context,
-                            _dragOffset(),
-                            dragExtent,
+                  child: widget.child,
+                  builder: (context, child) {
+                    return Transform.translate(
+                      offset: Offset(_dragOffset(), 0),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: child!,
                           ),
-                        ),
-                      );
-                    } else if (_isRight) {
-                      final dragExtent = _dragExtent();
-                      return Align(
-                        alignment: Alignment.centerLeft,
-                        child: SizedBox(
-                          width: dragExtent,
-                          child: _direction?.build(
-                            context,
-                            _dragOffset(),
-                            dragExtent,
-                          ),
-                        ),
-                      );
-                    } else {
-                      return const SizedBox.shrink();
-                    }
+                        ],
+                      ),
+                    );
                   },
                 ),
-                GestureDetector(
-                  onHorizontalDragStart: _onDragStart,
-                  onHorizontalDragUpdate: _onDragUpdate,
-                  onHorizontalDragEnd: _onDragEnd,
-                  behavior: HitTestBehavior.translucent,
-                  child: AnimatedBuilder(
-                    animation: _animationController,
-                    builder: (context, child) {
-                      return Transform.translate(
-                        offset: Offset(_dragOffset(), 0),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: widget.child,
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           );
         },
       ),
@@ -242,6 +243,7 @@ class HorizonralSwipableDirection {
     );
   }
 
+  @pragma('vm:prefer-inline')
   Widget build(
     BuildContext context,
     double dragOffset,
