@@ -1,7 +1,7 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by DevCetra.com & contributors. The use of this
+// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
 // source code is governed by an MIT-style license described in the LICENSE
 // file located in this project's root directory.
 //
@@ -45,9 +45,7 @@ class ToggleBtn extends StatelessWidget {
         return TapBox(
           properties: tapBoxProperyBuilder?.call(state, p),
           onTap: onTap != null ? () => onTap?.call(pState) : null,
-          onTapDown: onTapDown != null
-              ? (details) => onTapDown?.call(details, pState)
-              : null,
+          onTapDown: onTapDown != null ? (details) => onTapDown?.call(details, pState) : null,
           child: childBuilder?.call(context, state),
         );
       },

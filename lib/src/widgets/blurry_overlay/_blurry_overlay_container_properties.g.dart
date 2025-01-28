@@ -2,7 +2,7 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
 // GENERATED - DO NOT MODIFY BY HAND
-// See: https://github.com/DevCetra/df_generate_dart_models
+// See: https://github.com/dev-cetera/df_generate_dart_models
 //
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
@@ -15,8 +15,7 @@ part of 'blurry_overlay.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 /// Generated class for [_BlurryOverlayContainerProperties].
-class BlurryOverlayContainerProperties
-    extends _BlurryOverlayContainerProperties {
+class BlurryOverlayContainerProperties extends _BlurryOverlayContainerProperties {
   //
   //
   //

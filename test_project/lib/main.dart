@@ -2,6 +2,28 @@ import 'package:df_widgets/_common.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
+void main() {
+  DI.theme.register(
+    TextEdit.themeOf(null).copyWith(cursorColor: Colors.white),
+  );
+  runApp(const App());
+}
+
+class App extends StatelessWidget {
+  const App({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.dark,
+      debugShowCheckedModeBanner: false,
+      home: const Home(),
+    );
+  }
+}
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -399,8 +421,7 @@ class _HomeState extends State<Home> {
             case NavigationBarItemState.DISABLED:
               return Icon(
                 FluentIcons.home_24_regular,
-                color:
-                    Theme.of(context).colorScheme.primary.withSaturation(0.0),
+                color: Theme.of(context).colorScheme.primary.withSaturation(0.0),
                 size: 24.sc,
               );
           }
@@ -440,27 +461,5 @@ class _HomeState extends State<Home> {
       //   ),
       // ),
     ];
-  }
-}
-
-void main() {
-  DI.theme.register(
-    TextEdit.themeOf(null).copyWith(cursorColor: Colors.white),
-  );
-  runApp(const App());
-}
-
-class App extends StatelessWidget {
-  const App({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
-      themeMode: ThemeMode.dark,
-      debugShowCheckedModeBanner: false,
-      home: const Home(),
-    );
   }
 }

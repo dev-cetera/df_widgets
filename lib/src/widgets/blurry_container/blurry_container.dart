@@ -1,7 +1,7 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by DevCetra.com & contributors. The use of this
+// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
 // source code is governed by an MIT-style license described in the LICENSE
 // file located in this project's root directory.
 //
@@ -27,8 +27,7 @@ class BlurryContainer extends StatelessWidget {
   final Widget? child;
 
   static BlurryContainerProperties themeOf(BuildContext? context) {
-    return DefaultThemes.of(context)
-            ?.themeOrNull<BlurryContainerProperties>() ??
+    return DefaultThemes.of(context)?.themeOrNull<BlurryContainerProperties>() ??
         BlurryContainerProperties(
           decoration: const BoxDecoration(),
           foregroundDecoration: const BoxDecoration(),

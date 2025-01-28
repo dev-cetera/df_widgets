@@ -1,7 +1,7 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by DevCetra.com & contributors. The use of this
+// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
 // source code is governed by an MIT-style license described in the LICENSE
 // file located in this project's root directory.
 //
@@ -42,10 +42,8 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
 
   late FocusNode _focusNode;
 
-  bool get _canDragLeft =>
-      widget.left.builder != null || widget.left.child != null;
-  bool get _canDragRight =>
-      widget.right.builder != null || widget.right.child != null;
+  bool get _canDragLeft => widget.left.builder != null || widget.left.child != null;
+  bool get _canDragRight => widget.right.builder != null || widget.right.child != null;
   bool get _isLeft => _animationController.value < 0;
   bool get _isRight => _animationController.value > 0;
 
@@ -71,6 +69,15 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
     return _animationController.value * _dragExtent();
   }
 
+  void _onDragUpdate(DragUpdateDetails details) {
+    final dragExtent = _dragExtent();
+    final primaryDelta = details.primaryDelta!;
+    final d = primaryDelta / (_maxWidth - dragExtent);
+    _animationController.value += d;
+    _animationController.value =
+        _animationController.value.clamp(_canDragLeft ? -1.0 : 0.0, _canDragRight ? 1.0 : 0.0);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -94,15 +101,6 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
     _focusNode.dispose();
     _animationController.dispose();
     super.dispose();
-  }
-
-  void _onDragUpdate(DragUpdateDetails details) {
-    final dragExtent = _dragExtent();
-    final primaryDelta = details.primaryDelta!;
-    final d = primaryDelta / (_maxWidth - dragExtent);
-    _animationController.value += d;
-    _animationController.value = _animationController.value
-        .clamp(_canDragLeft ? -1.0 : 0.0, _canDragRight ? 1.0 : 0.0);
   }
 
   void _onDragEnd(DragEndDetails details) {
@@ -141,9 +139,9 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
             child: Stack(
               alignment: widget.stackAlignment,
               children: [
-                ValueListenableBuilder(
-                  valueListenable: _animationController,
-                  builder: (context, value, _) {
+                AnimatedBuilder(
+                  animation: _animationController,
+                  builder: (context, _) {
                     if (_isLeft) {
                       final dragExtent = _dragExtent();
                       return Align(

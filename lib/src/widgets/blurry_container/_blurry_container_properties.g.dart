@@ -2,7 +2,7 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
 // GENERATED - DO NOT MODIFY BY HAND
-// See: https://github.com/DevCetra/df_generate_dart_models
+// See: https://github.com/dev-cetera/df_generate_dart_models
 //
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
@@ -94,11 +94,9 @@ class BlurryContainerProperties extends _BlurryContainerProperties {
     return BlurryContainerProperties(
       width: width ? this.width : null,
       height: height ? this.height : null,
-      containerProperties:
-          containerProperties ? this.containerProperties : null,
+      containerProperties: containerProperties ? this.containerProperties : null,
       decoration: decoration ? this.decoration : null,
-      foregroundDecoration:
-          foregroundDecoration ? this.foregroundDecoration : null,
+      foregroundDecoration: foregroundDecoration ? this.foregroundDecoration : null,
       padding: padding ? this.padding : null,
       constraints: constraints ? this.constraints : null,
       borderRadius: borderRadius ? this.borderRadius : null,
@@ -121,8 +119,7 @@ class BlurryContainerProperties extends _BlurryContainerProperties {
   /// If the field is nullable, the return value may be null; otherwise, it
   /// will always return a non-null value.
   @pragma('vm:prefer-inline')
-  BlurryOverlayContainerProperties get containerProperties$ =>
-      containerProperties!;
+  BlurryOverlayContainerProperties get containerProperties$ => containerProperties!;
 
   /// Returns the value of the [decoration] field.
   /// If the field is nullable, the return value may be null; otherwise, it

@@ -1,7 +1,7 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by DevCetra.com & contributors. The use of this
+// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
 // source code is governed by an MIT-style license described in the LICENSE
 // file located in this project's root directory.
 //
@@ -144,9 +144,7 @@ class BasicShelfItemWidget extends StatelessWidget {
                       item.bodyText!,
                       softWrap: true,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSecondaryContainer,
+                            color: Theme.of(context).colorScheme.onSecondaryContainer,
                           ),
                     ),
                 ],
@@ -157,8 +155,7 @@ class BasicShelfItemWidget extends StatelessWidget {
               item.trailingIcon!
             else
               BasicIconBtn(
-                iconData: item.trailingIconData ??
-                    FluentIcons.chevron_right_24_regular,
+                iconData: item.trailingIconData ?? FluentIcons.chevron_right_24_regular,
                 onTap: item.onTap,
                 onTapDown: item.onTapDown,
               ),

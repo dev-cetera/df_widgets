@@ -1,7 +1,7 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by DevCetra.com & contributors. The use of this
+// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
 // source code is governed by an MIT-style license described in the LICENSE
 // file located in this project's root directory.
 //
@@ -89,8 +89,7 @@ class _State extends State<PositionedOverlay> {
         final t = widget.top ?? 0.0;
         final b = widget.bottom;
         final x = l + (r != null ? MediaQuery.of(context).size.width - r : 0.0);
-        final y =
-            t + (b != null ? MediaQuery.of(context).size.height - b : 0.0);
+        final y = t + (b != null ? MediaQuery.of(context).size.height - b : 0.0);
         return Stack(
           children: [
             if (widget.background != null) widget.background!,

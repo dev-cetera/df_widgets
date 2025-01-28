@@ -1,7 +1,7 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by DevCetra.com & contributors. The use of this
+// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
 // source code is governed by an MIT-style license described in the LICENSE
 // file located in this project's root directory.
 //
@@ -52,12 +52,8 @@ class BasicSurface extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color1 = decoration?.color ??
-        color ??
-        Theme.of(context).colorScheme.surfaceContainer;
-    final borderRadius1 = decoration?.borderRadius ??
-        borderRadius ??
-        BorderRadius.circular(24.sc);
+    final color1 = decoration?.color ?? color ?? Theme.of(context).colorScheme.surfaceContainer;
+    final borderRadius1 = decoration?.borderRadius ?? borderRadius ?? BorderRadius.circular(24.sc);
     final decoration1 = decoration?.copyWith(
           color: color1,
           borderRadius: borderRadius1,
@@ -66,8 +62,7 @@ class BasicSurface extends StatelessWidget {
           color: color1,
           borderRadius: borderRadius1,
         );
-    final constraints1 =
-        constraints ?? const BoxConstraints(minWidth: 48.0, minHeight: 48.0);
+    final constraints1 = constraints ?? const BoxConstraints(minWidth: 48.0, minHeight: 48.0);
     return Container(
       width: width,
       height: height,

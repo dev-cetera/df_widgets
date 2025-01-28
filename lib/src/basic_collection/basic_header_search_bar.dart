@@ -1,7 +1,7 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by DevCetra.com & contributors. The use of this
+// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
 // source code is governed by an MIT-style license described in the LICENSE
 // file located in this project's root directory.
 //
@@ -80,10 +80,9 @@ class _State extends State<BasicHeaderSearchBar> {
   Widget build(BuildContext context) {
     final child = BlurryContainer(
       properties: BlurryContainer.themeOf(context).copyWith(
-        containerProperties:
-            BlurryContainer.themeOf(context).containerProperties$.copyWith(
-                  color: Theme.of(context).colorScheme.surfaceContainerLow,
-                ),
+        containerProperties: BlurryContainer.themeOf(context).containerProperties$.copyWith(
+              color: Theme.of(context).colorScheme.surfaceContainerLow,
+            ),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(16.sc),
           bottomRight: Radius.circular(16.sc),
@@ -170,8 +169,7 @@ class _State extends State<BasicHeaderSearchBar> {
                         ),
                       );
                     },
-                    childrenBuilder: (context, close) => widget
-                        .filterOptionItems
+                    childrenBuilder: (context, close) => widget.filterOptionItems
                         .map(
                           (e) => TextButton.icon(
                             onPressed: () {

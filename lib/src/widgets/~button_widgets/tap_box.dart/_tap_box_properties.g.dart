@@ -2,7 +2,7 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
 // GENERATED - DO NOT MODIFY BY HAND
-// See: https://github.com/DevCetra/df_generate_dart_models
+// See: https://github.com/dev-cetera/df_generate_dart_models
 //
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
@@ -58,8 +58,7 @@ class TapBoxProperties extends _TapBoxProperties {
   }) {
     return TapBoxProperties(
       decoration: decoration ? this.decoration : null,
-      foregroundDecoration:
-          foregroundDecoration ? this.foregroundDecoration : null,
+      foregroundDecoration: foregroundDecoration ? this.foregroundDecoration : null,
       builder: builder ? this.builder : null,
     );
   }

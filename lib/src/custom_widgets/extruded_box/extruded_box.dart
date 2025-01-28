@@ -1,7 +1,7 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by DevCetra.com & contributors. The use of this
+// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
 // source code is governed by an MIT-style license described in the LICENSE
 // file located in this project's root directory.
 //
@@ -50,8 +50,7 @@ class ExtrudedBox extends StatelessWidget {
     final p = properties ?? themeOf(context);
     final max = (p.max ?? 12.sc).round();
     final extrusion = (max * p.value$).round();
-    final border = p.border ??
-        OutlineInputBorder(borderRadius: BorderRadius.circular(8.sc));
+    final border = p.border ?? OutlineInputBorder(borderRadius: BorderRadius.circular(8.sc));
     final angleInRadians = (p.angle$ % 360) * pi / 180;
     final ax = cos(angleInRadians);
     final ay = sin(angleInRadians);
@@ -155,8 +154,7 @@ class ExtrudedBoxPainter extends CustomPainter {
     final paint = Paint()..color = color;
 
     // Get the path based on the given shapeBorder.
-    final path =
-        border.getOuterPath(Rect.fromLTWH(0, 0, size.width, size.height));
+    final path = border.getOuterPath(Rect.fromLTWH(0, 0, size.width, size.height));
 
     // Convert angle to radians for trigonometric calculations.
     final angleInRadians = (angle % 360) * pi / 180;
@@ -171,8 +169,7 @@ class ExtrudedBoxPainter extends CustomPainter {
       canvas.save();
 
       // Create a scaled-down path for the extrusion effect
-      final scaleFactor =
-          max(0, 1 - (i * perspectiveDepth / 1000.0)).toDouble();
+      final scaleFactor = max(0, 1 - (i * perspectiveDepth / 1000.0)).toDouble();
       final shiftedPath = Path.from(path);
 
       // Translate the path inward based on the extrusion
