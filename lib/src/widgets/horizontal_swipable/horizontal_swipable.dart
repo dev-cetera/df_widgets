@@ -75,20 +75,10 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
     return _animationController.value * _dragExtent();
   }
 
-  // void _onDragUpdate(DragUpdateDetails details) {
-  //   final primaryDelta = details.primaryDelta!;
-  //   final d = primaryDelta / _maxWidth;
-  //   _animationController.value = (_animationController.value + d).clamp(
-  //     _canDragLeft ? -1.0 : 0.0,
-  //     _canDragRight ? 1.0 : 0.0,
-  //   );
-  // }
 
   void _onDragUpdate(DragUpdateDetails details) {
     final primaryDelta = details.primaryDelta!;
-    final dragExtent = _dragExtent();
-    // Calculate delta based on the desired dragExtent, not screen width
-    final d = primaryDelta / dragExtent; // Changed from _maxWidth to dragExtent
+    final d = primaryDelta / _dragExtent();
     _animationController.value = (_animationController.value + d).clamp(
       _canDragLeft ? -1.0 : 0.0,
       _canDragRight ? 1.0 : 0.0,
@@ -120,47 +110,23 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  // void _onDragEnd(DragEndDetails details) {
-  //   if (_dragOffset().abs() == _dragExtent().abs()) {
-  //     _direction?.onDragEnd?.call();
-  //   }
-  //   var targetValue = 0.0;
-  //   final snapFactor = _direction?.snapFactor;
-  //   if (snapFactor != null) {
-  //     if (_animationController.value.abs() >= snapFactor.clamp(0.0, 1.0)) {
-  //       targetValue = _animationController.value > 0 ? 1.0 : -1.0;
-  //     }
-  //   }
-
-  //   _animationController.animateTo(
-  //     targetValue,
-  //     duration: widget.slideDuration,
-  //     curve: Curves.easeOutExpo,
-  //   );
-  // }
-
   void _onDragEnd(DragEndDetails details) {
+    if (_dragOffset().abs() == _dragExtent().abs()) {
+      _direction?.onDragEnd?.call();
+    }
     var targetValue = 0.0;
     final snapFactor = _direction?.snapFactor;
     if (snapFactor != null) {
-      final currentValue = _animationController.value;
-      if (currentValue.abs() >= snapFactor.clamp(0.0, 1.0)) {
-        targetValue = currentValue > 0 ? 1.0 : -1.0;
+      if (_animationController.value.abs() >= snapFactor.clamp(0.0, 1.0)) {
+        targetValue = _animationController.value > 0 ? 1.0 : -1.0;
       }
     }
 
-    // Animate to targetValue and trigger callback if snapped to max
-    _animationController
-        .animateTo(
+    _animationController.animateTo(
       targetValue,
       duration: widget.slideDuration,
       curve: Curves.easeOutExpo,
-    )
-        .then((_) {
-      if (targetValue.abs() == 1.0) {
-        _direction?.onDragEnd?.call();
-      }
-    });
+    );
   }
 
   void _onDragStart(DragStartDetails details) {
