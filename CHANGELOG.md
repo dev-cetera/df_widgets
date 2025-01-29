@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.19]
+
+- Released @ 1/2025 (UTC)
+- chore: Update drag logic of HorizontalSwipable
+
 ## [0.1.18]
 
 - Released @ 1/2025 (UTC)

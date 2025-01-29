@@ -44,8 +44,10 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
 
   late FocusNode _focusNode;
 
-  bool get _canDragLeft => widget.left.builder != null || widget.left.child != null;
-  bool get _canDragRight => widget.right.builder != null || widget.right.child != null;
+  bool get _canDragLeft =>
+      widget.left.builder != null || widget.left.child != null;
+  bool get _canDragRight =>
+      widget.right.builder != null || widget.right.child != null;
   bool get _isLeft => _animationController.value < 0;
   bool get _isRight => _animationController.value > 0;
 
