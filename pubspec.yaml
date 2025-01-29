@@ -12,7 +12,7 @@
 
 name: df_widgets
 description: A collection of practical widgets that are neither material nor cupertino.
-version: 0.1.18
+version: 0.1.19
 repository: https://github.com/dev-cetera/df_widgets
 funding:
   - https://www.buymeacoffee.com/dev_cetera
