@@ -75,7 +75,6 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
     return _animationController.value * _dragExtent();
   }
 
-
   void _onDragUpdate(DragUpdateDetails details) {
     final primaryDelta = details.primaryDelta!;
     final d = primaryDelta / _dragExtent();
