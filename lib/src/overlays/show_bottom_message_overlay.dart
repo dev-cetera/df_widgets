@@ -50,14 +50,16 @@ sealed class ShowBottomMessageOverlay {
                   extent: 0.5,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: backgroundColor ??
+                      color:
+                          backgroundColor ??
                           backgroundColor ??
                           Theme.of(context).colorScheme.surfaceContainerLow,
                       borderRadius:
                           borderRadius ?? BorderRadius.circular(24.sc),
                     ),
                     clipBehavior: Clip.antiAlias,
-                    padding: padding ??
+                    padding:
+                        padding ??
                         EdgeInsets.symmetric(
                           horizontal: 20.sc,
                           vertical: 12.sc,
@@ -67,9 +69,7 @@ sealed class ShowBottomMessageOverlay {
                       children: [
                         if (icon != null) ...[
                           icon,
-                          SizedBox(
-                            width: iconSpacing ?? 8.sc,
-                          ),
+                          SizedBox(width: iconSpacing ?? 8.sc),
                         ],
                         Text(
                           message.toString(),
@@ -81,9 +81,7 @@ sealed class ShowBottomMessageOverlay {
                   ),
                 ),
               ),
-              SizedBox(
-                height: bottomSpacing ?? 40.sc,
-              ),
+              SizedBox(height: bottomSpacing ?? 40.sc),
             ],
           ),
         );

@@ -67,10 +67,7 @@ class _State extends State<SizeAnimator> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    );
+    _controller = AnimationController(vsync: this, duration: widget.duration);
     Future.delayed(widget.delay, () {
       if (mounted) {
         _controller.forward();
@@ -79,12 +76,7 @@ class _State extends State<SizeAnimator> with SingleTickerProviderStateMixin {
     _animation = Tween<double>(
       begin: widget.begin,
       end: widget.end,
-    ).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: widget.curve,
-      ),
-    );
+    ).animate(CurvedAnimation(parent: _controller, curve: widget.curve));
   }
 
   //

@@ -48,18 +48,12 @@ class Titled extends StatelessWidget {
     final hasTitleWidget = title != null;
     final hatTitle = hasTitleText || hasTitleWidget;
     return DividedColumn(
-      divider: SizedBox(
-        height: spacing ?? 8.sc,
-      ),
+      divider: SizedBox(height: spacing ?? 8.sc),
       children: [
         if (hatTitle) ...[
           DefaultTextStyle(
             style: style ?? const TextStyle(),
-            child: hasTitleText
-                ? Text(
-                    titleText!,
-                  )
-                : title!,
+            child: hasTitleText ? Text(titleText!) : title!,
           ),
         ],
         if (child != null) child!,

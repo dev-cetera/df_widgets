@@ -60,18 +60,12 @@ class Blur extends StatelessWidget {
           children: [
             if (color != null)
               ColorFiltered(
-                colorFilter: ui.ColorFilter.mode(
-                  color!,
-                  blendMode,
-                ),
+                colorFilter: ui.ColorFilter.mode(color!, blendMode),
                 child: child!,
               )
             else
               child!,
-            if (disabled)
-              Container(
-                color: const Color(0x00000000),
-              ),
+            if (disabled) Container(color: const Color(0x00000000)),
           ],
         ),
       ),

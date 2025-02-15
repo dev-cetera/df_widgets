@@ -28,11 +28,7 @@ class BasicCountIndicator extends StatelessWidget {
   //
   //
 
-  const BasicCountIndicator({
-    super.key,
-    required this.count,
-    this.size,
-  });
+  const BasicCountIndicator({super.key, required this.count, this.size});
 
   //
   //
@@ -62,9 +58,7 @@ class BasicCountIndicator extends StatelessWidget {
         ),
       );
     } else {
-      return SizedBox.square(
-        dimension: dimension,
-      );
+      return SizedBox.square(dimension: dimension);
     }
   }
 }

@@ -44,10 +44,7 @@ class BasicStackedColumn extends StatelessWidget {
       children1.add(
         Positioned(
           top: margin,
-          child: SizedBox.square(
-            dimension: s2,
-            child: children[i],
-          ),
+          child: SizedBox.square(dimension: s2, child: children[i]),
         ),
       );
     }
@@ -70,8 +67,8 @@ class BasicStackedColumn extends StatelessWidget {
               child: Text(
                 '+${children.length - l}',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.surface,
-                    ),
+                  color: Theme.of(context).colorScheme.surface,
+                ),
               ),
             ),
           ),
@@ -82,10 +79,7 @@ class BasicStackedColumn extends StatelessWidget {
     return SizedBox(
       height: s1 + (children.length > l ? l + 1 : l) * offset1,
       width: s1,
-      child: Stack(
-        alignment: Alignment.topCenter,
-        children: children1,
-      ),
+      child: Stack(alignment: Alignment.topCenter, children: children1),
     );
   }
 }

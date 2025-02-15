@@ -189,13 +189,7 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
                   builder: (context, child) {
                     return Transform.translate(
                       offset: Offset(_dragOffset(), 0),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: child!,
-                          ),
-                        ],
-                      ),
+                      child: Row(children: [Expanded(child: child!)]),
                     );
                   },
                 ),
@@ -246,25 +240,17 @@ class HorizonralSwipableDirection {
   }
 
   @pragma('vm:prefer-inline')
-  Widget build(
-    BuildContext context,
-    double dragOffset,
-    double dragExtent,
-  ) {
-    return builder?.call(
-          context,
-          dragOffset,
-          dragExtent,
-          child,
-        ) ??
+  Widget build(BuildContext context, double dragOffset, double dragExtent) {
+    return builder?.call(context, dragOffset, dragExtent, child) ??
         child ??
         const SizedBox.shrink();
   }
 }
 
-typedef HorizonralSwipableDirectionBuilder = Widget Function(
-  BuildContext context,
-  double dragOffset,
-  double dragExtent,
-  Widget? child,
-);
+typedef HorizonralSwipableDirectionBuilder =
+    Widget Function(
+      BuildContext context,
+      double dragOffset,
+      double dragExtent,
+      Widget? child,
+    );

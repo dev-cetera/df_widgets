@@ -29,11 +29,7 @@ class Facade {
   //
   //
 
-  const Facade({
-    this.image,
-    this.child,
-    this.blurSigma = 0.0,
-  });
+  const Facade({this.image, this.child, this.blurSigma = 0.0});
 
   //
   //
@@ -60,13 +56,7 @@ class Facade {
     return Stack(
       fit: StackFit.expand,
       children: [
-        Blur(
-          sigma: blurSigma,
-          child: RawImage(
-            fit: BoxFit.fill,
-            image: image,
-          ),
-        ),
+        Blur(sigma: blurSigma, child: RawImage(fit: BoxFit.fill, image: image)),
         if (child != null) child!,
       ],
     );

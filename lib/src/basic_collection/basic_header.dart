@@ -74,11 +74,7 @@ class BasicHeader extends StatelessWidget implements PreferredSizeWidget {
       onTapDownBack: onTapDownBack,
       minHeight: 48.0, // minimum touch size
       maxHeight: preferredSize.height,
-    ).build(
-      context,
-      compact ? 32.sc : 0.0,
-      true,
-    );
+    ).build(context, compact ? 32.sc : 0.0, true);
   }
 
   @override
@@ -114,17 +110,18 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
     final maxHeight0 = maxHeight ?? 80.sc;
 
     // Calculate the current height based on the shrinkOffset
-    final currentHeight =
-        (maxHeight0 - shrinkOffset).clamp(minHeight0, maxHeight0);
+    final currentHeight = (maxHeight0 - shrinkOffset).clamp(
+      minHeight0,
+      maxHeight0,
+    );
     final heightf = (2.0 + currentHeight / maxHeight0 / 3.0);
 
     return BlurryContainer(
       properties: BlurryContainer.themeOf(context).copyWith(
         height: currentHeight,
-        containerProperties:
-            BlurryContainer.themeOf(context).containerProperties$.copyWith(
-                  color: Theme.of(context).colorScheme.surfaceContainer,
-                ),
+        containerProperties: BlurryContainer.themeOf(context)
+            .containerProperties$
+            .copyWith(color: Theme.of(context).colorScheme.surfaceContainer),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(24.sc),
           bottomRight: Radius.circular(24.sc),
@@ -136,30 +133,28 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            if (onTapDownBack != null)
-              BasicBackBtn(
-                onTapDown: onTapDownBack,
-              ),
+            if (onTapDownBack != null) BasicBackBtn(onTapDown: onTapDownBack),
             if (title != null) ...[
               Padding(
                 padding: EdgeInsets.only(left: 12.sc),
                 child: Text(
                   title!,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                        fontSize:
-                            Theme.of(context).textTheme.titleSmall!.fontSize! *
-                                heightf,
-                      ),
+                    fontSize:
+                        Theme.of(context).textTheme.titleSmall!.fontSize! *
+                        heightf,
+                  ),
                 ),
               ),
             ],
             const Spacer(),
             if (optionsMenuTitle != null && optionsMenuBuilder != null)
               AnchoredPopup(
-                buttonBuilder: (context, open) => BasicIconBtn(
-                  iconData: FluentIcons.more_vertical_24_regular,
-                  onTapDown: (_) => open(),
-                ),
+                buttonBuilder:
+                    (context, open) => BasicIconBtn(
+                      iconData: FluentIcons.more_vertical_24_regular,
+                      onTapDown: (_) => open(),
+                    ),
                 onTapDownBackground: (close) {
                   close();
                 },
@@ -169,13 +164,14 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
                     child: IntrinsicHeight(
                       child: BlurryContainer(
                         properties: BlurryContainer.themeOf(context).copyWith(
-                          containerProperties: BlurryContainer.themeOf(context)
-                              .containerProperties$
-                              .copyWith(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .surfaceContainerHighest,
-                              ),
+                          containerProperties: BlurryContainer.themeOf(
+                            context,
+                          ).containerProperties$.copyWith(
+                            color:
+                                Theme.of(
+                                  context,
+                                ).colorScheme.surfaceContainerHighest,
+                          ),
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(24.sc),
                             bottomLeft: Radius.circular(24.sc),
@@ -192,12 +188,8 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
                               children: [
                                 Text(
                                   optionsMenuTitle!,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium
-                                      ?.copyWith(
-                                        fontWeight: FONT_WEIGHT_BLACK,
-                                      ),
+                                  style: Theme.of(context).textTheme.titleMedium
+                                      ?.copyWith(fontWeight: FONT_WEIGHT_BLACK),
                                 ),
                                 BasicIconBtn(
                                   iconData:

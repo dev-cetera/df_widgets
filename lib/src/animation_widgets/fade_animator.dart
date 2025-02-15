@@ -71,12 +71,7 @@ class _State extends State<FadeAnimator> with SingleTickerProviderStateMixin {
   late final _animation = Tween<double>(
     begin: widget.begin,
     end: widget.end,
-  ).animate(
-    CurvedAnimation(
-      parent: _controller,
-      curve: widget.curve,
-    ),
-  );
+  ).animate(CurvedAnimation(parent: _controller, curve: widget.curve));
 
   //
   //
@@ -122,10 +117,7 @@ class _State extends State<FadeAnimator> with SingleTickerProviderStateMixin {
     return Stack(
       children: [
         if (layer1 != null) layer1,
-        FadeTransition(
-          opacity: _animation,
-          child: layer2,
-        ),
+        FadeTransition(opacity: _animation, child: layer2),
       ],
     );
   }

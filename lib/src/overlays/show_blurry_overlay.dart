@@ -22,12 +22,13 @@ sealed class ShowBlurryOverlay {
     required FutureOr<Widget> Function(
       BuildContext context,
       void Function() remove,
-    ) builder,
+    )
+    builder,
     BlurryOverlayContainerProperties properties =
         const BlurryOverlayContainerProperties(
-      sigma: 1.0,
-      color: Color.fromARGB(128, 0, 0, 0),
-    ),
+          sigma: 1.0,
+          color: Color.fromARGB(128, 0, 0, 0),
+        ),
   }) {
     final completer = Completer<dynamic>();
     late final OverlayEntry overlayEntry;

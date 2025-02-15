@@ -27,9 +27,7 @@ class TextStyleFromTheme {
 
   const TextStyleFromTheme._a(this.of);
 
-  factory TextStyleFromTheme._b(
-    TextStyle? Function(TextTheme data) converter,
-  ) {
+  factory TextStyleFromTheme._b(TextStyle? Function(TextTheme data) converter) {
     return TextStyleFromTheme._a(
       (context) => converter(Theme.of(context).textTheme),
     );

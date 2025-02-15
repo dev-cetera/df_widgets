@@ -19,11 +19,7 @@ import '/_common.dart';
 class BasicTooltip extends StatelessWidget {
   final String message;
   final Widget? child;
-  const BasicTooltip({
-    super.key,
-    required this.message,
-    required this.child,
-  });
+  const BasicTooltip({super.key, required this.message, required this.child});
 
   @override
   Widget build(BuildContext context) {

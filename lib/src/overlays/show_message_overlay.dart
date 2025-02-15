@@ -64,26 +64,18 @@ sealed class ShowMessageOverlay {
                       if (title != null) ...[
                         Wrap(
                           children: [
-                            Text(
-                              title,
-                              style: titleStyle,
-                            ),
+                            Text(title, style: titleStyle),
                             if (titleIcon != null) ...[
                               SizedBox(width: titleIconSpacing ?? 8.sc),
                               titleIcon,
                             ],
                           ],
                         ),
-                        ContentDivider(
-                          color: dividerColor,
-                        ),
+                        ContentDivider(color: dividerColor),
                       ],
                       if (leading != null) leading,
                       if (message != null)
-                        Text(
-                          message.toString(),
-                          style: messageStyle,
-                        ),
+                        Text(message.toString(), style: messageStyle),
                       if (trailing != null) trailing,
                     ],
                   ),

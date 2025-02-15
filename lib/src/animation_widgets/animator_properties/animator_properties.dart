@@ -17,37 +17,14 @@ part '_animator_properties.g.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 const ANIMATOR_PROPERTIES_FIELDS = {
-  Field(
-    fieldPath: ['duration'],
-    fieldType: Duration,
-    nullable: false,
-  ),
-  Field(
-    fieldPath: ['delay'],
-    fieldType: Duration,
-    nullable: false,
-  ),
-  Field(
-    fieldPath: ['curve'],
-    fieldType: Curve,
-    nullable: false,
-  ),
-  Field(
-    fieldPath: ['begin'],
-    fieldType: double,
-    nullable: false,
-  ),
-  Field(
-    fieldPath: ['end'],
-    fieldType: double,
-    nullable: false,
-  ),
+  Field(fieldPath: ['duration'], fieldType: Duration, nullable: false),
+  Field(fieldPath: ['delay'], fieldType: Duration, nullable: false),
+  Field(fieldPath: ['curve'], fieldType: Curve, nullable: false),
+  Field(fieldPath: ['begin'], fieldType: double, nullable: false),
+  Field(fieldPath: ['end'], fieldType: double, nullable: false),
 };
 
-@GenerateDartModel(
-  fields: ANIMATOR_PROPERTIES_FIELDS,
-  shouldInherit: true,
-)
+@GenerateDartModel(fields: ANIMATOR_PROPERTIES_FIELDS, shouldInherit: true)
 class _AnimatorProperties {
   const _AnimatorProperties();
 }

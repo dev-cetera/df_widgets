@@ -3,9 +3,7 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  DI.theme.register(
-    TextEdit.themeOf(null).copyWith(cursorColor: Colors.white),
-  );
+  DI.theme.register(TextEdit.themeOf(null).copyWith(cursorColor: Colors.white));
   runApp(const App());
 }
 
@@ -45,21 +43,12 @@ class _HomeState extends State<Home> {
               optionsMenuTitle: 'Options',
               optionsMenuBuilder: (context) {
                 return [
-                  BasicBtn(
-                    text: 'Profile',
-                    onTap: () {},
-                  ),
-                  BasicBtn(
-                    text: 'Settings',
-                    onTap: () {},
-                  ),
+                  BasicBtn(text: 'Profile', onTap: () {}),
+                  BasicBtn(text: 'Settings', onTap: () {}),
                   ContentDivider(
                     color: Theme.of(context).colorScheme.surfaceBright,
                   ),
-                  BasicErrBtn(
-                    text: 'Logout',
-                    onTap: () {},
-                  ),
+                  BasicErrBtn(text: 'Logout', onTap: () {}),
                 ];
               },
               onTapDownBack: (_) {},
@@ -73,14 +62,8 @@ class _HomeState extends State<Home> {
                     bodyText: 'Common questions and answers',
                     onTap: () {},
                   ),
-                  BasicShelfItem(
-                    titleText: 'Text',
-                    onTap: () {},
-                  ),
-                  BasicShelfItem(
-                    titleText: 'Text',
-                    onTap: () {},
-                  ),
+                  BasicShelfItem(titleText: 'Text', onTap: () {}),
+                  BasicShelfItem(titleText: 'Text', onTap: () {}),
                 ],
               ),
             ),
@@ -88,16 +71,10 @@ class _HomeState extends State<Home> {
               children: const [
                 ContentDividerChild(
                   alignment: ContentDividerAlignment.END,
-                  child: Text(
-                    'Hello',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: Text('Hello', style: TextStyle(color: Colors.white)),
                 ),
                 ContentDividerChild(
-                  child: Text(
-                    'World',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: Text('World', style: TextStyle(color: Colors.white)),
                 ),
               ],
             ),
@@ -114,9 +91,7 @@ class _HomeState extends State<Home> {
                       color: Colors.green, //.withOpacity(opacity),
                       height: 80.0,
                       alignment: Alignment.center,
-                      child: const Text(
-                        'Right',
-                      ),
+                      child: const Text('Right'),
                     ),
                   );
                 },
@@ -130,9 +105,7 @@ class _HomeState extends State<Home> {
                   color: Colors.red,
                   height: 80.0,
                   alignment: Alignment.center,
-                  child: const Text(
-                    'Left',
-                  ),
+                  child: const Text('Left'),
                 ),
                 builder: (context, dragOffset, dragExtent, child) {
                   return child!;
@@ -143,9 +116,7 @@ class _HomeState extends State<Home> {
                 color: Colors.brown,
                 height: 80.0,
                 alignment: Alignment.center,
-                child: const Text(
-                  'Hello',
-                ),
+                child: const Text('Hello'),
               ),
             ),
             Padding(
@@ -155,9 +126,7 @@ class _HomeState extends State<Home> {
                   width: double.infinity,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextEdit(),
-                    ],
+                    children: [TextEdit()],
                   ),
                 ),
               ),
@@ -165,9 +134,7 @@ class _HomeState extends State<Home> {
             Padding(
               padding: EdgeInsets.all(24.sc),
               child: const BasicSurface(
-                child: SizedBox(
-                  width: double.infinity,
-                ),
+                child: SizedBox(width: double.infinity),
               ),
             ),
             Row(
@@ -196,10 +163,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
-                  child: const Icon(
-                    Icons.login_outlined,
-                    color: Colors.white,
-                  ),
+                  child: const Icon(Icons.login_outlined, color: Colors.white),
                 ),
                 Container(
                   color: Colors.transparent,
@@ -208,18 +172,10 @@ class _HomeState extends State<Home> {
                 ),
                 Btn(
                   properties: Btn.themeOf(context).copyWith(
-                    textStyle: const TextStyle(
-                      color: Colors.white,
-                    ),
-                    decoration: const BoxDecoration(
-                      color: Colors.red,
-                    ),
-                    disabledDecoration: const BoxDecoration(
-                      color: Colors.grey,
-                    ),
-                    hoverDecoration: const BoxDecoration(
-                      color: Colors.white,
-                    ),
+                    textStyle: const TextStyle(color: Colors.white),
+                    decoration: const BoxDecoration(color: Colors.red),
+                    disabledDecoration: const BoxDecoration(color: Colors.grey),
+                    hoverDecoration: const BoxDecoration(color: Colors.white),
                   ),
                   text: 'Sign Up',
                   onTap: () {},
@@ -231,9 +187,7 @@ class _HomeState extends State<Home> {
                 ),
                 Btn(
                   properties: Btn.themeOf(context).copyWith(
-                    textStyle: const TextStyle(
-                      color: Colors.white,
-                    ),
+                    textStyle: const TextStyle(color: Colors.white),
                     decoration: BoxDecoration(
                       color: Colors.red,
                       borderRadius: BorderRadius.only(
@@ -278,28 +232,21 @@ class _HomeState extends State<Home> {
             optionsMenuTitle: 'Options',
             optionsMenuBuilder: (context) {
               return [
-                BasicBtn(
-                  text: 'Profile',
-                  onTap: () {},
-                ),
-                BasicBtn(
-                  text: 'Settings',
-                  onTap: () {},
-                ),
+                BasicBtn(text: 'Profile', onTap: () {}),
+                BasicBtn(text: 'Settings', onTap: () {}),
                 ContentDivider(
                   color: Theme.of(context).colorScheme.surfaceBright,
                 ),
-                BasicErrBtn(
-                  text: 'Logout',
-                  onTap: () {},
-                ),
+                BasicErrBtn(text: 'Logout', onTap: () {}),
               ];
             },
             onTapDownBack: (_) {},
           ),
-          ...children(context).map((e) => SliverToBoxAdapter(
-                child: Align(alignment: Alignment.centerLeft, child: e),
-              )),
+          ...children(context).map(
+            (e) => SliverToBoxAdapter(
+              child: Align(alignment: Alignment.centerLeft, child: e),
+            ),
+          ),
           // SliverToBoxAdapter(
           //   child: Container(
           //     padding: EdgeInsets.all(16),
@@ -334,17 +281,9 @@ class _HomeState extends State<Home> {
       //   label: Text('HELLO'),
       //   child: Icon(Icons.add),
       // ),
-      BasicBtn(
-        text: 'Login',
-        onTap: () {},
-      ),
-      BasicErrBtn(
-        text: 'Logout',
-        onTap: () {},
-      ),
-      BasicBackBtn(
-        onTap: () {},
-      ),
+      BasicBtn(text: 'Login', onTap: () {}),
+      BasicErrBtn(text: 'Logout', onTap: () {}),
+      BasicBackBtn(onTap: () {}),
       BasicCheckBtn(
         pState: Pod(false),
         onTap: (pState) => pState.update((e) => !e),
@@ -353,9 +292,8 @@ class _HomeState extends State<Home> {
         pState: Pod(false),
         onTap: (pState) => pState.update((e) => !e),
       ),
-      PlasticCheckBtn(
-        pState: Pod(false),
-      ),
+      PlasticCheckBtn(pState: Pod(false)),
+
       // ToggleBtn(
       //   pState: Pod(false),
       //   childBuilder: (context, state) {
@@ -400,7 +338,6 @@ class _HomeState extends State<Home> {
       //     },
       //   ),
       // ),
-
       BasicNavigationBarBtn(
         pState: Pod<bool>(true),
         onTap: () {},
@@ -421,8 +358,9 @@ class _HomeState extends State<Home> {
             case NavigationBarItemState.DISABLED:
               return Icon(
                 FluentIcons.home_24_regular,
-                color:
-                    Theme.of(context).colorScheme.primary.withSaturation(0.0),
+                color: Theme.of(
+                  context,
+                ).colorScheme.primary.withSaturation(0.0),
                 size: 24.sc,
               );
           }

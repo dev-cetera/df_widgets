@@ -26,10 +26,7 @@ class Popup extends StatelessWidget {
   //
 
   final Widget button;
-  final Widget Function(
-    BuildContext context,
-    VoidCallback close,
-  ) popupBuilder;
+  final Widget Function(BuildContext context, VoidCallback close) popupBuilder;
   final PopupController controller;
 
   //
@@ -51,10 +48,7 @@ class Popup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      key: _globalKey,
-      child: button,
-    );
+    return SizedBox(key: _globalKey, child: button);
   }
 }
 
@@ -79,10 +73,7 @@ class PopupController {
   //
   //
 
-  PopupController({
-    this.elevation = 4.0,
-    this.duration,
-  });
+  PopupController({this.elevation = 4.0, this.duration});
 
   //
   //

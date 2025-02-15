@@ -81,10 +81,7 @@ class _State extends State<BlurAnimator> with SingleTickerProviderStateMixin {
       begin: widget.properties.begin$,
       end: widget.properties.end$,
     ).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: widget.properties.curve$,
-      ),
+      CurvedAnimation(parent: _controller, curve: widget.properties.curve$),
     );
   }
 
@@ -126,21 +123,9 @@ class _State extends State<BlurAnimator> with SingleTickerProviderStateMixin {
 @GenerateDartModel(
   fields: {
     ...ANIMATOR_PROPERTIES_FIELDS,
-    Field(
-      fieldPath: ['blendMode'],
-      fieldType: BlendMode,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['color'],
-      fieldType: Color,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['disabled'],
-      fieldType: bool,
-      nullable: false,
-    ),
+    Field(fieldPath: ['blendMode'], fieldType: BlendMode, nullable: false),
+    Field(fieldPath: ['color'], fieldType: Color, nullable: false),
+    Field(fieldPath: ['disabled'], fieldType: bool, nullable: false),
   },
   shouldInherit: true,
 )

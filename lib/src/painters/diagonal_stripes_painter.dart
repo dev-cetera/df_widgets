@@ -39,10 +39,11 @@ class DiagonalStripesPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = lineThickness;
+    final paint =
+        Paint()
+          ..color = color
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = lineThickness;
 
     var start = -size.height;
     while (start < size.width) {

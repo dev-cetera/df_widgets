@@ -69,18 +69,19 @@ class _State extends State<BouncingAnimator>
       vsync: this,
     );
 
-    _animation =
-        Tween<double>(begin: widget.beginSize, end: widget.endSize).animate(
-      CurvedAnimation(parent: _controller, curve: widget.curve),
-    )..addStatusListener((status) {
-            if (status == AnimationStatus.completed) {
-              _controller.reverse();
-            } else if (status == AnimationStatus.dismissed) {
-              if (widget.bounce) {
-                _controller.forward();
-              }
-            }
-          });
+    _animation = Tween<double>(
+        begin: widget.beginSize,
+        end: widget.endSize,
+      ).animate(CurvedAnimation(parent: _controller, curve: widget.curve))
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          _controller.reverse();
+        } else if (status == AnimationStatus.dismissed) {
+          if (widget.bounce) {
+            _controller.forward();
+          }
+        }
+      });
 
     if (widget.bounce) {
       _controller.forward();
@@ -112,10 +113,11 @@ class _State extends State<BouncingAnimator>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _controller,
-      builder: (context, child) => Transform.translate(
-        offset: Offset(0, _animation.value),
-        child: child,
-      ),
+      builder:
+          (context, child) => Transform.translate(
+            offset: Offset(0, _animation.value),
+            child: child,
+          ),
       child: widget.child,
     );
   }

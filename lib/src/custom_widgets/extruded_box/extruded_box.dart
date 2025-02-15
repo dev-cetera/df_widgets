@@ -38,19 +38,15 @@ class ExtrudedBox extends StatelessWidget {
         );
   }
 
-  const ExtrudedBox({
-    super.key,
-    this.properties,
-    this.endChild,
-    this.child,
-  });
+  const ExtrudedBox({super.key, this.properties, this.endChild, this.child});
 
   @override
   Widget build(BuildContext context) {
     final p = properties ?? themeOf(context);
     final max = (p.max ?? 12.sc).round();
     final extrusion = (max * p.value$).round();
-    final border = p.border ??
+    final border =
+        p.border ??
         OutlineInputBorder(borderRadius: BorderRadius.circular(8.sc));
     final angleInRadians = (p.angle$ % 360) * pi / 180;
     final ax = cos(angleInRadians);
@@ -81,9 +77,7 @@ class ExtrudedBox extends StatelessWidget {
             perspectiveDepth: p.perspectiveDepth$,
           ),
           child: ClipPath(
-            clipper: ShapeBorderClipper(
-              shape: border,
-            ),
+            clipper: ShapeBorderClipper(shape: border),
             child: child,
           ),
         ),
@@ -96,36 +90,12 @@ class ExtrudedBox extends StatelessWidget {
 
 @GenerateDartModel(
   fields: {
-    Field(
-      fieldPath: ['perspectiveDepth'],
-      fieldType: double,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['color'],
-      fieldType: Color,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['value'],
-      fieldType: double,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['max'],
-      fieldType: double,
-      nullable: true,
-    ),
-    Field(
-      fieldPath: ['angle'],
-      fieldType: double,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['border'],
-      fieldType: ShapeBorder,
-      nullable: true,
-    ),
+    Field(fieldPath: ['perspectiveDepth'], fieldType: double, nullable: false),
+    Field(fieldPath: ['color'], fieldType: Color, nullable: false),
+    Field(fieldPath: ['value'], fieldType: double, nullable: false),
+    Field(fieldPath: ['max'], fieldType: double, nullable: true),
+    Field(fieldPath: ['angle'], fieldType: double, nullable: false),
+    Field(fieldPath: ['border'], fieldType: ShapeBorder, nullable: true),
   },
   shouldInherit: true,
 )
@@ -155,8 +125,9 @@ class ExtrudedBoxPainter extends CustomPainter {
     final paint = Paint()..color = color;
 
     // Get the path based on the given shapeBorder.
-    final path =
-        border.getOuterPath(Rect.fromLTWH(0, 0, size.width, size.height));
+    final path = border.getOuterPath(
+      Rect.fromLTWH(0, 0, size.width, size.height),
+    );
 
     // Convert angle to radians for trigonometric calculations.
     final angleInRadians = (angle % 360) * pi / 180;

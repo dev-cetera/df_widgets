@@ -27,8 +27,9 @@ class BlurryContainer extends StatelessWidget {
   final Widget? child;
 
   static BlurryContainerProperties themeOf(BuildContext? context) {
-    return DefaultThemes.of(context)
-            ?.themeOrNull<BlurryContainerProperties>() ??
+    return DefaultThemes.of(
+          context,
+        )?.themeOrNull<BlurryContainerProperties>() ??
         BlurryContainerProperties(
           decoration: const BoxDecoration(),
           foregroundDecoration: const BoxDecoration(),
@@ -43,11 +44,7 @@ class BlurryContainer extends StatelessWidget {
   //
   //
 
-  const BlurryContainer({
-    super.key,
-    this.properties,
-    this.child,
-  });
+  const BlurryContainer({super.key, this.properties, this.child});
 
   //
   //
@@ -62,10 +59,7 @@ class BlurryContainer extends StatelessWidget {
     return ClipRRect(
       borderRadius: p.borderRadius$,
       child: BackdropFilter(
-        filter: ImageFilter.blur(
-          sigmaX: sigma,
-          sigmaY: sigma,
-        ),
+        filter: ImageFilter.blur(sigmaX: sigma, sigmaY: sigma),
         child: Container(
           width: p.width,
           height: p.height,
@@ -86,36 +80,20 @@ class BlurryContainer extends StatelessWidget {
 
 @GenerateDartModel(
   fields: {
-    Field(
-      fieldPath: ['width'],
-      fieldType: double,
-      nullable: true,
-    ),
-    Field(
-      fieldPath: ['height'],
-      fieldType: double,
-      nullable: true,
-    ),
+    Field(fieldPath: ['width'], fieldType: double, nullable: true),
+    Field(fieldPath: ['height'], fieldType: double, nullable: true),
     Field(
       fieldPath: ['containerProperties'],
       fieldType: BlurryContainerProperties,
       nullable: false,
     ),
-    Field(
-      fieldPath: ['decoration'],
-      fieldType: BoxDecoration,
-      nullable: false,
-    ),
+    Field(fieldPath: ['decoration'], fieldType: BoxDecoration, nullable: false),
     Field(
       fieldPath: ['foregroundDecoration'],
       fieldType: BoxDecoration,
       nullable: false,
     ),
-    Field(
-      fieldPath: ['padding'],
-      fieldType: EdgeInsets,
-      nullable: false,
-    ),
+    Field(fieldPath: ['padding'], fieldType: EdgeInsets, nullable: false),
     Field(
       fieldPath: ['constraints'],
       fieldType: BoxConstraints,

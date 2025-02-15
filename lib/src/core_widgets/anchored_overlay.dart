@@ -25,10 +25,7 @@ class AnchoredOverlay extends StatefulWidget {
   //
   //
 
-  const AnchoredOverlay({
-    super.key,
-    this.child,
-  });
+  const AnchoredOverlay({super.key, this.child});
 
   //
   //
@@ -124,9 +121,7 @@ class _State extends State<AnchoredOverlay> {
         return Positioned(
           left: x,
           top: y,
-          child: SizedBox(
-            child: widget.child,
-          ),
+          child: SizedBox(child: widget.child),
         );
       },
     );
@@ -155,10 +150,7 @@ class _State extends State<AnchoredOverlay> {
   Widget build(BuildContext context) {
     return Offstage(
       offstage: true,
-      child: SizedBox(
-        key: _offstageKey,
-        child: widget.child,
-      ),
+      child: SizedBox(key: _offstageKey, child: widget.child),
     );
   }
 }

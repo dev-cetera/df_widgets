@@ -44,22 +44,23 @@ class BasicIconBtn extends StatelessWidget {
           return Container(
             constraints: const BoxConstraints(minWidth: 48.0, minHeight: 48.0),
             decoration: ShapeDecoration(
-              color: enabled && states.contains(TapBoxState.HOVER)
-                  ? Theme.of(context).colorScheme.primary.withAlpha(32)
-                  : Colors.transparent,
+              color:
+                  enabled && states.contains(TapBoxState.HOVER)
+                      ? Theme.of(context).colorScheme.primary.withAlpha(32)
+                      : Colors.transparent,
               shape: shape,
             ),
             child: child,
           );
         },
       ),
-      child: child ??
+      child:
+          child ??
           Icon(
             iconData,
-            color: Theme.of(context)
-                .colorScheme
-                .primary
-                .withSaturation(enabled ? 1.0 : 0.0),
+            color: Theme.of(
+              context,
+            ).colorScheme.primary.withSaturation(enabled ? 1.0 : 0.0),
             size: 24.sc,
           ),
     );

@@ -73,12 +73,7 @@ class _State extends State<BreatheAnimator>
     _animation = Tween<double>(
       begin: widget.minScale,
       end: widget.maxScale,
-    ).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: widget.curve,
-      ),
-    );
+    ).animate(CurvedAnimation(parent: _controller, curve: widget.curve));
   }
 
   //

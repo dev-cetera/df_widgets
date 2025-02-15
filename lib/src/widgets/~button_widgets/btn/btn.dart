@@ -26,9 +26,7 @@ class Btn extends StatelessWidget {
   static BtnProperties themeOf(BuildContext? context) {
     return DefaultThemes.of(context)?.themeOrNull<BtnProperties>() ??
         BtnProperties(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24.sc),
-          ),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(24.sc)),
           disabledDecoration: const BoxDecoration(),
           hoverDecoration: const BoxDecoration(),
           padding: EdgeInsets.symmetric(horizontal: 24.sc),
@@ -84,10 +82,7 @@ class Btn extends StatelessWidget {
                     if (child != null)
                       child
                     else if (text != null)
-                      Text(
-                        text!,
-                        textAlign: TextAlign.center,
-                      ),
+                      Text(text!, textAlign: TextAlign.center),
                   ],
                 ),
               ),
@@ -104,34 +99,13 @@ class Btn extends StatelessWidget {
 
 @GenerateDartModel(
   fields: {
-    Field(
-      fieldPath: ['decoration'],
-      fieldType: BoxDecoration,
-    ),
-    Field(
-      fieldPath: ['disabledDecoration'],
-      fieldType: BoxDecoration,
-    ),
-    Field(
-      fieldPath: ['hoverDecoration'],
-      fieldType: BoxDecoration,
-    ),
-    Field(
-      fieldPath: ['textStyle'],
-      fieldType: TextStyle,
-    ),
-    Field(
-      fieldPath: ['disabledTextStyle'],
-      fieldType: TextStyle,
-    ),
-    Field(
-      fieldPath: ['hoverTextStyle'],
-      fieldType: TextStyle,
-    ),
-    Field(
-      fieldPath: ['padding'],
-      fieldType: EdgeInsets,
-    ),
+    Field(fieldPath: ['decoration'], fieldType: BoxDecoration),
+    Field(fieldPath: ['disabledDecoration'], fieldType: BoxDecoration),
+    Field(fieldPath: ['hoverDecoration'], fieldType: BoxDecoration),
+    Field(fieldPath: ['textStyle'], fieldType: TextStyle),
+    Field(fieldPath: ['disabledTextStyle'], fieldType: TextStyle),
+    Field(fieldPath: ['hoverTextStyle'], fieldType: TextStyle),
+    Field(fieldPath: ['padding'], fieldType: EdgeInsets),
   },
   shouldInherit: true,
 )

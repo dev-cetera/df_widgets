@@ -27,8 +27,5 @@ class DividedRow extends DividedFlex {
     super.divider,
     super.lastIfNotEmpty,
     List<Widget?>? children,
-  }) : super(
-          elements: children,
-          direction: Axis.horizontal,
-        );
+  }) : super(elements: children, direction: Axis.horizontal);
 }

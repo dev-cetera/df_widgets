@@ -20,11 +20,7 @@ class BasicBackBtn extends StatelessWidget {
   final VoidCallback? onTap;
   final GestureTapDownCallback? onTapDown;
 
-  const BasicBackBtn({
-    super.key,
-    this.onTap,
-    this.onTapDown,
-  });
+  const BasicBackBtn({super.key, this.onTap, this.onTapDown});
 
   @override
   Widget build(BuildContext context) {

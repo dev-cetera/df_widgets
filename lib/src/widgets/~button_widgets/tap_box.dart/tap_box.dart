@@ -110,7 +110,8 @@ class _State extends State<TapBox> {
           clipBehavior: Clip.antiAlias,
           decoration: _p.decoration$,
           foregroundDecoration: _p.foregroundDecoration,
-          child: _p.builder?.call(context, _states, widget.child) ??
+          child:
+              _p.builder?.call(context, _states, widget.child) ??
               widget.child ??
               const SizedBox.shrink(),
         ),
@@ -121,31 +122,19 @@ class _State extends State<TapBox> {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-enum TapBoxState {
-  HOVER,
-  TAP_UP,
-  TAP_DOWN,
-}
+enum TapBoxState { HOVER, TAP_UP, TAP_DOWN }
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 @GenerateDartModel(
   fields: {
-    Field(
-      fieldPath: ['decoration'],
-      fieldType: Decoration,
-      nullable: true,
-    ),
+    Field(fieldPath: ['decoration'], fieldType: Decoration, nullable: true),
     Field(
       fieldPath: ['foregroundDecoration'],
       fieldType: Decoration,
       nullable: true,
     ),
-    Field(
-      fieldPath: ['builder'],
-      fieldType: '_WidgetBuilder',
-      nullable: true,
-    ),
+    Field(fieldPath: ['builder'], fieldType: '_WidgetBuilder', nullable: true),
   },
   shouldInherit: true,
 )
@@ -155,8 +144,9 @@ class _TapBoxProperties {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-typedef _WidgetBuilder = Widget Function(
-  BuildContext context,
-  Set<TapBoxState> states,
-  Widget? child,
-);
+typedef _WidgetBuilder =
+    Widget Function(
+      BuildContext context,
+      Set<TapBoxState> states,
+      Widget? child,
+    );

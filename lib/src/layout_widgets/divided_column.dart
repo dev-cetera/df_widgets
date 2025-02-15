@@ -27,8 +27,5 @@ class DividedColumn extends DividedFlex {
     super.divider,
     super.lastIfNotEmpty,
     List<Widget?>? children,
-  }) : super(
-          elements: children,
-          direction: Axis.vertical,
-        );
+  }) : super(elements: children, direction: Axis.vertical);
 }

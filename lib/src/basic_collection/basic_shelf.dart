@@ -19,22 +19,20 @@ import '/_common.dart';
 
 class BasicShelf extends StatelessWidget {
   final List<BasicShelfItem> items;
-  const BasicShelf({
-    super.key,
-    required this.items,
-  });
+  const BasicShelf({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
-    final items1 = items
-        .mapIndexed(
-          (index, item) => BasicShelfItemWidget(
-            item: item,
-            index: index,
-            itemCount: items.length,
-          ),
-        )
-        .toList();
+    final items1 =
+        items
+            .mapIndexed(
+              (index, item) => BasicShelfItemWidget(
+                item: item,
+                index: index,
+                itemCount: items.length,
+              ),
+            )
+            .toList();
     return ListView.builder(
       shrinkWrap: true,
       itemCount: items1.length,
@@ -95,19 +93,21 @@ class BasicShelfItemWidget extends StatelessWidget {
                 left: borderSide,
                 right: borderSide,
               ),
-              color: states.contains(TapBoxState.HOVER)
-                  ? Theme.of(context).colorScheme.surfaceBright
-                  : Theme.of(context).colorScheme.surfaceContainer,
-              borderRadius: index == 0
-                  ? BorderRadius.only(
-                      topLeft: Radius.circular(24.sc),
-                      topRight: Radius.circular(24.sc),
-                    )
-                  : index == itemCount - 1
+              color:
+                  states.contains(TapBoxState.HOVER)
+                      ? Theme.of(context).colorScheme.surfaceBright
+                      : Theme.of(context).colorScheme.surfaceContainer,
+              borderRadius:
+                  index == 0
                       ? BorderRadius.only(
-                          bottomLeft: Radius.circular(24.sc),
-                          bottomRight: Radius.circular(24.sc),
-                        )
+                        topLeft: Radius.circular(24.sc),
+                        topRight: Radius.circular(24.sc),
+                      )
+                      : index == itemCount - 1
+                      ? BorderRadius.only(
+                        bottomLeft: Radius.circular(24.sc),
+                        bottomRight: Radius.circular(24.sc),
+                      )
                       : BorderRadius.zero,
             ),
             child: child,
@@ -117,11 +117,7 @@ class BasicShelfItemWidget extends StatelessWidget {
       onTap: item.onTap,
       onTapDown: item.onTapDown,
       child: Padding(
-        padding: EdgeInsets.only(
-          top: 12.sc,
-          bottom: 12.sc,
-          left: 12.sc,
-        ),
+        padding: EdgeInsets.only(top: 12.sc, bottom: 12.sc, left: 12.sc),
         child: Row(
           children: [
             SizedBox(width: 12.sc),
@@ -136,18 +132,17 @@ class BasicShelfItemWidget extends StatelessWidget {
                       item.titleText!,
                       softWrap: true,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontWeight: FONT_WEIGHT_BOLD,
-                          ),
+                        fontWeight: FONT_WEIGHT_BOLD,
+                      ),
                     ),
                   if (item.bodyText != null)
                     Text(
                       item.bodyText!,
                       softWrap: true,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSecondaryContainer,
-                          ),
+                        color:
+                            Theme.of(context).colorScheme.onSecondaryContainer,
+                      ),
                     ),
                 ],
               ),
@@ -157,7 +152,8 @@ class BasicShelfItemWidget extends StatelessWidget {
               item.trailingIcon!
             else
               BasicIconBtn(
-                iconData: item.trailingIconData ??
+                iconData:
+                    item.trailingIconData ??
                     FluentIcons.chevron_right_24_regular,
                 onTap: item.onTap,
                 onTapDown: item.onTapDown,

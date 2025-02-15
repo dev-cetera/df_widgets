@@ -94,11 +94,7 @@ class _State extends State<PositionedOverlay> {
         return Stack(
           children: [
             if (widget.background != null) widget.background!,
-            Positioned(
-              top: y,
-              left: x,
-              child: widget.child,
-            ),
+            Positioned(top: y, left: x, child: widget.child),
           ],
         );
       },

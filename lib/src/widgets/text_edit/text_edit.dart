@@ -30,10 +30,7 @@ class TextEdit extends StatelessWidget {
         );
   }
 
-  const TextEdit({
-    super.key,
-    this.properties,
-  });
+  const TextEdit({super.key, this.properties});
 
   @override
   Widget build(BuildContext context) {
@@ -62,36 +59,16 @@ class TextEdit extends StatelessWidget {
       fieldType: TextEditingController,
       nullable: false,
     ),
-    Field(
-      fieldPath: ['focusNode'],
-      fieldType: FocusNode,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['style'],
-      fieldType: TextStyle,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['cursorColor'],
-      fieldType: Color,
-      nullable: false,
-    ),
+    Field(fieldPath: ['focusNode'], fieldType: FocusNode, nullable: false),
+    Field(fieldPath: ['style'], fieldType: TextStyle, nullable: false),
+    Field(fieldPath: ['cursorColor'], fieldType: Color, nullable: false),
     Field(
       fieldPath: ['backgroundCursorColor'],
       fieldType: Color,
       nullable: false,
     ),
-    Field(
-      fieldPath: ['onSubmitted'],
-      fieldType: 'OnChanged',
-      nullable: true,
-    ),
-    Field(
-      fieldPath: ['onChanged'],
-      fieldType: 'OnChanged',
-      nullable: true,
-    ),
+    Field(fieldPath: ['onSubmitted'], fieldType: 'OnChanged', nullable: true),
+    Field(fieldPath: ['onChanged'], fieldType: 'OnChanged', nullable: true),
     Field(
       fieldPath: ['onTapOutside'],
       fieldType: 'OnTapOutside',

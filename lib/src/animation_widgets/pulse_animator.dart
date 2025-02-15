@@ -54,8 +54,10 @@ class _PulseAnimatorState extends State<PulseAnimator>
         weight: 50,
       ),
       TweenSequenceItem(
-        tween:
-            Tween(begin: 1.0 - widget.pulseWidth, end: 1.0 + widget.pulseWidth),
+        tween: Tween(
+          begin: 1.0 - widget.pulseWidth,
+          end: 1.0 + widget.pulseWidth,
+        ),
         weight: 50,
       ),
       TweenSequenceItem(

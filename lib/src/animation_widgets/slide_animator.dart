@@ -69,21 +69,16 @@ class _State extends State<SlideAnimator> with SingleTickerProviderStateMixin {
       widget.direction == SlideAnimatorDirection.RIGHT_TO_LEFT
           ? _extent
           : widget.direction == SlideAnimatorDirection.LEFT_TO_RIGHT
-              ? -_extent
-              : 0.0,
+          ? -_extent
+          : 0.0,
       widget.direction == SlideAnimatorDirection.BOTTOM_TO_TOP
           ? _extent
           : widget.direction == SlideAnimatorDirection.TOP_TO_BOTTOM
-              ? -_extent
-              : 0.0,
+          ? -_extent
+          : 0.0,
     ),
     end: const Offset(0.0, 0.0),
-  ).animate(
-    CurvedAnimation(
-      parent: _controller,
-      curve: widget.curve,
-    ),
-  );
+  ).animate(CurvedAnimation(parent: _controller, curve: widget.curve));
 
   //
   //
@@ -117,10 +112,7 @@ class _State extends State<SlideAnimator> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Container(
       color: widget.color,
-      child: SlideTransition(
-        position: _animation,
-        child: widget.child,
-      ),
+      child: SlideTransition(position: _animation, child: widget.child),
     );
   }
 }

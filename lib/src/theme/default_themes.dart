@@ -17,11 +17,7 @@ import '/_common.dart';
 class DefaultThemes extends InheritedWidget {
   final List<Object> themes;
 
-  const DefaultThemes({
-    super.key,
-    required this.themes,
-    required super.child,
-  });
+  const DefaultThemes({super.key, required this.themes, required super.child});
 
   T? themeOrNull<T extends Object>() =>
       // ignore: invalid_use_of_visible_for_testing_member

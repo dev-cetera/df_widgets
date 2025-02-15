@@ -35,7 +35,8 @@ sealed class ShowBottomErrorOverlay {
       context,
       message: message,
       messageStyle: messageStyle,
-      icon: icon ??
+      icon:
+          icon ??
           Icon(
             FluentIcons.error_circle_24_regular,
             color: Theme.of(context).colorScheme.error,

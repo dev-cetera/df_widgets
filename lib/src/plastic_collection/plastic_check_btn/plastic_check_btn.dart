@@ -23,7 +23,9 @@ class PlasticCheckBtn extends StatelessWidget {
   final PlasticCheckBtnProperties? properties;
 
   static PlasticCheckBtnProperties themeOf(BuildContext? context) {
-    return DefaultThemes.of(context)?.themeOrNull<PlasticCheckBtnProperties>() ??
+    return DefaultThemes.of(
+          context,
+        )?.themeOrNull<PlasticCheckBtnProperties>() ??
         PlasticCheckBtnProperties(
           checkedColor: Colors.green.shade300,
           checkedHoverColor: Colors.green.shade200,
@@ -64,47 +66,63 @@ class PlasticCheckBtn extends StatelessWidget {
       pState: pState,
       onTap: onTap,
       onTapDown: onTapDown,
-      tapBoxProperyBuilder: (checked, defaultTapBoxProperties) => defaultTapBoxProperties.copyWith(
-        builder: (context, states, _) {
-          final notIdling = states.isNotEmpty;
-          return ExtrudedBox(
-            properties: (p.extrudedBoxProperties ?? ExtrudedBox.themeOf(context)).copyWith(
-              color: checked
-                  ? notIdling
-                      ? p.checkedHoverShadowColor
-                      : p.checkedShadowColor
-                  : notIdling
-                      ? p.uncheckedHoverShadowColor
-                      : p.uncheckedShadowColor,
-              value: checked ? 0.6 : 1.0,
-            ),
-            child: ColoredBox(
-              color: checked
-                  ? notIdling
-                      ? p.checkedHoverColor$
-                      : p.checkedColor$
-                  : notIdling
-                      ? p.uncheckedHoverColor$
-                      : p.uncheckedColor$,
-              child: () {
-                if (checked) {
-                  return Icon(
-                    notIdling ? p.checkedHoverIconData$ : p.checkedIconData,
-                    color: notIdling ? p.checkedHoverIconColor$ : p.checkedIconColor$,
-                    size: iconSize,
+      tapBoxProperyBuilder:
+          (checked, defaultTapBoxProperties) =>
+              defaultTapBoxProperties.copyWith(
+                builder: (context, states, _) {
+                  final notIdling = states.isNotEmpty;
+                  return ExtrudedBox(
+                    properties: (p.extrudedBoxProperties ??
+                            ExtrudedBox.themeOf(context))
+                        .copyWith(
+                          color:
+                              checked
+                                  ? notIdling
+                                      ? p.checkedHoverShadowColor
+                                      : p.checkedShadowColor
+                                  : notIdling
+                                  ? p.uncheckedHoverShadowColor
+                                  : p.uncheckedShadowColor,
+                          value: checked ? 0.6 : 1.0,
+                        ),
+                    child: ColoredBox(
+                      color:
+                          checked
+                              ? notIdling
+                                  ? p.checkedHoverColor$
+                                  : p.checkedColor$
+                              : notIdling
+                              ? p.uncheckedHoverColor$
+                              : p.uncheckedColor$,
+                      child: () {
+                        if (checked) {
+                          return Icon(
+                            notIdling
+                                ? p.checkedHoverIconData$
+                                : p.checkedIconData,
+                            color:
+                                notIdling
+                                    ? p.checkedHoverIconColor$
+                                    : p.checkedIconColor$,
+                            size: iconSize,
+                          );
+                        } else {
+                          return Icon(
+                            notIdling
+                                ? p.uncheckedHoverIconData$
+                                : p.uncheckedIconData,
+                            color:
+                                notIdling
+                                    ? p.uncheckedHoverIconColor$
+                                    : p.uncheckedIconColor$,
+                            size: iconSize,
+                          );
+                        }
+                      }(),
+                    ),
                   );
-                } else {
-                  return Icon(
-                    notIdling ? p.uncheckedHoverIconData$ : p.uncheckedIconData,
-                    color: notIdling ? p.uncheckedHoverIconColor$ : p.uncheckedIconColor$,
-                    size: iconSize,
-                  );
-                }
-              }(),
-            ),
-          );
-        },
-      ),
+                },
+              ),
     );
   }
 }
@@ -118,46 +136,18 @@ typedef _OnTapDown = void Function(TapDownDetails details, Pod<bool> pState);
 
 @GenerateDartModel(
   fields: {
-    Field(
-      fieldPath: ['iconSize'],
-      fieldType: double,
-      nullable: true,
-    ),
-    Field(
-      fieldPath: ['checkedIconData'],
-      fieldType: IconData,
-      nullable: true,
-    ),
-    Field(
-      fieldPath: ['checkedIconColor'],
-      fieldType: Color,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['checkedColor'],
-      fieldType: Color,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['checkedShadowColor'],
-      fieldType: Color,
-      nullable: false,
-    ),
+    Field(fieldPath: ['iconSize'], fieldType: double, nullable: true),
+    Field(fieldPath: ['checkedIconData'], fieldType: IconData, nullable: true),
+    Field(fieldPath: ['checkedIconColor'], fieldType: Color, nullable: false),
+    Field(fieldPath: ['checkedColor'], fieldType: Color, nullable: false),
+    Field(fieldPath: ['checkedShadowColor'], fieldType: Color, nullable: false),
     Field(
       fieldPath: ['uncheckedIconData'],
       fieldType: IconData,
       nullable: true,
     ),
-    Field(
-      fieldPath: ['uncheckedIconColor'],
-      fieldType: Color,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['uncheckedColor'],
-      fieldType: Color,
-      nullable: false,
-    ),
+    Field(fieldPath: ['uncheckedIconColor'], fieldType: Color, nullable: false),
+    Field(fieldPath: ['uncheckedColor'], fieldType: Color, nullable: false),
     Field(
       fieldPath: ['uncheckedShadowColor'],
       fieldType: Color,
@@ -173,11 +163,7 @@ typedef _OnTapDown = void Function(TapDownDetails details, Pod<bool> pState);
       fieldType: Color,
       nullable: false,
     ),
-    Field(
-      fieldPath: ['checkedHoverColor'],
-      fieldType: Color,
-      nullable: false,
-    ),
+    Field(fieldPath: ['checkedHoverColor'], fieldType: Color, nullable: false),
     Field(
       fieldPath: ['checkedHoverShadowColor'],
       fieldType: Color,

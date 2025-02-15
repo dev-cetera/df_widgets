@@ -35,10 +35,7 @@ class BlurryOverlayContainerProperties
   });
 
   /// Creates a copy of this instance, replacing the specified fields.
-  BlurryOverlayContainerProperties copyWith({
-    double? sigma,
-    Color? color,
-  }) {
+  BlurryOverlayContainerProperties copyWith({double? sigma, Color? color}) {
     return BlurryOverlayContainerProperties(
       sigma: sigma ?? this.sigma,
       color: color ?? this.color,

@@ -28,8 +28,9 @@ class BlurryOverlay extends StatelessWidget {
   final Widget? child;
 
   static BlurryOverlayContainerProperties themeOf(BuildContext? context) {
-    return DefaultThemes.of(context)
-            ?.themeOrNull<BlurryOverlayContainerProperties>() ??
+    return DefaultThemes.of(
+          context,
+        )?.themeOrNull<BlurryOverlayContainerProperties>() ??
         const BlurryOverlayContainerProperties(
           sigma: 1.0,
           color: Color.fromARGB(128, 0, 0, 0),
@@ -61,21 +62,14 @@ class BlurryOverlay extends StatelessWidget {
         GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: onTapBackground,
-          child: Container(
-            color: p.color,
-          ),
+          child: Container(color: p.color),
         ),
         Builder(
           builder: (context) {
             final sigma = p.sigma$;
             return BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: sigma,
-                sigmaY: sigma,
-              ),
-              child: Center(
-                child: child,
-              ),
+              filter: ImageFilter.blur(sigmaX: sigma, sigmaY: sigma),
+              child: Center(child: child),
             );
           },
         ),
@@ -88,16 +82,8 @@ class BlurryOverlay extends StatelessWidget {
 
 @GenerateDartModel(
   fields: {
-    Field(
-      fieldPath: ['sigma'],
-      fieldType: double,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['color'],
-      fieldType: Color,
-      nullable: false,
-    ),
+    Field(fieldPath: ['sigma'], fieldType: double, nullable: false),
+    Field(fieldPath: ['color'], fieldType: Color, nullable: false),
   },
   shouldInherit: true,
 )

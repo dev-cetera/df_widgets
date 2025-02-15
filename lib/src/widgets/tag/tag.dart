@@ -46,12 +46,7 @@ class Tag extends StatelessWidget {
   //
   //
 
-  const Tag({
-    super.key,
-    required this.text,
-    this.onTap,
-    this.properties,
-  });
+  const Tag({super.key, required this.text, this.onTap, this.properties});
 
   //
   //
@@ -62,23 +57,25 @@ class Tag extends StatelessWidget {
     final p = properties ?? Tag.themeOf(context);
     return text.isNotEmpty
         ? TapBox(
-            onTap: onTap,
-            child: Container(
-              decoration: BoxDecoration(
-                color: p.backgroundColor ??
-                    Theme.of(context).colorScheme.secondary.withAlpha(64),
-                borderRadius: p.borderRadius ?? BorderRadius.circular(4.sc),
-              ),
-              margin: p.margin ?? EdgeInsets.zero,
-              padding: p.padding ??
-                  EdgeInsets.symmetric(vertical: 4.sc, horizontal: 6.sc),
-              child: Text(
-                text,
-                style: p.textStyle ??
-                    Theme.of(context).textTheme.bodySmall?.wMedium,
-              ),
+          onTap: onTap,
+          child: Container(
+            decoration: BoxDecoration(
+              color:
+                  p.backgroundColor ??
+                  Theme.of(context).colorScheme.secondary.withAlpha(64),
+              borderRadius: p.borderRadius ?? BorderRadius.circular(4.sc),
             ),
-          )
+            margin: p.margin ?? EdgeInsets.zero,
+            padding:
+                p.padding ??
+                EdgeInsets.symmetric(vertical: 4.sc, horizontal: 6.sc),
+            child: Text(
+              text,
+              style:
+                  p.textStyle ?? Theme.of(context).textTheme.bodySmall?.wMedium,
+            ),
+          ),
+        )
         : const SizedBox();
   }
 }
@@ -87,26 +84,10 @@ class Tag extends StatelessWidget {
 
 @GenerateDartModel(
   fields: {
-    Field(
-      fieldPath: ['backgroundColor'],
-      fieldType: Color,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['textStyle'],
-      fieldType: TextStyle,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['padding'],
-      fieldType: EdgeInsets,
-      nullable: false,
-    ),
-    Field(
-      fieldPath: ['margin'],
-      fieldType: EdgeInsets,
-      nullable: false,
-    ),
+    Field(fieldPath: ['backgroundColor'], fieldType: Color, nullable: false),
+    Field(fieldPath: ['textStyle'], fieldType: TextStyle, nullable: false),
+    Field(fieldPath: ['padding'], fieldType: EdgeInsets, nullable: false),
+    Field(fieldPath: ['margin'], fieldType: EdgeInsets, nullable: false),
     Field(
       fieldPath: ['borderRadius'],
       fieldType: BorderRadius,
