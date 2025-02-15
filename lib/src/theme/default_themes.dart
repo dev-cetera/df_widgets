@@ -24,7 +24,8 @@ class DefaultThemes extends InheritedWidget {
   });
 
   T? themeOrNull<T extends Object>() =>
-      themes.whereType<T>().firstOrNull ?? DI.theme.getSyncOrNull<T>();
+      // ignore: invalid_use_of_visible_for_testing_member
+      themes.whereType<T>().firstOrNull ?? DI.theme.getSyncOrNone<T>().orNull();
 
   static DefaultThemes? of(BuildContext? context) {
     return context?.dependOnInheritedWidgetOfExactType<DefaultThemes>();

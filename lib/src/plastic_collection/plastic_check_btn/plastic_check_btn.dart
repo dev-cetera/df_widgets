@@ -23,8 +23,7 @@ class PlasticCheckBtn extends StatelessWidget {
   final PlasticCheckBtnProperties? properties;
 
   static PlasticCheckBtnProperties themeOf(BuildContext? context) {
-    return DefaultThemes.of(context)
-            ?.themeOrNull<PlasticCheckBtnProperties>() ??
+    return DefaultThemes.of(context)?.themeOrNull<PlasticCheckBtnProperties>() ??
         PlasticCheckBtnProperties(
           checkedColor: Colors.green.shade300,
           checkedHoverColor: Colors.green.shade200,
@@ -65,14 +64,11 @@ class PlasticCheckBtn extends StatelessWidget {
       pState: pState,
       onTap: onTap,
       onTapDown: onTapDown,
-      tapBoxProperyBuilder: (checked, defaultTapBoxProperties) =>
-          defaultTapBoxProperties.copyWith(
+      tapBoxProperyBuilder: (checked, defaultTapBoxProperties) => defaultTapBoxProperties.copyWith(
         builder: (context, states, _) {
           final notIdling = states.isNotEmpty;
           return ExtrudedBox(
-            properties:
-                (p.extrudedBoxProperties ?? ExtrudedBox.themeOf(context))
-                    .copyWith(
+            properties: (p.extrudedBoxProperties ?? ExtrudedBox.themeOf(context)).copyWith(
               color: checked
                   ? notIdling
                       ? p.checkedHoverShadowColor
@@ -94,17 +90,13 @@ class PlasticCheckBtn extends StatelessWidget {
                 if (checked) {
                   return Icon(
                     notIdling ? p.checkedHoverIconData$ : p.checkedIconData,
-                    color: notIdling
-                        ? p.checkedHoverIconColor$
-                        : p.checkedIconColor$,
+                    color: notIdling ? p.checkedHoverIconColor$ : p.checkedIconColor$,
                     size: iconSize,
                   );
                 } else {
                   return Icon(
                     notIdling ? p.uncheckedHoverIconData$ : p.uncheckedIconData,
-                    color: notIdling
-                        ? p.uncheckedHoverIconColor$
-                        : p.uncheckedIconColor$,
+                    color: notIdling ? p.uncheckedHoverIconColor$ : p.uncheckedIconColor$,
                     size: iconSize,
                   );
                 }
