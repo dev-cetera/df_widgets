@@ -341,7 +341,7 @@ class _HomeState extends State<Home> {
       BasicNavigationBarBtn(
         pState: Pod<bool>(true),
         onTap: () {},
-        iconBuilder: (state) {
+        iconBuilder: (context, state) {
           switch (state) {
             case NavigationBarItemState.SELECTED:
               return Icon(

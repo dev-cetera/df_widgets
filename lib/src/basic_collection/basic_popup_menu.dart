@@ -22,8 +22,8 @@ class BasicPopupMenu extends StatelessWidget {
   //
 
   final Widget Function(BuildContext context, VoidCallback open) buttonBuilder;
-  final List<Widget> Function(BuildContext context, VoidCallback close)
-  childrenBuilder;
+  final Widget Function(BuildContext, void Function())? backgroundBuilder;
+  final List<Widget> Function(BuildContext context, VoidCallback close) childrenBuilder;
   final void Function(VoidCallback close)? onTapDownBackground;
 
   //
@@ -33,6 +33,7 @@ class BasicPopupMenu extends StatelessWidget {
   const BasicPopupMenu({
     super.key,
     required this.buttonBuilder,
+    this.backgroundBuilder,
     required this.childrenBuilder,
     this.onTapDownBackground,
   });
@@ -73,7 +74,7 @@ class BasicPopupMenu extends StatelessWidget {
           ),
         );
       },
-      // TODO: Add backgroundBuilder
+      backgroundBuilder: backgroundBuilder,
       onTapDownBackground: onTapDownBackground,
     );
   }

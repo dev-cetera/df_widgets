@@ -18,7 +18,7 @@ class BasicNavigationBarBtn extends StatelessWidget {
   final VoidCallback? onTap;
   final GestureTapDownCallback? onTapDown;
   final ValueListenable<bool> pState;
-
+  final EdgeInsetsGeometry? padding;
   final _IconBuilder? iconBuilder;
   final Widget? child;
 
@@ -27,6 +27,7 @@ class BasicNavigationBarBtn extends StatelessWidget {
     required this.pState,
     this.onTap,
     this.onTapDown,
+    this.padding,
     this.iconBuilder,
     this.child,
   });
@@ -38,8 +39,8 @@ class BasicNavigationBarBtn extends StatelessWidget {
       pod: pState,
       builder: (context, snapshot) {
         final state = snapshot.value!;
-
         final icon = iconBuilder?.call(
+          context,
           enabled
               ? state
                   ? NavigationBarItemState.SELECTED
@@ -50,7 +51,10 @@ class BasicNavigationBarBtn extends StatelessWidget {
         return BasicIconBtn(
           onTap: onTap,
           onTapDown: onTapDown,
-          child: icon ?? child,
+          child: Padding(
+            padding: padding ?? EdgeInsets.all(16.sc),
+            child: icon ?? child,
+          ),
         );
       },
     );
@@ -59,6 +63,6 @@ class BasicNavigationBarBtn extends StatelessWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-typedef _IconBuilder = Widget Function(NavigationBarItemState state);
+typedef _IconBuilder = Widget Function(BuildContext context, NavigationBarItemState state);
 
 enum NavigationBarItemState { SELECTED, UNSELECTED, DISABLED }

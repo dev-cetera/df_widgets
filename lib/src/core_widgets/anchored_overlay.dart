@@ -89,8 +89,7 @@ class _State extends State<AnchoredOverlay> {
   //
 
   void _measureAndOverlay(_) {
-    final renderBox =
-        _offstageKey.currentContext?.findRenderObject() as RenderBox;
+    final renderBox = _offstageKey.currentContext?.findRenderObject() as RenderBox;
     final childSize = renderBox.size;
     final position = renderBox.localToGlobal(Offset.zero);
     _positionOverlay(childSize, position);
@@ -121,7 +120,9 @@ class _State extends State<AnchoredOverlay> {
         return Positioned(
           left: x,
           top: y,
-          child: SizedBox(child: widget.child),
+          child: SizedBox(
+            child: widget.child,
+          ),
         );
       },
     );
@@ -150,7 +151,10 @@ class _State extends State<AnchoredOverlay> {
   Widget build(BuildContext context) {
     return Offstage(
       offstage: true,
-      child: SizedBox(key: _offstageKey, child: widget.child),
+      child: SizedBox(
+        key: _offstageKey,
+        child: widget.child,
+      ),
     );
   }
 }
