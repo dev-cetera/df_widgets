@@ -14,6 +14,14 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
+class AnchoredPopupController {
+  AnchoredPopupController();
+  void Function()? _open;
+  void Function()? _close;
+  void close() => _close?.call();
+  void open() => _open?.call();
+}
+
 class AnchoredPopup extends StatefulWidget {
   //
   //
@@ -24,6 +32,7 @@ class AnchoredPopup extends StatefulWidget {
   final Widget Function(BuildContext context, VoidCallback close)? backgroundBuilder;
 
   final void Function(VoidCallback close)? onTapDownBackground;
+  final AnchoredPopupController? controller;
 
   //
   //
@@ -35,6 +44,7 @@ class AnchoredPopup extends StatefulWidget {
     this.itemBuilder,
     this.backgroundBuilder,
     this.onTapDownBackground,
+    this.controller,
   });
 
   //
@@ -60,6 +70,13 @@ class _State extends State<AnchoredPopup> {
 
   void _closePopup() {
     setState(() => _open = false);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    widget.controller?._close = _closePopup;
+    widget.controller?._open = _openPopup;
   }
 
   //
