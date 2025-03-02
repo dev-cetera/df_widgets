@@ -130,9 +130,7 @@ class _HomeState extends State<Home> {
           ),
           Padding(
             padding: EdgeInsets.all(24.sc),
-            child: const BasicSurface(
-              child: SizedBox(width: double.infinity),
-            ),
+            child: const BasicSurface(child: SizedBox(width: double.infinity)),
           ),
           Row(
             children: [
@@ -162,11 +160,7 @@ class _HomeState extends State<Home> {
                 ),
                 child: const Icon(Icons.login_outlined, color: Colors.white),
               ),
-              Container(
-                color: Colors.transparent,
-                height: 48.sc,
-                width: 1.sc,
-              ),
+              Container(color: Colors.transparent, height: 48.sc, width: 1.sc),
               Btn(
                 properties: Btn.themeOf(context).copyWith(
                   textStyle: const TextStyle(color: Colors.white),
@@ -177,11 +171,7 @@ class _HomeState extends State<Home> {
                 text: 'Sign Up',
                 onTap: () {},
               ),
-              Container(
-                color: Colors.transparent,
-                height: 48.sc,
-                width: 1.sc,
-              ),
+              Container(color: Colors.transparent, height: 48.sc, width: 1.sc),
               Btn(
                 properties: Btn.themeOf(context).copyWith(
                   textStyle: const TextStyle(color: Colors.white),
@@ -253,17 +243,19 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
-          Builder(builder: (context) {
-            final items = children(context);
-            return SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return items[index];
-                },
-                childCount: items.length, // Number of items
-              ),
-            );
-          }),
+          Builder(
+            builder: (context) {
+              final items = children(context);
+              return SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    return items[index];
+                  },
+                  childCount: items.length, // Number of items
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

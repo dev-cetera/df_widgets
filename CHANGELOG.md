@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.2.2]
+
+- Released @ 3/2025 (UTC)
+- feat: Add controller to AnchoredPopup
+
 ## [0.2.1]
 
 - Released @ 2/2025 (UTC)

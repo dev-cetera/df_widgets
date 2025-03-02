@@ -140,18 +140,21 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
                 child: Text(
                   title!,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                        fontSize: Theme.of(context).textTheme.titleSmall!.fontSize! * heightf,
-                      ),
+                    fontSize:
+                        Theme.of(context).textTheme.titleSmall!.fontSize! *
+                        heightf,
+                  ),
                 ),
               ),
             ],
             const Spacer(),
             if (optionsMenuTitle != null && optionsMenuBuilder != null)
               AnchoredPopup(
-                buttonBuilder: (context, open) => BasicIconBtn(
-                  iconData: FluentIcons.more_vertical_24_regular,
-                  onTapDown: (_) => open(),
-                ),
+                buttonBuilder:
+                    (context, open) => BasicIconBtn(
+                      iconData: FluentIcons.more_vertical_24_regular,
+                      onTapDown: (_) => open(),
+                    ),
                 onTapDownBackground: (close) {
                   close();
                 },
@@ -164,10 +167,11 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
                           containerProperties: BlurryContainer.themeOf(
                             context,
                           ).containerProperties$.copyWith(
-                                color: Theme.of(
+                            color:
+                                Theme.of(
                                   context,
                                 ).colorScheme.surfaceContainerHighest,
-                              ),
+                          ),
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(24.sc),
                             bottomLeft: Radius.circular(24.sc),
@@ -185,20 +189,20 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
                               children: [
                                 Text(
                                   optionsMenuTitle!,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge
+                                  style: Theme.of(context).textTheme.titleLarge
                                       ?.copyWith(fontWeight: FONT_WEIGHT_BLACK),
                                 ),
                                 const Spacer(),
                                 BasicIconBtn(
-                                  iconData: FluentIcons.chevron_right_24_regular,
+                                  iconData:
+                                      FluentIcons.chevron_right_24_regular,
                                   onTapDown: (_) => close(),
                                 ),
                               ],
                             ),
                             ContentDivider(
-                              color: Theme.of(context).colorScheme.surfaceBright,
+                              color:
+                                  Theme.of(context).colorScheme.surfaceBright,
                             ),
                             ...optionsMenuBuilder!(context),
                           ],
