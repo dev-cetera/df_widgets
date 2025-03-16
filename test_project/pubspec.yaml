@@ -38,7 +38,7 @@ dependencies:
   df_widgets:
     path: ../
 
-  fluentui_system_icons: ^1.1.260
+  fluentui_system_icons: ^1.1.273
 
 dev_dependencies:
   flutter_test:
