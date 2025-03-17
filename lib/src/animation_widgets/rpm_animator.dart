@@ -22,6 +22,7 @@ class RpmAnimator extends StatefulWidget {
   final Widget child;
   final double rpm;
   final bool clockwise;
+  final Curve curve;
 
   //
   //
@@ -32,6 +33,7 @@ class RpmAnimator extends StatefulWidget {
     required this.child,
     this.rpm = 30.0,
     this.clockwise = true,
+    this.curve = Curves.linear,
   });
 
   //
@@ -56,7 +58,7 @@ class _State extends State<RpmAnimator> with SingleTickerProviderStateMixin {
 
   late final _animation = CurvedAnimation(
     parent: _controller,
-    curve: Curves.easeInOut,
+    curve: widget.curve,
   );
 
   //

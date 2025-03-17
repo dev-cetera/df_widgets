@@ -59,6 +59,7 @@ export './widgets/~button_widgets/toggle_btn/toggle_btn.dart';
 export './widgets/blurry_overlay/blurry_overlay.dart';
 export './custom_widgets/extruded_box/extruded_box.dart';
 export './animation_widgets/typing_text.dart';
+export './animation_widgets/scale_x_flip_animator.dart';
 export './animation_widgets/blur_animator/blur_animator.dart';
 export './animation_widgets/bouncing_animator.dart';
 export './animation_widgets/pulse_animator.dart';

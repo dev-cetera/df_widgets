@@ -29,10 +29,12 @@ class AnchoredPopup extends StatefulWidget {
 
   final Widget Function(BuildContext context, VoidCallback open)? buttonBuilder;
   final Widget Function(BuildContext context, VoidCallback close)? itemBuilder;
-  final Widget Function(BuildContext context, VoidCallback close)?
-  backgroundBuilder;
+  final Widget Function(BuildContext context, VoidCallback close)? backgroundBuilder;
 
   final void Function(VoidCallback close)? onTapDownBackground;
+  final void Function(VoidCallback close)? onLongPressBackground;
+  final void Function(VoidCallback close)? onDoubleTapBackground;
+
   final AnchoredPopupController? controller;
 
   //
@@ -45,6 +47,8 @@ class AnchoredPopup extends StatefulWidget {
     this.itemBuilder,
     this.backgroundBuilder,
     this.onTapDownBackground,
+    this.onLongPressBackground,
+    this.onDoubleTapBackground,
     this.controller,
   });
 
@@ -88,32 +92,28 @@ class _State extends State<AnchoredPopup> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        widget.buttonBuilder?.call(context, _openPopup) ??
-            const SizedBox.shrink(),
+        widget.buttonBuilder?.call(context, _openPopup) ?? const SizedBox.shrink(),
         if (_open) ...[
           PositionedOverlay(
             child: GestureDetector(
               behavior: HitTestBehavior.translucent,
-              onTapDown:
-                  (details) => widget.onTapDownBackground?.call(_closePopup),
+              onTapDown: (details) => widget.onTapDownBackground?.call(_closePopup),
+              onLongPress: () => widget.onLongPressBackground?.call(_closePopup),
+              onDoubleTap: () => widget.onDoubleTapBackground?.call(_closePopup),
               child: Builder(
-                builder:
-                    (context) => SizedBox.fromSize(
-                      size: MediaQuery.sizeOf(context),
-                      child:
-                          widget.backgroundBuilder?.call(
-                            context,
-                            _closePopup,
-                          ) ??
-                          const BlurryContainer(),
-                    ),
+                builder: (context) => SizedBox.fromSize(
+                  size: MediaQuery.sizeOf(context),
+                  child: widget.backgroundBuilder?.call(
+                        context,
+                        _closePopup,
+                      ) ??
+                      const BlurryContainer(),
+                ),
               ),
             ),
           ),
           AnchoredOverlay(
-            child:
-                widget.itemBuilder?.call(context, _closePopup) ??
-                const SizedBox.shrink(),
+            child: widget.itemBuilder?.call(context, _closePopup) ?? const SizedBox.shrink(),
           ),
         ],
       ],
