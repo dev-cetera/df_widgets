@@ -23,9 +23,9 @@ class BasicPopupMenu extends StatelessWidget {
 
   final Widget Function(BuildContext context, VoidCallback open) buttonBuilder;
   final Widget Function(BuildContext, void Function())? backgroundBuilder;
-  final List<Widget> Function(BuildContext context, VoidCallback close)
-  childrenBuilder;
+  final List<Widget> Function(BuildContext context, VoidCallback close) childrenBuilder;
   final void Function(VoidCallback close)? onTapDownBackground;
+  final double maxHeightFactor;
 
   //
   //
@@ -37,7 +37,8 @@ class BasicPopupMenu extends StatelessWidget {
     this.backgroundBuilder,
     required this.childrenBuilder,
     this.onTapDownBackground,
-  });
+    this.maxHeightFactor = 0.75,
+  }) : assert(maxHeightFactor >= 0.0 && maxHeightFactor <= 1.0);
 
   //
   //
@@ -61,7 +62,7 @@ class BasicPopupMenu extends StatelessWidget {
               ),
               constraints: BoxConstraints(
                 maxWidth: 300.sc,
-                maxHeight: 0.5 * screenSize.height,
+                maxHeight: maxHeightFactor * screenSize.height,
               ),
               padding: EdgeInsets.all(16.sc),
               child: SingleChildScrollView(
