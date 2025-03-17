@@ -70,9 +70,9 @@ class BasicPopupMenu extends StatelessWidget {
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: Column(
+                  spacing: 4.sc,
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 8.sc,
                   children: childrenBuilder(context, close),
                 ),
               ),

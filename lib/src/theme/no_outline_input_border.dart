@@ -15,5 +15,18 @@ import 'package:flutter/material.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 class NoOutlineInputBorder extends OutlineInputBorder {
-  const NoOutlineInputBorder() : super(borderSide: const BorderSide(style: BorderStyle.none));
+  const NoOutlineInputBorder()
+      : super(
+          borderSide: const BorderSide(style: BorderStyle.none),
+        );
+}
+
+class CircularNoOutlineInputBorder extends OutlineInputBorder {
+  const CircularNoOutlineInputBorder()
+      : super(
+          borderSide: const BorderSide(style: BorderStyle.none),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(999.0),
+          ),
+        );
 }
