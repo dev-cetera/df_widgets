@@ -24,7 +24,6 @@ class BasicPopupMenu extends StatelessWidget {
   final Widget Function(BuildContext context, VoidCallback open) buttonBuilder;
   final Widget Function(BuildContext, void Function())? backgroundBuilder;
   final List<Widget> Function(BuildContext context, VoidCallback close) childrenBuilder;
-  final void Function(VoidCallback close)? onTapDownBackground;
   final double maxWidthFactor;
   final double maxHeightFactor;
 
@@ -37,7 +36,6 @@ class BasicPopupMenu extends StatelessWidget {
     required this.buttonBuilder,
     this.backgroundBuilder,
     required this.childrenBuilder,
-    this.onTapDownBackground,
     this.maxWidthFactor = 0.5,
     this.maxHeightFactor = 0.75,
   }) : assert(maxHeightFactor >= 0.0 && maxHeightFactor <= 1.0);
@@ -81,7 +79,6 @@ class BasicPopupMenu extends StatelessWidget {
         );
       },
       backgroundBuilder: backgroundBuilder,
-      onTapDownBackground: onTapDownBackground,
     );
   }
 }

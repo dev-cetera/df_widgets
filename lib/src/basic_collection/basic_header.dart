@@ -155,9 +155,9 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
                       iconData: FluentIcons.more_vertical_24_regular,
                       onTapDown: (_) => open(),
                     ),
-                onTapDownBackground: (close) {
-                  close();
-                },
+                // onTapDownBackground: (close) {
+                //   close();
+                // },
                 itemBuilder: (context, close) {
                   return SlideAnimator(
                     direction: SlideAnimatorDirection.RIGHT_TO_LEFT,

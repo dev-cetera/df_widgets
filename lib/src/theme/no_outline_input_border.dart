@@ -26,7 +26,7 @@ class CircularNoOutlineInputBorder extends OutlineInputBorder {
       : super(
           borderSide: const BorderSide(style: BorderStyle.none),
           borderRadius: const BorderRadius.all(
-            Radius.circular(999.0),
+            Radius.circular(24.0),
           ),
         );
 }
