@@ -14,15 +14,14 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-sealed class ShowAlignedOverlay {
+class ShowAlignedOverlay {
   static Future<void> show(
     BuildContext context, {
     Alignment alignment = Alignment.bottomCenter,
     required FutureOr<Widget> Function(
       BuildContext context,
       void Function() remove,
-    )
-    builder,
+    ) builder,
   }) {
     final completer = Completer<dynamic>();
     late final OverlayEntry overlayEntry;

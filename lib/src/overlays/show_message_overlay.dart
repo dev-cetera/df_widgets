@@ -15,8 +15,8 @@ import '/_common.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 // TODO: Add theme, add builders with remover passed
-sealed class ShowMessageOverlay {
-  static Future<void> show(
+class ShowMessageOverlay {
+  Future<void> show(
     BuildContext context, {
     String? title,
     TextStyle? titleStyle,
@@ -33,6 +33,7 @@ sealed class ShowMessageOverlay {
     double? titleIconSpacing,
     BoxDecoration? decoration,
     Color? color,
+    Color? backgroundColor,
     Color? dividerColor,
     BorderRadius borderRadius = BorderRadius.zero,
     void Function(void Function() remove)? remover,
@@ -42,6 +43,11 @@ sealed class ShowMessageOverlay {
     return ShowBlurryOverlay.show(
       context,
       tapBackgroundToDismiss: tapBackgroundToDismiss,
+      properties: BlurryOverlayContainerProperties(
+        sigma: 1.0,
+        color: backgroundColor ?? const Color.fromARGB(128, 0, 0, 0),
+        fadeDuration: const Duration(milliseconds: 500),
+      ),
       builder: (context, remove) {
         remover?.call(remove);
         return Column(
@@ -74,8 +80,7 @@ sealed class ShowMessageOverlay {
                         ContentDivider(color: dividerColor),
                       ],
                       if (leading != null) leading,
-                      if (message != null)
-                        Text(message.toString(), style: messageStyle),
+                      if (message != null) Text(message.toString(), style: messageStyle),
                       if (trailing != null) trailing,
                     ],
                   ),

@@ -15,20 +15,19 @@ import '/_common.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 // TODO: Add theme, add builders with remover passed
-sealed class ShowBlurryOverlay {
+class ShowBlurryOverlay {
   static Future<void> show(
     BuildContext context, {
     bool tapBackgroundToDismiss = true,
     required FutureOr<Widget> Function(
       BuildContext context,
       void Function() remove,
-    )
-    builder,
-    BlurryOverlayContainerProperties properties =
-        const BlurryOverlayContainerProperties(
-          sigma: 1.0,
-          color: Color.fromARGB(128, 0, 0, 0),
-        ),
+    ) builder,
+    BlurryOverlayContainerProperties properties = const BlurryOverlayContainerProperties(
+      sigma: 1.0,
+      color: Color.fromARGB(128, 0, 0, 0),
+      fadeDuration: Duration(milliseconds: 500),
+    ),
   }) {
     final completer = Completer<dynamic>();
     late final OverlayEntry overlayEntry;

@@ -17,7 +17,7 @@ import '/_common.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 // TODO: Add theme, add builders with remover passed
-sealed class ShowBottomMessageOverlay {
+class ShowBottomMessageOverlay {
   static Future<void> show(
     BuildContext context, {
     required Object? message,
@@ -50,16 +50,13 @@ sealed class ShowBottomMessageOverlay {
                   extent: 0.5,
                   child: Container(
                     decoration: BoxDecoration(
-                      color:
-                          backgroundColor ??
+                      color: backgroundColor ??
                           backgroundColor ??
                           Theme.of(context).colorScheme.surfaceContainerLow,
-                      borderRadius:
-                          borderRadius ?? BorderRadius.circular(24.sc),
+                      borderRadius: borderRadius ?? BorderRadius.circular(24.sc),
                     ),
                     clipBehavior: Clip.antiAlias,
-                    padding:
-                        padding ??
+                    padding: padding ??
                         EdgeInsets.symmetric(
                           horizontal: 20.sc,
                           vertical: 12.sc,

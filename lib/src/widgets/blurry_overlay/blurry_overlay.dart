@@ -67,9 +67,12 @@ class BlurryOverlay extends StatelessWidget {
         Builder(
           builder: (context) {
             final sigma = p.sigma$;
-            return BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: sigma, sigmaY: sigma),
-              child: Center(child: child),
+            return FadeAnimator(
+              duration: p.fadeDuration ?? Duration.zero,
+              layer2: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: sigma, sigmaY: sigma),
+                child: Center(child: child),
+              ),
             );
           },
         ),
@@ -84,6 +87,7 @@ class BlurryOverlay extends StatelessWidget {
   fields: {
     Field(fieldPath: ['sigma'], fieldType: double, nullable: false),
     Field(fieldPath: ['color'], fieldType: Color, nullable: false),
+    Field(fieldPath: ['fadeDuration'], fieldType: Duration, nullable: true),
   },
   shouldInherit: true,
 )
