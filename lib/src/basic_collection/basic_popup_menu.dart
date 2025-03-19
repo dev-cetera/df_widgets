@@ -26,6 +26,7 @@ class BasicPopupMenu extends StatelessWidget {
   final List<Widget> Function(BuildContext context, VoidCallback close) childrenBuilder;
   final double maxWidthFactor;
   final double maxHeightFactor;
+  final double? maxWidth;
 
   //
   //
@@ -38,6 +39,7 @@ class BasicPopupMenu extends StatelessWidget {
     required this.childrenBuilder,
     this.maxWidthFactor = 0.5,
     this.maxHeightFactor = 0.75,
+    this.maxWidth,
   }) : assert(maxHeightFactor >= 0.0 && maxHeightFactor <= 1.0);
 
   //
@@ -67,11 +69,16 @@ class BasicPopupMenu extends StatelessWidget {
               padding: EdgeInsets.all(16.sc),
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
-                child: Column(
-                  spacing: 4.sc,
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: childrenBuilder(context, close),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: maxWidth ?? double.infinity,
+                  ),
+                  child: Column(
+                    spacing: 4.sc,
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: childrenBuilder(context, close),
+                  ),
                 ),
               ),
             ),
