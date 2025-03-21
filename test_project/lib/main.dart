@@ -78,7 +78,7 @@ class _HomeState extends State<Home> {
           HorizonralSwipable(
             right: HorizonralSwipableDirection(
               onDragEnd: () {
-                print('RIGHT');
+                debugPrint('RIGHT');
               },
               builder: (context, dragOffset, dragExtent, child) {
                 final opacity = dragOffset / dragExtent;
@@ -96,7 +96,7 @@ class _HomeState extends State<Home> {
             ),
             left: HorizonralSwipableDirection(
               onDragEnd: () {
-                print('LEFT');
+                debugPrint('LEFT');
               },
               child: Container(
                 color: Colors.red,
@@ -235,9 +235,9 @@ class _HomeState extends State<Home> {
           ),
           SliverToBoxAdapter(
             child: Container(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               color: Colors.blueAccent,
-              child: Text(
+              child: const Text(
                 'This is a normal widget',
                 style: TextStyle(color: Colors.white, fontSize: 18),
               ),
