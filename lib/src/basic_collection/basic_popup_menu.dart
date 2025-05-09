@@ -27,6 +27,8 @@ class BasicPopupMenu extends StatelessWidget {
   final double maxWidthFactor;
   final double maxHeightFactor;
   final double? maxWidth;
+  final EdgeInsets? margin;
+  final EdgeInsets? padding;
 
   //
   //
@@ -40,6 +42,8 @@ class BasicPopupMenu extends StatelessWidget {
     this.maxWidthFactor = 0.5,
     this.maxHeightFactor = 0.75,
     this.maxWidth,
+    this.margin,
+    this.padding,
   }) : assert(maxHeightFactor >= 0.0 && maxHeightFactor <= 1.0);
 
   //
@@ -55,29 +59,31 @@ class BasicPopupMenu extends StatelessWidget {
       itemBuilder: (context, close) {
         return SlideAnimator(
           curve: Curves.linearToEaseOut,
-          child: Padding(
-            padding: EdgeInsets.all(16.sc),
-            child: BasicSurface(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16.sc),
-                color: Theme.of(context).colorScheme.surfaceContainerLowest,
-              ),
-              constraints: BoxConstraints(
-                maxWidth: maxWidthFactor * screenSize.width,
-                maxHeight: maxHeightFactor * screenSize.height,
-              ),
-              padding: EdgeInsets.all(16.sc),
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: maxWidth ?? double.infinity,
-                  ),
-                  child: Column(
-                    spacing: 4.sc,
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: childrenBuilder(context, close),
+          child: SafeArea(
+            child: Padding(
+              padding: padding ?? EdgeInsets.all(16.sc),
+              child: BasicSurface(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16.sc),
+                  color: Theme.of(context).colorScheme.surfaceContainerLowest,
+                ),
+                constraints: BoxConstraints(
+                  maxWidth: maxWidthFactor * screenSize.width,
+                  maxHeight: maxHeightFactor * screenSize.height,
+                ),
+                padding: margin ?? EdgeInsets.all(16.sc),
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: maxWidth ?? double.infinity,
+                    ),
+                    child: Column(
+                      spacing: 4.sc,
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: childrenBuilder(context, close),
+                    ),
                   ),
                 ),
               ),
