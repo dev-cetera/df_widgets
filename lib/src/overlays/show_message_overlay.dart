@@ -40,6 +40,7 @@ class ShowMessageOverlay {
     double? height,
     double? width,
   }) {
+    FocusManager.instance.primaryFocus?.unfocus(); // Dismiss the keyboard.
     return ShowBlurryOverlay.show(
       context,
       tapBackgroundToDismiss: tapBackgroundToDismiss,

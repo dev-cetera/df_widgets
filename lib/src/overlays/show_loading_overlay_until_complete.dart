@@ -23,6 +23,7 @@ class ShowLoadingOverlayUntilComplete {
     Widget? progressIndicator,
   }) {
     VoidCallback? remove;
+    FocusManager.instance.primaryFocus?.unfocus(); // Dismiss the keyboard.
     return ShowMessageOverlay().show(
       context,
       leading: progressIndicator ??
