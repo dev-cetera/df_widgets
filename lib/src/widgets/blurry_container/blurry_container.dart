@@ -80,20 +80,36 @@ class BlurryContainer extends StatelessWidget {
 
 @GenerateDartModel(
   fields: {
-    Field(fieldPath: ['width'], fieldType: double, nullable: true),
-    Field(fieldPath: ['height'], fieldType: double, nullable: true),
+    Field(
+      fieldPath: ['width'],
+      fieldType: double,
+      nullable: true,
+    ),
+    Field(
+      fieldPath: ['height'],
+      fieldType: double,
+      nullable: true,
+    ),
     Field(
       fieldPath: ['containerProperties'],
       fieldType: BlurryContainerProperties,
       nullable: false,
     ),
-    Field(fieldPath: ['decoration'], fieldType: BoxDecoration, nullable: false),
+    Field(
+      fieldPath: ['decoration'],
+      fieldType: BoxDecoration,
+      nullable: false,
+    ),
     Field(
       fieldPath: ['foregroundDecoration'],
       fieldType: BoxDecoration,
       nullable: false,
     ),
-    Field(fieldPath: ['padding'], fieldType: EdgeInsets, nullable: false),
+    Field(
+      fieldPath: ['padding'],
+      fieldType: EdgeInsets,
+      nullable: false,
+    ),
     Field(
       fieldPath: ['constraints'],
       fieldType: BoxConstraints,

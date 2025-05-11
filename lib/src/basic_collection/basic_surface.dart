@@ -27,6 +27,7 @@ class BasicSurface extends StatelessWidget {
   final BoxDecoration? decoration;
   final EdgeInsets? padding;
   final Color? color;
+  final Gradient? gradient;
   final double? width;
   final double? height;
 
@@ -42,6 +43,7 @@ class BasicSurface extends StatelessWidget {
     this.decoration,
     this.padding,
     this.color,
+    this.gradient,
     this.height,
     this.width,
   });
@@ -54,18 +56,22 @@ class BasicSurface extends StatelessWidget {
   Widget build(BuildContext context) {
     final color1 = decoration?.color ?? color ?? Theme.of(context).colorScheme.surfaceContainer;
     final borderRadius1 = decoration?.borderRadius ?? borderRadius ?? BorderRadius.circular(24.sc);
-    final decoration1 = decoration?.copyWith(color: color1, borderRadius: borderRadius1) ??
-        BoxDecoration(color: color1, borderRadius: borderRadius1);
+    final decoration1 = decoration?.copyWith(
+          color: color1,
+          borderRadius: borderRadius1,
+          gradient: gradient ?? decoration?.gradient,
+        ) ??
+        BoxDecoration(
+          color: gradient == null ? color1 : null,
+          gradient: gradient,
+          borderRadius: borderRadius1,
+        );
     final constraints1 = constraints ?? const BoxConstraints(minWidth: 48.0, minHeight: 48.0);
     return Container(
       width: width,
       height: height,
       constraints: constraints1,
-      decoration: decoration1.copyWith(
-        border: Border.all(
-          color: Theme.of(context).colorScheme.outline,
-        ),
-      ),
+      decoration: decoration1,
       padding: padding ?? EdgeInsets.zero,
       clipBehavior: Clip.hardEdge,
       child: child,
