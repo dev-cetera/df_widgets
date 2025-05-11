@@ -61,7 +61,11 @@ class BasicSurface extends StatelessWidget {
       width: width,
       height: height,
       constraints: constraints1,
-      decoration: decoration1,
+      decoration: decoration1.copyWith(
+        border: Border.all(
+          color: Theme.of(context).colorScheme.outline,
+        ),
+      ),
       padding: padding ?? EdgeInsets.zero,
       clipBehavior: Clip.hardEdge,
       child: child,
