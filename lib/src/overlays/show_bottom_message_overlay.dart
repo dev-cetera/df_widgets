@@ -17,7 +17,7 @@ import '/_common.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 // TODO: Add theme, add builders with remover passed
-class ShowBottomMessageOverlay {
+class ShowTopMessageOverlay {
   static Future<void> show(
     BuildContext context, {
     required Object? message,
@@ -29,11 +29,11 @@ class ShowBottomMessageOverlay {
     Duration? duration = const Duration(seconds: 3),
     EdgeInsets? padding,
     BorderRadius? borderRadius,
-    double? bottomSpacing,
+    double? topSpacing,
   }) {
     return ShowAlignedOverlay.show(
       context,
-      alignment: Alignment.bottomCenter,
+      alignment: Alignment.topCenter,
       builder: (context, remove) {
         remover?.call(remove);
         if (duration != null) {
@@ -44,15 +44,16 @@ class ShowBottomMessageOverlay {
           onTap: remove,
           child: Column(
             children: [
-              const Spacer(),
+              SizedBox(height: topSpacing ?? 72.sc),
               IntrinsicWidth(
                 child: SlideAnimator(
                   extent: 0.5,
+                  direction: SlideAnimatorDirection.TOP_TO_BOTTOM,
                   child: Container(
                     decoration: BoxDecoration(
                       color: backgroundColor ??
                           backgroundColor ??
-                          Theme.of(context).colorScheme.surfaceContainerLow,
+                          Theme.of(context).colorScheme.tertiary.withValues(alpha: 0.85),
                       borderRadius: borderRadius ?? BorderRadius.circular(24.sc),
                     ),
                     clipBehavior: Clip.antiAlias,
@@ -70,7 +71,11 @@ class ShowBottomMessageOverlay {
                         ],
                         Text(
                           message.toString(),
-                          style: messageStyle,
+                          style: messageStyle ??
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: Theme.of(context).colorScheme.onTertiary,
+                                    fontWeight: FONT_WEIGHT_SEMI_BOLD,
+                                  ),
                           softWrap: true,
                         ),
                       ],
@@ -78,7 +83,7 @@ class ShowBottomMessageOverlay {
                   ),
                 ),
               ),
-              SizedBox(height: bottomSpacing ?? 40.sc),
+              const Spacer(),
             ],
           ),
         );

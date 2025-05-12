@@ -17,7 +17,7 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 // TODO: Add theme, add builders with remover passed
-class ShowBottomErrorOverlay {
+class ShowTopErrorOverlay {
   static Future<void> show(
     BuildContext context, {
     required Object? message,
@@ -31,7 +31,7 @@ class ShowBottomErrorOverlay {
     BorderRadius? borderRadius,
     double? bottomSpacing,
   }) {
-    return ShowBottomMessageOverlay.show(
+    return ShowTopMessageOverlay.show(
       context,
       message: message,
       messageStyle: messageStyle,
@@ -47,7 +47,7 @@ class ShowBottomErrorOverlay {
       duration: duration,
       padding: padding,
       borderRadius: borderRadius,
-      bottomSpacing: bottomSpacing,
+      topSpacing: bottomSpacing,
     );
   }
 }
