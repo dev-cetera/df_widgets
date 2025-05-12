@@ -34,7 +34,11 @@ class ShowBlurryOverlay {
 
     void complete() {
       if (overlayEntry.mounted) {
-        overlayEntry.remove();
+        try {
+          overlayEntry.remove();
+        } catch (_) {
+          // Throws if the overlay is already removed. Do nothing.
+        }
       }
       if (!completer.isCompleted) {
         completer.complete();
