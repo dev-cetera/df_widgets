@@ -45,8 +45,7 @@ class ExtrudedBox extends StatelessWidget {
     final p = properties ?? themeOf(context);
     final max = (p.max ?? 12.sc).round();
     final extrusion = (max * p.value$).round();
-    final border =
-        p.border ??
+    final border = p.border ??
         OutlineInputBorder(borderRadius: BorderRadius.circular(8.sc));
     final angleInRadians = (p.angle$ % 360) * pi / 180;
     final ax = cos(angleInRadians);

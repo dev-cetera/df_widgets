@@ -48,7 +48,8 @@ class ScaleXFlipAnimator extends StatefulWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class _State extends State<ScaleXFlipAnimator> with SingleTickerProviderStateMixin {
+class _State extends State<ScaleXFlipAnimator>
+    with SingleTickerProviderStateMixin {
   //
   //
   //
@@ -68,7 +69,8 @@ class _State extends State<ScaleXFlipAnimator> with SingleTickerProviderStateMix
     _controller = AnimationController(
       duration: Duration(seconds: (60.0 / widget.rpm).round()),
       vsync: this,
-    )..repeat(reverse: true); // Repeat with reverse to create an oscillating effect.
+    )..repeat(
+        reverse: true,); // Repeat with reverse to create an oscillating effect.
 
     // Apply the curve to the animation for smooth scaling.
     _animation = CurvedAnimation(
@@ -98,7 +100,8 @@ class _State extends State<ScaleXFlipAnimator> with SingleTickerProviderStateMix
       builder: (context, child) {
         // Calculate the current scale factor based on the animation value.
         // The scale oscillates between minScale and maxScale.
-        final scaleX = widget.minScale + (widget.maxScale - widget.minScale) * _animation.value;
+        final scaleX = widget.minScale +
+            (widget.maxScale - widget.minScale) * _animation.value;
 
         return Transform.scale(
           scaleX: scaleX, // Scale only in the x-direction.

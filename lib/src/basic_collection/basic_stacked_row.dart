@@ -77,8 +77,8 @@ class BasicStackedRow extends StatelessWidget {
               child: Text(
                 '+${children.length - l}',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.surface,
-                ),
+                      color: Theme.of(context).colorScheme.surface,
+                    ),
               ),
             ),
           ),

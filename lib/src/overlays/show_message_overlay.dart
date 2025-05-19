@@ -81,7 +81,8 @@ class ShowMessageOverlay {
                         ContentDivider(color: dividerColor),
                       ],
                       if (leading != null) leading,
-                      if (message != null) Text(message.toString(), style: messageStyle),
+                      if (message != null)
+                        Text(message.toString(), style: messageStyle),
                       if (trailing != null) trailing,
                     ],
                   ),

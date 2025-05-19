@@ -125,18 +125,17 @@ class ContentDivider extends StatelessWidget {
     final vertical = orientation1 == Axis.vertical;
     final horizontal = orientation1 == Axis.horizontal;
 
-    final container =
-        horizontal
-            ? Container(
-              width: double.infinity,
-              height: thickness1,
-              color: color1,
-            )
-            : Container(
-              width: thickness1,
-              height: double.infinity,
-              color: color1,
-            );
+    final container = horizontal
+        ? Container(
+            width: double.infinity,
+            height: thickness1,
+            color: color1,
+          )
+        : Container(
+            width: thickness1,
+            height: double.infinity,
+            color: color1,
+          );
 
     Widget childBuilder(ContentDividerChild child) {
       return Padding(
@@ -148,8 +147,7 @@ class ContentDivider extends StatelessWidget {
         ),
         child: Container(
           decoration: (child.decoration ?? const BoxDecoration()).copyWith(
-            borderRadius:
-                child.decoration?.borderRadius ??
+            borderRadius: child.decoration?.borderRadius ??
                 BorderRadius.circular(math.max(8.sc, 0.25 * size1)),
           ),
           alignment: Alignment.center,
@@ -158,21 +156,18 @@ class ContentDivider extends StatelessWidget {
       );
     }
 
-    final startChildren =
-        children
-            .where((e) => e.alignment == ContentDividerAlignment.START)
-            .map(childBuilder)
-            .toList();
-    final centerChildren =
-        children
-            .where((e) => e.alignment == ContentDividerAlignment.CENTER)
-            .map(childBuilder)
-            .toList();
-    final endChildren =
-        children
-            .where((e) => e.alignment == ContentDividerAlignment.END)
-            .map(childBuilder)
-            .toList();
+    final startChildren = children
+        .where((e) => e.alignment == ContentDividerAlignment.START)
+        .map(childBuilder)
+        .toList();
+    final centerChildren = children
+        .where((e) => e.alignment == ContentDividerAlignment.CENTER)
+        .map(childBuilder)
+        .toList();
+    final endChildren = children
+        .where((e) => e.alignment == ContentDividerAlignment.END)
+        .map(childBuilder)
+        .toList();
 
     final screenSize = MediaQuery.of(context).size;
 
@@ -209,14 +204,14 @@ class ContentDivider extends StatelessWidget {
 
     return overflow
         ? SizedBox(
-          width: horizontal ? screenSize.width : size1,
-          height: vertical ? screenSize.height : size1,
-          child: OverflowBox(
-            maxWidth: screenSize.width,
-            maxHeight: screenSize.height,
-            child: stack,
-          ),
-        )
+            width: horizontal ? screenSize.width : size1,
+            height: vertical ? screenSize.height : size1,
+            child: OverflowBox(
+              maxWidth: screenSize.width,
+              maxHeight: screenSize.height,
+              child: stack,
+            ),
+          )
         : stack;
   }
 }

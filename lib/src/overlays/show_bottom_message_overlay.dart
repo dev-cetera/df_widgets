@@ -53,8 +53,12 @@ class ShowTopMessageOverlay {
                     decoration: BoxDecoration(
                       color: backgroundColor ??
                           backgroundColor ??
-                          Theme.of(context).colorScheme.tertiary.withValues(alpha: 0.85),
-                      borderRadius: borderRadius ?? BorderRadius.circular(24.sc),
+                          Theme.of(context)
+                              .colorScheme
+                              .tertiary
+                              .withValues(alpha: 0.85),
+                      borderRadius:
+                          borderRadius ?? BorderRadius.circular(24.sc),
                     ),
                     clipBehavior: Clip.antiAlias,
                     padding: padding ??
@@ -73,7 +77,9 @@ class ShowTopMessageOverlay {
                           message.toString(),
                           style: messageStyle ??
                               Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: Theme.of(context).colorScheme.onTertiary,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onTertiary,
                                     fontWeight: FONT_WEIGHT_SEMI_BOLD,
                                   ),
                           softWrap: true,

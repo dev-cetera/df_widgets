@@ -39,10 +39,9 @@ class BasicErrBtn extends StatelessWidget {
           return Container(
             constraints: const BoxConstraints(minWidth: 48.0, minHeight: 48.0),
             decoration: BoxDecoration(
-              color:
-                  enabled && states.contains(TapBoxState.HOVER)
-                      ? Theme.of(context).colorScheme.error.withAlpha(32)
-                      : Colors.transparent,
+              color: enabled && states.contains(TapBoxState.HOVER)
+                  ? Theme.of(context).colorScheme.error.withAlpha(32)
+                  : Colors.transparent,
               borderRadius: BorderRadius.circular(24.sc),
             ),
             child: Padding(
@@ -56,18 +55,17 @@ class BasicErrBtn extends StatelessWidget {
           );
         },
       ),
-      child:
-          child ??
+      child: child ??
           (text != null
               ? Text(
-                text!,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontWeight: FONT_WEIGHT_BLACK,
-                  color: Theme.of(
-                    context,
-                  ).colorScheme.error.withSaturation(enabled ? 1.0 : 0.0),
-                ),
-              )
+                  text!,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        fontWeight: FONT_WEIGHT_BLACK,
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.error.withSaturation(enabled ? 1.0 : 0.0),
+                      ),
+                )
               : null),
     );
   }

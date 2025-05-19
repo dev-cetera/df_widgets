@@ -23,7 +23,8 @@ class ShowBlurryOverlay {
       BuildContext context,
       void Function() remove,
     ) builder,
-    BlurryOverlayContainerProperties properties = const BlurryOverlayContainerProperties(
+    BlurryOverlayContainerProperties properties =
+        const BlurryOverlayContainerProperties(
       sigma: 1.0,
       color: Color.fromARGB(128, 0, 0, 0),
       fadeDuration: Duration(milliseconds: 500),

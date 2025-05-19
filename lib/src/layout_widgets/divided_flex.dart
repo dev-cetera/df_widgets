@@ -44,12 +44,12 @@ class DividedFlex extends Flex {
     this.lastIfNotEmpty,
     this.elements,
   }) : super(
-         mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
-         mainAxisSize: mainAxisSize ?? MainAxisSize.min,
-         crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
-         verticalDirection: verticalDirection ?? VerticalDirection.down,
-         direction: direction ?? Axis.horizontal,
-       );
+          mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+          mainAxisSize: mainAxisSize ?? MainAxisSize.min,
+          crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
+          verticalDirection: verticalDirection ?? VerticalDirection.down,
+          direction: direction ?? Axis.horizontal,
+        );
 
   //
   //

@@ -247,10 +247,9 @@ class HorizonralSwipableDirection {
   }
 }
 
-typedef HorizonralSwipableDirectionBuilder =
-    Widget Function(
-      BuildContext context,
-      double dragOffset,
-      double dragExtent,
-      Widget? child,
-    );
+typedef HorizonralSwipableDirectionBuilder = Widget Function(
+  BuildContext context,
+  double dragOffset,
+  double dragExtent,
+  Widget? child,
+);

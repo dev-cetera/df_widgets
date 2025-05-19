@@ -137,27 +137,23 @@ class _State extends State<BasicHeaderSearchBar> {
                         ),
                       );
                     },
-                    childrenBuilder:
-                        (context, close) =>
-                            widget.sortOptionItems
-                                .map(
-                                  (e) => TextButton.icon(
-                                    onPressed: () {
-                                      close();
-                                      e.onTap();
-                                    },
-                                    label: Text(e.title),
-                                    icon: Icon(
-                                      e.selected()
-                                          ? FluentIcons
-                                              .checkbox_checked_24_filled
-                                          : FluentIcons
-                                              .checkbox_unchecked_24_regular,
-                                      size: 24.sc,
-                                    ),
-                                  ),
-                                )
-                                .toList(),
+                    childrenBuilder: (context, close) => widget.sortOptionItems
+                        .map(
+                          (e) => TextButton.icon(
+                            onPressed: () {
+                              close();
+                              e.onTap();
+                            },
+                            label: Text(e.title),
+                            icon: Icon(
+                              e.selected()
+                                  ? FluentIcons.checkbox_checked_24_filled
+                                  : FluentIcons.checkbox_unchecked_24_regular,
+                              size: 24.sc,
+                            ),
+                          ),
+                        )
+                        .toList(),
                   ),
                 if (widget.filterOptionItems.isNotEmpty)
                   BasicPopupMenu(
@@ -171,27 +167,24 @@ class _State extends State<BasicHeaderSearchBar> {
                         ),
                       );
                     },
-                    childrenBuilder:
-                        (context, close) =>
-                            widget.filterOptionItems
-                                .map(
-                                  (e) => TextButton.icon(
-                                    onPressed: () {
-                                      close();
-                                      e.onTap();
-                                    },
-                                    label: Text(e.title),
-                                    icon: Icon(
-                                      e.selected()
-                                          ? FluentIcons
-                                              .checkbox_checked_24_filled
-                                          : FluentIcons
-                                              .checkbox_unchecked_24_regular,
-                                      size: 24.sc,
-                                    ),
-                                  ),
-                                )
-                                .toList(),
+                    childrenBuilder: (context, close) => widget
+                        .filterOptionItems
+                        .map(
+                          (e) => TextButton.icon(
+                            onPressed: () {
+                              close();
+                              e.onTap();
+                            },
+                            label: Text(e.title),
+                            icon: Icon(
+                              e.selected()
+                                  ? FluentIcons.checkbox_checked_24_filled
+                                  : FluentIcons.checkbox_unchecked_24_regular,
+                              size: 24.sc,
+                            ),
+                          ),
+                        )
+                        .toList(),
                   ),
                 if (widget.pCollapsed != null)
                   IconButton(

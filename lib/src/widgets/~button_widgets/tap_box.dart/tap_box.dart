@@ -110,8 +110,7 @@ class _State extends State<TapBox> {
           clipBehavior: Clip.antiAlias,
           decoration: _p.decoration$,
           foregroundDecoration: _p.foregroundDecoration,
-          child:
-              _p.builder?.call(context, _states, widget.child) ??
+          child: _p.builder?.call(context, _states, widget.child) ??
               widget.child ??
               const SizedBox.shrink(),
         ),
@@ -144,9 +143,8 @@ class _TapBoxProperties {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-typedef _WidgetBuilder =
-    Widget Function(
-      BuildContext context,
-      Set<TapBoxState> states,
-      Widget? child,
-    );
+typedef _WidgetBuilder = Widget Function(
+  BuildContext context,
+  Set<TapBoxState> states,
+  Widget? child,
+);
