@@ -55,7 +55,7 @@ class _State extends State<TapBox> {
 
   void _handleTapDown(TapDownDetails details) {
     setState(() {
-      _states = {TapBoxState.HOVER, TapBoxState.TAP_DOWN};
+      _states = {/*TapBoxState.HOVER, */ TapBoxState.TAP_DOWN};
     });
     if (widget.onTapDown != null) {
       widget.onTapDown!(details);
@@ -78,21 +78,21 @@ class _State extends State<TapBox> {
   }
 
   void _handleMouseEnter(PointerEnterEvent event) {
-    setState(() {
-      _states = {TapBoxState.HOVER};
-    });
+    // setState(() {
+    //   _states = {TapBoxState.HOVER};
+    // });
   }
 
   void _handleMouseExit(PointerExitEvent event) {
-    setState(() {
-      _states = {};
-    });
+    // setState(() {
+    //   _states = {};
+    // });
   }
 
   void _handleMouseHover(PointerHoverEvent event) {
-    setState(() {
-      _states = {TapBoxState.HOVER};
-    });
+    // setState(() {
+    //   _states = {TapBoxState.HOVER};
+    // });
   }
 
   @override
