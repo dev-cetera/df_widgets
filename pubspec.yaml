@@ -35,9 +35,9 @@ dependencies:
     sdk: flutter
 
   df_color: ^0.1.4
-  df_di: ^0.10.22
+  df_di: ^0.10.24
   df_generate_dart_models_core: ^0.9.8
-  df_pod: ^0.16.9
+  df_pod: ^0.16.10
   df_scalable: ^0.8.1
   df_debouncer: ^0.4.6
 

@@ -10,11 +10,7 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-import 'package:df_generate_dart_models_core/df_generate_dart_models_core.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-
-import '../../../_index.g.dart';
+import '/_common.dart';
 
 part '_tap_box_properties.g.dart';
 

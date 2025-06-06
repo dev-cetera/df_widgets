@@ -13,4 +13,4 @@
 /// A collection of practical widgets that are neither material nor cupertino.
 library;
 
-export '/src/_index.g.dart';
+export '/src/_src.g.dart';

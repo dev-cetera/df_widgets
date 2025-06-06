@@ -23,13 +23,13 @@ class BasicPopupMenu extends StatelessWidget {
 
   final Widget Function(BuildContext context, VoidCallback open) buttonBuilder;
   final Widget Function(BuildContext, void Function())? backgroundBuilder;
-  final List<Widget> Function(BuildContext context, VoidCallback close)
-      childrenBuilder;
+  final List<Widget> Function(BuildContext context, VoidCallback close) childrenBuilder;
   final double maxWidthFactor;
   final double maxHeightFactor;
   final double? maxWidth;
   final EdgeInsets? margin;
   final EdgeInsets? padding;
+  final CrossAxisAlignment columnAlignment;
 
   //
   //
@@ -45,6 +45,7 @@ class BasicPopupMenu extends StatelessWidget {
     this.maxWidth,
     this.margin,
     this.padding,
+    this.columnAlignment = CrossAxisAlignment.end,
   }) : assert(maxHeightFactor >= 0.0 && maxHeightFactor <= 1.0);
 
   //
@@ -80,9 +81,9 @@ class BasicPopupMenu extends StatelessWidget {
                       maxWidth: maxWidth ?? double.infinity,
                     ),
                     child: Column(
-                      spacing: 4.sc,
+                      spacing: 8.sc,
                       mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: columnAlignment,
                       children: childrenBuilder(context, close),
                     ),
                   ),
