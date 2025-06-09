@@ -77,12 +77,13 @@ class _State extends State<BlurAnimator> with SingleTickerProviderStateMixin {
         _controller.forward();
       }
     });
-    _animation = Tween<double>(
-      begin: widget.properties.begin$,
-      end: widget.properties.end$,
-    ).animate(
-      CurvedAnimation(parent: _controller, curve: widget.properties.curve$),
-    );
+    _animation =
+        Tween<double>(
+          begin: widget.properties.begin$,
+          end: widget.properties.end$,
+        ).animate(
+          CurvedAnimation(parent: _controller, curve: widget.properties.curve$),
+        );
   }
 
   //

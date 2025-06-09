@@ -126,16 +126,8 @@ class ContentDivider extends StatelessWidget {
     final horizontal = orientation1 == Axis.horizontal;
 
     final container = horizontal
-        ? Container(
-            width: double.infinity,
-            height: thickness1,
-            color: color1,
-          )
-        : Container(
-            width: thickness1,
-            height: double.infinity,
-            color: color1,
-          );
+        ? Container(width: double.infinity, height: thickness1, color: color1)
+        : Container(width: thickness1, height: double.infinity, color: color1);
 
     Widget childBuilder(ContentDividerChild child) {
       return Padding(
@@ -147,7 +139,8 @@ class ContentDivider extends StatelessWidget {
         ),
         child: Container(
           decoration: (child.decoration ?? const BoxDecoration()).copyWith(
-            borderRadius: child.decoration?.borderRadius ??
+            borderRadius:
+                child.decoration?.borderRadius ??
                 BorderRadius.circular(math.max(8.sc, 0.25 * size1)),
           ),
           alignment: Alignment.center,

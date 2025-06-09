@@ -23,7 +23,8 @@ class BasicPopupMenu extends StatelessWidget {
 
   final Widget Function(BuildContext context, VoidCallback open) buttonBuilder;
   final Widget Function(BuildContext, void Function())? backgroundBuilder;
-  final List<Widget> Function(BuildContext context, VoidCallback close) childrenBuilder;
+  final List<Widget> Function(BuildContext context, VoidCallback close)
+  childrenBuilder;
   final double maxWidthFactor;
   final double maxHeightFactor;
   final double? maxWidth;

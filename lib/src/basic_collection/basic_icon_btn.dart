@@ -53,7 +53,8 @@ class BasicIconBtn extends StatelessWidget {
           );
         },
       ),
-      child: child ??
+      child:
+          child ??
           Icon(
             iconData,
             color: Theme.of(

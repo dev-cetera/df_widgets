@@ -97,8 +97,9 @@ class TextEditProperties extends _TextEditProperties {
       focusNode: focusNode ? this.focusNode : null,
       style: style ? this.style : null,
       cursorColor: cursorColor ? this.cursorColor : null,
-      backgroundCursorColor:
-          backgroundCursorColor ? this.backgroundCursorColor : null,
+      backgroundCursorColor: backgroundCursorColor
+          ? this.backgroundCursorColor
+          : null,
       onSubmitted: onSubmitted ? this.onSubmitted : null,
       onChanged: onChanged ? this.onChanged : null,
       onTapOutside: onTapOutside ? this.onTapOutside : null,

@@ -44,40 +44,34 @@ class BasicCheckBtn extends StatelessWidget {
       onTapDown: onTapDown,
       tapBoxProperyBuilder: (checked, defaultTapBoxProperties) =>
           defaultTapBoxProperties.copyWith(
-        builder: (context, states, _) {
-          return Container(
-            width: 48.sc,
-            height: 48.sc,
-            decoration: ShapeDecoration(
-              color: enabled && states.contains(TapBoxState.HOVER)
-                  ? Theme.of(
-                      context,
-                    ).colorScheme.primary.withAlpha(32)
-                  : Colors.transparent,
-              shape: shape,
-            ),
-            child: checked
-                ? checkedIcon ??
-                    Icon(
-                      FluentIcons.checkbox_checked_24_regular,
-                      color: Theme.of(context)
-                          .colorScheme
-                          .primary
-                          .withSaturation(enabled ? 1.0 : 0.0),
-                      size: 24.sc,
-                    )
-                : unheckedIcon ??
-                    Icon(
-                      FluentIcons.checkbox_unchecked_24_regular,
-                      color: Theme.of(context)
-                          .colorScheme
-                          .primary
-                          .withSaturation(enabled ? 1.0 : 0.0),
-                      size: 24.sc,
-                    ),
-          );
-        },
-      ),
+            builder: (context, states, _) {
+              return Container(
+                width: 48.sc,
+                height: 48.sc,
+                decoration: ShapeDecoration(
+                  color: enabled && states.contains(TapBoxState.HOVER)
+                      ? Theme.of(context).colorScheme.primary.withAlpha(32)
+                      : Colors.transparent,
+                  shape: shape,
+                ),
+                child: checked
+                    ? checkedIcon ??
+                          Icon(
+                            FluentIcons.checkbox_checked_24_regular,
+                            color: Theme.of(context).colorScheme.primary
+                                .withSaturation(enabled ? 1.0 : 0.0),
+                            size: 24.sc,
+                          )
+                    : unheckedIcon ??
+                          Icon(
+                            FluentIcons.checkbox_unchecked_24_regular,
+                            color: Theme.of(context).colorScheme.primary
+                                .withSaturation(enabled ? 1.0 : 0.0),
+                            size: 24.sc,
+                          ),
+              );
+            },
+          ),
     );
   }
 }

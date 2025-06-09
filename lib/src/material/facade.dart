@@ -56,7 +56,10 @@ class Facade {
     return Stack(
       fit: StackFit.expand,
       children: [
-        Blur(sigma: blurSigma, child: RawImage(fit: BoxFit.fill, image: image)),
+        Blur(
+          sigma: blurSigma,
+          child: RawImage(fit: BoxFit.fill, image: image),
+        ),
         if (child != null) child!,
       ],
     );

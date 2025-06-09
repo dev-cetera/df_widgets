@@ -45,7 +45,8 @@ class ExtrudedBox extends StatelessWidget {
     final p = properties ?? themeOf(context);
     final max = (p.max ?? 12.sc).round();
     final extrusion = (max * p.value$).round();
-    final border = p.border ??
+    final border =
+        p.border ??
         OutlineInputBorder(borderRadius: BorderRadius.circular(8.sc));
     final angleInRadians = (p.angle$ % 360) * pi / 180;
     final ax = cos(angleInRadians);
@@ -141,8 +142,10 @@ class ExtrudedBoxPainter extends CustomPainter {
       canvas.save();
 
       // Create a scaled-down path for the extrusion effect
-      final scaleFactor =
-          max(0, 1 - (i * perspectiveDepth / 1000.0)).toDouble();
+      final scaleFactor = max(
+        0,
+        1 - (i * perspectiveDepth / 1000.0),
+      ).toDouble();
       final shiftedPath = Path.from(path);
 
       // Translate the path inward based on the extrusion

@@ -140,10 +140,10 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
                 child: Text(
                   title!,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                        fontSize:
-                            Theme.of(context).textTheme.titleSmall!.fontSize! *
-                                heightf,
-                      ),
+                    fontSize:
+                        Theme.of(context).textTheme.titleSmall!.fontSize! *
+                        heightf,
+                  ),
                 ),
               ),
             ],
@@ -163,9 +163,9 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
                     child: IntrinsicHeight(
                       child: BlurryContainer(
                         properties: BlurryContainer.themeOf(context).copyWith(
-                          containerProperties: BlurryContainer.themeOf(
-                            context,
-                          ).containerProperties$.copyWith(
+                          containerProperties: BlurryContainer.themeOf(context)
+                              .containerProperties$
+                              .copyWith(
                                 color: Theme.of(
                                   context,
                                 ).colorScheme.surfaceContainerHighest,
@@ -187,9 +187,7 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
                               children: [
                                 Text(
                                   optionsMenuTitle!,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge
+                                  style: Theme.of(context).textTheme.titleLarge
                                       ?.copyWith(fontWeight: FONT_WEIGHT_BLACK),
                                 ),
                                 const Spacer(),
@@ -201,8 +199,9 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
                               ],
                             ),
                             ContentDivider(
-                              color:
-                                  Theme.of(context).colorScheme.surfaceBright,
+                              color: Theme.of(
+                                context,
+                              ).colorScheme.surfaceBright,
                             ),
                             ...optionsMenuBuilder!(context),
                           ],

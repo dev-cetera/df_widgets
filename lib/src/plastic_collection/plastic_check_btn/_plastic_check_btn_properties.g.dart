@@ -176,25 +176,34 @@ class PlasticCheckBtnProperties extends _PlasticCheckBtnProperties {
       uncheckedIconData: uncheckedIconData ? this.uncheckedIconData : null,
       uncheckedIconColor: uncheckedIconColor ? this.uncheckedIconColor : null,
       uncheckedColor: uncheckedColor ? this.uncheckedColor : null,
-      uncheckedShadowColor:
-          uncheckedShadowColor ? this.uncheckedShadowColor : null,
-      checkedHoverIconData:
-          checkedHoverIconData ? this.checkedHoverIconData : null,
-      checkedHoverIconColor:
-          checkedHoverIconColor ? this.checkedHoverIconColor : null,
+      uncheckedShadowColor: uncheckedShadowColor
+          ? this.uncheckedShadowColor
+          : null,
+      checkedHoverIconData: checkedHoverIconData
+          ? this.checkedHoverIconData
+          : null,
+      checkedHoverIconColor: checkedHoverIconColor
+          ? this.checkedHoverIconColor
+          : null,
       checkedHoverColor: checkedHoverColor ? this.checkedHoverColor : null,
-      checkedHoverShadowColor:
-          checkedHoverShadowColor ? this.checkedHoverShadowColor : null,
-      uncheckedHoverIconData:
-          uncheckedHoverIconData ? this.uncheckedHoverIconData : null,
-      uncheckedHoverIconColor:
-          uncheckedHoverIconColor ? this.uncheckedHoverIconColor : null,
-      uncheckedHoverColor:
-          uncheckedHoverColor ? this.uncheckedHoverColor : null,
-      uncheckedHoverShadowColor:
-          uncheckedHoverShadowColor ? this.uncheckedHoverShadowColor : null,
-      extrudedBoxProperties:
-          extrudedBoxProperties ? this.extrudedBoxProperties : null,
+      checkedHoverShadowColor: checkedHoverShadowColor
+          ? this.checkedHoverShadowColor
+          : null,
+      uncheckedHoverIconData: uncheckedHoverIconData
+          ? this.uncheckedHoverIconData
+          : null,
+      uncheckedHoverIconColor: uncheckedHoverIconColor
+          ? this.uncheckedHoverIconColor
+          : null,
+      uncheckedHoverColor: uncheckedHoverColor
+          ? this.uncheckedHoverColor
+          : null,
+      uncheckedHoverShadowColor: uncheckedHoverShadowColor
+          ? this.uncheckedHoverShadowColor
+          : null,
+      extrudedBoxProperties: extrudedBoxProperties
+          ? this.extrudedBoxProperties
+          : null,
     );
   }
 

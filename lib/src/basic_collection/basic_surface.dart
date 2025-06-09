@@ -54,13 +54,16 @@ class BasicSurface extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color1 = decoration?.color ??
+    final color1 =
+        decoration?.color ??
         color ??
         Theme.of(context).colorScheme.surfaceContainer;
-    final borderRadius1 = decoration?.borderRadius ??
+    final borderRadius1 =
+        decoration?.borderRadius ??
         borderRadius ??
         BorderRadius.circular(24.sc);
-    final decoration1 = decoration?.copyWith(
+    final decoration1 =
+        decoration?.copyWith(
           color: color1,
           borderRadius: borderRadius1,
           gradient: gradient ?? decoration?.gradient,

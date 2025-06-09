@@ -22,13 +22,14 @@ class ShowBlurryOverlay {
     required FutureOr<Widget> Function(
       BuildContext context,
       void Function() remove,
-    ) builder,
+    )
+    builder,
     BlurryOverlayContainerProperties properties =
         const BlurryOverlayContainerProperties(
-      sigma: 1.0,
-      color: Color.fromARGB(128, 0, 0, 0),
-      fadeDuration: Duration(milliseconds: 500),
-    ),
+          sigma: 1.0,
+          color: Color.fromARGB(128, 0, 0, 0),
+          fadeDuration: Duration(milliseconds: 500),
+        ),
   }) {
     final completer = Completer<dynamic>();
     late final OverlayEntry overlayEntry;

@@ -43,8 +43,8 @@ class BasicNavigationBarBtn extends StatelessWidget {
           context,
           enabled
               ? state
-                  ? NavigationBarItemState.SELECTED
-                  : NavigationBarItemState.UNSELECTED
+                    ? NavigationBarItemState.SELECTED
+                    : NavigationBarItemState.UNSELECTED
               : NavigationBarItemState.DISABLED,
         );
         assert(icon != null || child != null);
@@ -63,9 +63,7 @@ class BasicNavigationBarBtn extends StatelessWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-typedef _IconBuilder = Widget Function(
-  BuildContext context,
-  NavigationBarItemState state,
-);
+typedef _IconBuilder =
+    Widget Function(BuildContext context, NavigationBarItemState state);
 
 enum NavigationBarItemState { SELECTED, UNSELECTED, DISABLED }

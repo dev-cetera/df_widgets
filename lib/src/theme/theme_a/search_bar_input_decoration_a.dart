@@ -19,11 +19,11 @@ import '../no_outline_input_border.dart';
 
 class SearchBarInputDecorationA extends InputDecoration {
   SearchBarInputDecorationA()
-      : super(
-          isDense: true,
-          fillColor: Colors.transparent,
-          contentPadding: EdgeInsets.symmetric(vertical: 12.sc),
-          focusedBorder: const NoOutlineInputBorder(),
-          enabledBorder: const NoOutlineInputBorder(),
-        );
+    : super(
+        isDense: true,
+        fillColor: Colors.transparent,
+        contentPadding: EdgeInsets.symmetric(vertical: 12.sc),
+        focusedBorder: const NoOutlineInputBorder(),
+        enabledBorder: const NoOutlineInputBorder(),
+      );
 }

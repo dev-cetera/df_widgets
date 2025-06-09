@@ -66,17 +66,16 @@ class _State extends State<ScaleXFlipAnimator>
     super.initState();
     // Initialize the AnimationController with a duration based on RPM.
     // Each "flip" cycle (scale from min to max and back) should take 60/rpm seconds.
-    _controller = AnimationController(
-      duration: Duration(seconds: (60.0 / widget.rpm).round()),
-      vsync: this,
-    )..repeat(
-        reverse: true,); // Repeat with reverse to create an oscillating effect.
+    _controller =
+        AnimationController(
+          duration: Duration(seconds: (60.0 / widget.rpm).round()),
+          vsync: this,
+        )..repeat(
+          reverse: true,
+        ); // Repeat with reverse to create an oscillating effect.
 
     // Apply the curve to the animation for smooth scaling.
-    _animation = CurvedAnimation(
-      parent: _controller,
-      curve: widget.curve,
-    );
+    _animation = CurvedAnimation(parent: _controller, curve: widget.curve);
   }
 
   //
@@ -100,7 +99,8 @@ class _State extends State<ScaleXFlipAnimator>
       builder: (context, child) {
         // Calculate the current scale factor based on the animation value.
         // The scale oscillates between minScale and maxScale.
-        final scaleX = widget.minScale +
+        final scaleX =
+            widget.minScale +
             (widget.maxScale - widget.minScale) * _animation.value;
 
         return Transform.scale(
