@@ -40,14 +40,12 @@ class ToggleBtn extends StatelessWidget {
     return PodBuilder(
       pod: pState,
       builder: (context, snapshot) {
-        final state = snapshot.value!;
+        final state = snapshot.value.unwrap().unwrap();
         final p = defaultTapBoxProperties ?? TapBox.themeOf(context);
         return TapBox(
           properties: tapBoxProperyBuilder?.call(state, p),
           onTap: onTap != null ? () => onTap?.call(pState) : null,
-          onTapDown: onTapDown != null
-              ? (details) => onTapDown?.call(details, pState)
-              : null,
+          onTapDown: onTapDown != null ? (details) => onTapDown?.call(details, pState) : null,
           child: childBuilder?.call(context, state),
         );
       },

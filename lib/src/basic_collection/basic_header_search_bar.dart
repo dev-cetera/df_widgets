@@ -56,7 +56,7 @@ class _State extends State<BasicHeaderSearchBar> {
   //
   //
 
-  late final _initiallyCollapsed = widget.pCollapsed?.value;
+  late final _initiallyCollapsed = widget.pCollapsed?.getValue();
   final _textEditingController = TextEditingController();
 
   @override
@@ -167,8 +167,7 @@ class _State extends State<BasicHeaderSearchBar> {
                         ),
                       );
                     },
-                    childrenBuilder: (context, close) => widget
-                        .filterOptionItems
+                    childrenBuilder: (context, close) => widget.filterOptionItems
                         .map(
                           (e) => TextButton.icon(
                             onPressed: () {
@@ -205,7 +204,7 @@ class _State extends State<BasicHeaderSearchBar> {
       return PodBuilder(
         pod: widget.pCollapsed!,
         builder: (context, collapsedSnapshot) {
-          final collapsed = collapsedSnapshot.value!;
+          final collapsed = collapsedSnapshot.value.unwrap().unwrap();
           if (collapsed != true && _initiallyCollapsed == false) {
             widget.focusNode.requestFocus();
           }

@@ -38,7 +38,7 @@ class BasicNavigationBarBtn extends StatelessWidget {
     return PodBuilder(
       pod: pState,
       builder: (context, snapshot) {
-        final state = snapshot.value!;
+        final state = snapshot.value.unwrap().unwrap();
         final icon = iconBuilder?.call(
           context,
           enabled
@@ -64,6 +64,8 @@ class BasicNavigationBarBtn extends StatelessWidget {
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 typedef _IconBuilder = Widget Function(
-    BuildContext context, NavigationBarItemState state,);
+  BuildContext context,
+  NavigationBarItemState state,
+);
 
 enum NavigationBarItemState { SELECTED, UNSELECTED, DISABLED }
