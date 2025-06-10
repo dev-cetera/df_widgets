@@ -88,9 +88,8 @@ class _State extends State<AnchoredOverlay> {
   //
   //
 
-  void _measureAndOverlay(_) {
-    final renderBox =
-        _offstageKey.currentContext?.findRenderObject() as RenderBox;
+  void _measureAndOverlay(dynamic _) {
+    final renderBox = _offstageKey.currentContext?.findRenderObject() as RenderBox;
     final childSize = renderBox.size;
     final position = renderBox.localToGlobal(Offset.zero);
     _positionOverlay(childSize, position);

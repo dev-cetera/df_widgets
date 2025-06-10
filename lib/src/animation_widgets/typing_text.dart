@@ -96,7 +96,7 @@ class _TypingTextState extends State<TypingText> {
     }
   }
 
-  void _toggleCursor(_) {
+  void _toggleCursor(dynamic _) {
     _refresh(() {
       _showCursor = !_showCursor;
     });
