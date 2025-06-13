@@ -12,7 +12,7 @@
 
 name: df_widgets
 description: A collection of practical widgets that are neither material nor cupertino.
-version: 0.2.5
+version: 0.2.6
 repository: https://github.com/dev-cetera/df_widgets
 funding:
   - https://www.buymeacoffee.com/dev_cetera
@@ -36,7 +36,7 @@ dependencies:
 
   df_color: ^0.1.4
   df_di: ^0.12.5
-  df_generate_dart_models_core: ^0.9.13
+  df_generate_dart_models_core: ^0.9.14
   df_pod: ^0.18.2
   df_scalable: ^0.9.1
   df_debouncer: ^0.4.10
