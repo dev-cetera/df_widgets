@@ -15,8 +15,7 @@ export 'package:flutter/gestures.dart';
 
 export 'package:df_color/df_color.dart';
 export 'package:df_di/df_di.dart';
-export 'package:df_generate_dart_models_core/df_generate_dart_models_core.dart'
-    hide Sequential, Finisher;
+export 'package:df_generate_dart_models_core/df_generate_dart_models_core.dart';
 export 'package:df_pod/df_pod.dart';
 export 'package:df_scalable/df_scalable.dart';
 
