@@ -76,7 +76,11 @@ Set<_VersionSection> extractSections(String contents) {
         updates.add(line);
       }
     }
-    results.add(_VersionSection(version: version, releasedAt: releasedAt, updates: updates));
+    results.add(_VersionSection(
+      version: version,
+      releasedAt: releasedAt,
+      updates: updates,
+    ));
   }
 
   return results;
@@ -97,8 +101,11 @@ class _VersionSection {
   //
   //
 
-  _VersionSection({required this.version, required this.releasedAt, Set<String>? updates})
-      : this.updates = updates ?? {};
+  _VersionSection({
+    required this.version,
+    required this.releasedAt,
+    Set<String>? updates,
+  }) : this.updates = updates ?? {};
 
   //
   //
