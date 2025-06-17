@@ -35,11 +35,11 @@ dependencies:
   flutter:
     sdk: flutter
   df_color: ^0.1.4
-  df_di: ^0.12.5
-  df_generate_dart_models_core: ^0.9.14
-  df_pod: ^0.18.2
-  df_scalable: ^0.9.1
-  df_debouncer: ^0.4.10
+  df_di: ^0.12.7
+  df_generate_dart_models_core: ^0.9.17
+  df_pod: ^0.18.3
+  df_scalable: ^0.9.3
+  df_debouncer: ^0.4.12
   fluentui_system_icons: ^1.1.273
   visibility_detector: ^0.4.0+2
 
