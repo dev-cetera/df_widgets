@@ -16,7 +16,7 @@ repository: https://github.com/robmllze/df_widgets
 funding:
   - https://www.buymeacoffee.com/dev_cetera
 description: A collection of practical widgets that are neither material nor cupertino.
-version: 0.2.7
+version: 0.2.8
 topics:
   - design
   - modular

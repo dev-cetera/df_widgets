@@ -9,7 +9,6 @@
 
 - Released @ 6/2025 (UTC)
 - chore: Update dependencies
-- chore: Update dendendencies
 
 ## [0.2.5]
 
