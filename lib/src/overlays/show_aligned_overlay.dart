@@ -21,8 +21,7 @@ class ShowAlignedOverlay {
     required FutureOr<Widget> Function(
       BuildContext context,
       void Function() remove,
-    )
-    builder,
+    ) builder,
   }) {
     final completer = Completer<dynamic>();
     late final OverlayEntry overlayEntry;

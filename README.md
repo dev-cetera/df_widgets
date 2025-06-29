@@ -1,41 +1,27 @@
 <a href="https://www.buymeacoffee.com/dev_cetera" target="_blank"><img align="right" src="https://cdn.buymeacoffee.com/buttons/default-orange.png" height="48"></a>
-<a href="https://discord.gg/gEQ8y2nfyX" target="_blank"><img align="right" src="https://raw.githubusercontent.com/dev-cetera/resources/refs/heads/main/assets/icons/discord_icon/discord_icon.svg" height="48"></a>
+<a href="https://discord.gg/gEQ8y2nfyX" target="_blank"><img align="right" src="https://raw.githubusercontent.com/dev-cetera/.github/refs/heads/main/assets/icons/discord_icon/discord_icon.svg" height="48"></a>
 
 Dart & Flutter Packages by dev-cetera.com & contributors.
 
 [![sponsor](https://img.shields.io/badge/sponsor-grey?logo=github-sponsors)](https://github.com/sponsors/dev-cetera)
 [![patreon](https://img.shields.io/badge/patreon-grey?logo=patreon)](https://www.patreon.com/c/RobertMollentze)
-[![pub](https://img.shields.io/pub/v/test_project.svg)](https://pub.dev/packages/test_project)
-[![tag](https://img.shields.io/badge/tag-v1.0.1-purple?logo=github)](https://github.com/dev-cetera/test_project/tree/v1.0.1)
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dev-cetera/test_project/main/LICENSE)
+[![pub](https://img.shields.io/pub/v/df_widgets.svg)](https://pub.dev/packages/df_widgets)
+[![tag](https://img.shields.io/badge/tag-v0.2.12-purple?logo=github)](https://github.com/dev-cetera/df_widgets/tree/v0.2.12)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dev-cetera/df_widgets/main/LICENSE)
 
 ---
 
 <!-- BEGIN _README_CONTENT -->
 
-# test_project
+## Summary
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
+A collection of practical widgets that are neither material nor cupertino.
 
 <!-- END _README_CONTENT -->
 
 ---
 
-☝️ Please refer to the [API reference](https://pub.dev/documentation/test_project/) for more information.
+☝️ Please refer to the [API reference](https://pub.dev/documentation/df_widgets/) for more information.
 
 ---
 
@@ -64,5 +50,5 @@ If you're enjoying this package and find it valuable, consider showing your appr
 
 ## 🧑‍⚖️ License
 
-This project is released under the [MIT License](https://raw.githubusercontent.com/dev-cetera/test_project/main/LICENSE). See [LICENSE](https://raw.githubusercontent.com/dev-cetera/test_project/main/LICENSE) for more information.
+This project is released under the [MIT License](https://raw.githubusercontent.com/dev-cetera/df_widgets/main/LICENSE). See [LICENSE](https://raw.githubusercontent.com/dev-cetera/df_widgets/main/LICENSE) for more information.
 

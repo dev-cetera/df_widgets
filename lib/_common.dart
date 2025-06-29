@@ -12,6 +12,8 @@
 
 export 'package:flutter/widgets.dart';
 export 'package:flutter/gestures.dart';
+export 'package:flutter/foundation.dart' show ValueListenable;
+export 'dart:async' show FutureOr, Completer, Timer;
 
 export 'package:df_color/df_color.dart';
 export 'package:df_di/df_di.dart';
