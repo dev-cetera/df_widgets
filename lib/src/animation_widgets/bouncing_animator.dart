@@ -1,9 +1,10 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
-// source code is governed by an MIT-style license described in the LICENSE
-// file located in this project's root directory.
+// Copyright © dev-cetera.com & contributors.
+//
+// The use of this source code is governed by an MIT-style license described in
+// the LICENSE file located in this project's root directory.
 //
 // See: https://opensource.org/license/mit
 //
@@ -48,8 +49,7 @@ class BouncingAnimator extends StatefulWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class _State extends State<BouncingAnimator>
-    with SingleTickerProviderStateMixin {
+class _State extends State<BouncingAnimator> with SingleTickerProviderStateMixin {
   //
   //
   //
@@ -69,18 +69,17 @@ class _State extends State<BouncingAnimator>
       vsync: this,
     );
 
-    _animation =
-        Tween<double>(begin: widget.beginSize, end: widget.endSize).animate(
-          CurvedAnimation(parent: _controller, curve: widget.curve),
-        )..addStatusListener((status) {
-          if (status == AnimationStatus.completed) {
-            _controller.reverse();
-          } else if (status == AnimationStatus.dismissed) {
-            if (widget.bounce) {
-              _controller.forward();
-            }
+    _animation = Tween<double>(begin: widget.beginSize, end: widget.endSize).animate(
+      CurvedAnimation(parent: _controller, curve: widget.curve),
+    )..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          _controller.reverse();
+        } else if (status == AnimationStatus.dismissed) {
+          if (widget.bounce) {
+            _controller.forward();
           }
-        });
+        }
+      });
 
     if (widget.bounce) {
       _controller.forward();

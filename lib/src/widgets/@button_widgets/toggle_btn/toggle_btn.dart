@@ -1,9 +1,10 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
-// source code is governed by an MIT-style license described in the LICENSE
-// file located in this project's root directory.
+// Copyright © dev-cetera.com & contributors.
+//
+// The use of this source code is governed by an MIT-style license described in
+// the LICENSE file located in this project's root directory.
 //
 // See: https://opensource.org/license/mit
 //
@@ -45,9 +46,7 @@ class ToggleBtn extends StatelessWidget {
         return TapBox(
           properties: tapBoxProperyBuilder?.call(state, p),
           onTap: onTap != null ? () => onTap?.call(pState) : null,
-          onTapDown: onTapDown != null
-              ? (details) => onTapDown?.call(details, pState)
-              : null,
+          onTapDown: onTapDown != null ? (details) => onTapDown?.call(details, pState) : null,
           child: childBuilder?.call(context, state),
         );
       },
@@ -57,11 +56,10 @@ class ToggleBtn extends StatelessWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-typedef _TapBoxPropertyBuilder =
-    TapBoxProperties Function(
-      bool state,
-      TapBoxProperties defaultTapBoxProperties,
-    );
+typedef _TapBoxPropertyBuilder = TapBoxProperties Function(
+  bool state,
+  TapBoxProperties defaultTapBoxProperties,
+);
 typedef _ChildBuilder = Widget Function(BuildContext context, bool state);
 typedef _OnTap = void Function(Pod<bool> pState);
 typedef _OnTapDown = void Function(TapDownDetails details, Pod<bool> pState);

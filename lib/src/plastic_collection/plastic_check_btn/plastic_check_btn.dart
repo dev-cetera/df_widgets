@@ -1,9 +1,10 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
-// source code is governed by an MIT-style license described in the LICENSE
-// file located in this project's root directory.
+// Copyright © dev-cetera.com & contributors.
+//
+// The use of this source code is governed by an MIT-style license described in
+// the LICENSE file located in this project's root directory.
 //
 // See: https://opensource.org/license/mit
 //
@@ -66,56 +67,47 @@ class PlasticCheckBtn extends StatelessWidget {
       pState: pState,
       onTap: onTap,
       onTapDown: onTapDown,
-      tapBoxProperyBuilder: (checked, defaultTapBoxProperties) =>
-          defaultTapBoxProperties.copyWith(
-            builder: (context, states, _) {
-              final notIdling = states.isNotEmpty;
-              return ExtrudedBox(
-                properties:
-                    (p.extrudedBoxProperties ?? ExtrudedBox.themeOf(context))
-                        .copyWith(
-                          color: checked
-                              ? notIdling
-                                    ? p.checkedHoverShadowColor
-                                    : p.checkedShadowColor
-                              : notIdling
-                              ? p.uncheckedHoverShadowColor
-                              : p.uncheckedShadowColor,
-                          value: checked ? 0.6 : 1.0,
-                        ),
-                child: ColoredBox(
-                  color: checked
-                      ? notIdling
-                            ? p.checkedHoverColor$
-                            : p.checkedColor$
-                      : notIdling
+      tapBoxProperyBuilder: (checked, defaultTapBoxProperties) => defaultTapBoxProperties.copyWith(
+        builder: (context, states, _) {
+          final notIdling = states.isNotEmpty;
+          return ExtrudedBox(
+            properties: (p.extrudedBoxProperties ?? ExtrudedBox.themeOf(context)).copyWith(
+              color: checked
+                  ? notIdling
+                      ? p.checkedHoverShadowColor
+                      : p.checkedShadowColor
+                  : notIdling
+                      ? p.uncheckedHoverShadowColor
+                      : p.uncheckedShadowColor,
+              value: checked ? 0.6 : 1.0,
+            ),
+            child: ColoredBox(
+              color: checked
+                  ? notIdling
+                      ? p.checkedHoverColor$
+                      : p.checkedColor$
+                  : notIdling
                       ? p.uncheckedHoverColor$
                       : p.uncheckedColor$,
-                  child: () {
-                    if (checked) {
-                      return Icon(
-                        notIdling ? p.checkedHoverIconData$ : p.checkedIconData,
-                        color: notIdling
-                            ? p.checkedHoverIconColor$
-                            : p.checkedIconColor$,
-                        size: iconSize,
-                      );
-                    } else {
-                      return Icon(
-                        notIdling
-                            ? p.uncheckedHoverIconData$
-                            : p.uncheckedIconData,
-                        color: notIdling
-                            ? p.uncheckedHoverIconColor$
-                            : p.uncheckedIconColor$,
-                        size: iconSize,
-                      );
-                    }
-                  }(),
-                ),
-              );
-            },
-          ),
+              child: () {
+                if (checked) {
+                  return Icon(
+                    notIdling ? p.checkedHoverIconData$ : p.checkedIconData,
+                    color: notIdling ? p.checkedHoverIconColor$ : p.checkedIconColor$,
+                    size: iconSize,
+                  );
+                } else {
+                  return Icon(
+                    notIdling ? p.uncheckedHoverIconData$ : p.uncheckedIconData,
+                    color: notIdling ? p.uncheckedHoverIconColor$ : p.uncheckedIconColor$,
+                    size: iconSize,
+                  );
+                }
+              }(),
+            ),
+          );
+        },
+      ),
     );
   }
 }

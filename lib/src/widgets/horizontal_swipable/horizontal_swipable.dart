@@ -1,9 +1,10 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
-// source code is governed by an MIT-style license described in the LICENSE
-// file located in this project's root directory.
+// Copyright © dev-cetera.com & contributors.
+//
+// The use of this source code is governed by an MIT-style license described in
+// the LICENSE file located in this project's root directory.
 //
 // See: https://opensource.org/license/mit
 //
@@ -44,10 +45,8 @@ class _State extends State<HorizonralSwipable> with TickerProviderStateMixin {
 
   late FocusNode _focusNode;
 
-  bool get _canDragLeft =>
-      widget.left.builder != null || widget.left.child != null;
-  bool get _canDragRight =>
-      widget.right.builder != null || widget.right.child != null;
+  bool get _canDragLeft => widget.left.builder != null || widget.left.child != null;
+  bool get _canDragRight => widget.right.builder != null || widget.right.child != null;
   bool get _isLeft => _animationController.value < 0;
   bool get _isRight => _animationController.value > 0;
 
@@ -247,10 +246,9 @@ class HorizonralSwipableDirection {
   }
 }
 
-typedef HorizonralSwipableDirectionBuilder =
-    Widget Function(
-      BuildContext context,
-      double dragOffset,
-      double dragExtent,
-      Widget? child,
-    );
+typedef HorizonralSwipableDirectionBuilder = Widget Function(
+  BuildContext context,
+  double dragOffset,
+  double dragExtent,
+  Widget? child,
+);

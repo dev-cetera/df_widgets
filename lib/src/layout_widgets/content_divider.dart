@@ -1,9 +1,10 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
-// source code is governed by an MIT-style license described in the LICENSE
-// file located in this project's root directory.
+// Copyright © dev-cetera.com & contributors.
+//
+// The use of this source code is governed by an MIT-style license described in
+// the LICENSE file located in this project's root directory.
 //
 // See: https://opensource.org/license/mit
 //
@@ -139,8 +140,7 @@ class ContentDivider extends StatelessWidget {
         ),
         child: Container(
           decoration: (child.decoration ?? const BoxDecoration()).copyWith(
-            borderRadius:
-                child.decoration?.borderRadius ??
+            borderRadius: child.decoration?.borderRadius ??
                 BorderRadius.circular(math.max(8.sc, 0.25 * size1)),
           ),
           alignment: Alignment.center,
@@ -185,8 +185,7 @@ class ContentDivider extends StatelessWidget {
             startChildren,
             horizontal ? Alignment.centerLeft : Alignment.topCenter,
           ),
-        if (centerChildren.isNotEmpty)
-          buildChildren(centerChildren, Alignment.center),
+        if (centerChildren.isNotEmpty) buildChildren(centerChildren, Alignment.center),
         if (endChildren.isNotEmpty)
           buildChildren(
             endChildren,
@@ -255,15 +254,11 @@ enum ContentDividerAlignment {
   Alignment toAlignment(Axis axis) {
     switch (this) {
       case ContentDividerAlignment.START:
-        return axis == Axis.horizontal
-            ? Alignment.centerLeft
-            : Alignment.topCenter;
+        return axis == Axis.horizontal ? Alignment.centerLeft : Alignment.topCenter;
       case ContentDividerAlignment.CENTER:
         return Alignment.center;
       case ContentDividerAlignment.END:
-        return axis == Axis.horizontal
-            ? Alignment.centerRight
-            : Alignment.bottomCenter;
+        return axis == Axis.horizontal ? Alignment.centerRight : Alignment.bottomCenter;
     }
   }
 }

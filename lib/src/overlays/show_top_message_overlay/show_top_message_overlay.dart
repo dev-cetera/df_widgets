@@ -1,9 +1,10 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
-// source code is governed by an MIT-style license described in the LICENSE
-// file located in this project's root directory.
+// Copyright © dev-cetera.com & contributors.
+//
+// The use of this source code is governed by an MIT-style license described in
+// the LICENSE file located in this project's root directory.
 //
 // See: https://opensource.org/license/mit
 //
@@ -38,8 +39,7 @@ final class ShowTopMessageOverlay {
       context,
       message: message,
       properties: p.copyWith(
-        backgroundColor:
-            p.backgroundColor ?? Theme.of(context).colorScheme.errorContainer,
+        backgroundColor: p.backgroundColor ?? Theme.of(context).colorScheme.errorContainer,
       ),
     );
   }
@@ -74,20 +74,16 @@ final class ShowTopMessageOverlay {
                       : SlideAnimatorDirection.BOTTOM_TO_TOP,
                   child: Container(
                     margin: p.margin ?? EdgeInsets.symmetric(horizontal: 28.sc),
-                    constraints:
-                        p.constraints ?? BoxConstraints(maxWidth: 400.sc),
+                    constraints: p.constraints ?? BoxConstraints(maxWidth: 400.sc),
                     decoration: BoxDecoration(
-                      color:
-                          p.backgroundColor ??
+                      color: p.backgroundColor ??
                           Theme.of(
                             context,
                           ).colorScheme.tertiary.withValues(alpha: 0.85),
-                      borderRadius:
-                          p.borderRadius ?? BorderRadius.circular(24.sc),
+                      borderRadius: p.borderRadius ?? BorderRadius.circular(24.sc),
                     ),
                     clipBehavior: Clip.antiAlias,
-                    padding:
-                        p.padding ??
+                    padding: p.padding ??
                         EdgeInsets.symmetric(
                           horizontal: 20.sc,
                           vertical: 12.sc,
@@ -101,12 +97,11 @@ final class ShowTopMessageOverlay {
                         ],
                         Text(
                           message.toString(),
-                          style:
-                              p.messageStyle ??
+                          style: p.messageStyle ??
                               Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: Theme.of(context).colorScheme.onTertiary,
-                                fontWeight: FONT_WEIGHT_SEMI_BOLD,
-                              ),
+                                    color: Theme.of(context).colorScheme.onTertiary,
+                                    fontWeight: FONT_WEIGHT_SEMI_BOLD,
+                                  ),
                           softWrap: true,
                         ),
                       ],

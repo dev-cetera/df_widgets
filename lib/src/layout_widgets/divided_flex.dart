@@ -1,9 +1,10 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
-// source code is governed by an MIT-style license described in the LICENSE
-// file located in this project's root directory.
+// Copyright © dev-cetera.com & contributors.
+//
+// The use of this source code is governed by an MIT-style license described in
+// the LICENSE file located in this project's root directory.
 //
 // See: https://opensource.org/license/mit
 //
@@ -44,12 +45,12 @@ class DividedFlex extends Flex {
     this.lastIfNotEmpty,
     this.elements,
   }) : super(
-         mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
-         mainAxisSize: mainAxisSize ?? MainAxisSize.min,
-         crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
-         verticalDirection: verticalDirection ?? VerticalDirection.down,
-         direction: direction ?? Axis.horizontal,
-       );
+          mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+          mainAxisSize: mainAxisSize ?? MainAxisSize.min,
+          crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
+          verticalDirection: verticalDirection ?? VerticalDirection.down,
+          direction: direction ?? Axis.horizontal,
+        );
 
   //
   //

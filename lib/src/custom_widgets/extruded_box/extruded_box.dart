@@ -1,9 +1,10 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
-// source code is governed by an MIT-style license described in the LICENSE
-// file located in this project's root directory.
+// Copyright © dev-cetera.com & contributors.
+//
+// The use of this source code is governed by an MIT-style license described in
+// the LICENSE file located in this project's root directory.
 //
 // See: https://opensource.org/license/mit
 //
@@ -45,9 +46,7 @@ class ExtrudedBox extends StatelessWidget {
     final p = properties ?? themeOf(context);
     final max = (p.max ?? 12.sc).round();
     final extrusion = (max * p.value$).round();
-    final border =
-        p.border ??
-        OutlineInputBorder(borderRadius: BorderRadius.circular(8.sc));
+    final border = p.border ?? OutlineInputBorder(borderRadius: BorderRadius.circular(8.sc));
     final angleInRadians = (p.angle$ % 360) * pi / 180;
     final ax = cos(angleInRadians);
     final ay = sin(angleInRadians);

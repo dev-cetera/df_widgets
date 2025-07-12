@@ -1,9 +1,10 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// Dart/Flutter (DF) Packages by dev-cetera.com & contributors. The use of this
-// source code is governed by an MIT-style license described in the LICENSE
-// file located in this project's root directory.
+// Copyright © dev-cetera.com & contributors.
+//
+// The use of this source code is governed by an MIT-style license described in
+// the LICENSE file located in this project's root directory.
 //
 // See: https://opensource.org/license/mit
 //
@@ -29,8 +30,7 @@ class AnchoredPopup extends StatefulWidget {
 
   final Widget Function(BuildContext context, VoidCallback open)? buttonBuilder;
   final Widget Function(BuildContext context, VoidCallback close)? itemBuilder;
-  final Widget Function(BuildContext context, VoidCallback close)?
-  backgroundBuilder;
+  final Widget Function(BuildContext context, VoidCallback close)? backgroundBuilder;
 
   final AnchoredPopupController? controller;
 
@@ -86,23 +86,19 @@ class _State extends State<AnchoredPopup> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        widget.buttonBuilder?.call(context, _openPopup) ??
-            const SizedBox.shrink(),
+        widget.buttonBuilder?.call(context, _openPopup) ?? const SizedBox.shrink(),
         if (_open) ...[
           PositionedOverlay(
             child: Builder(
               builder: (context) => SizedBox.fromSize(
                 size: MediaQuery.sizeOf(context),
                 child:
-                    widget.backgroundBuilder?.call(context, _closePopup) ??
-                    const BlurryContainer(),
+                    widget.backgroundBuilder?.call(context, _closePopup) ?? const BlurryContainer(),
               ),
             ),
           ),
           AnchoredOverlay(
-            child:
-                widget.itemBuilder?.call(context, _closePopup) ??
-                const SizedBox.shrink(),
+            child: widget.itemBuilder?.call(context, _closePopup) ?? const SizedBox.shrink(),
           ),
         ],
       ],
