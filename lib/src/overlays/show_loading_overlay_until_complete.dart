@@ -27,8 +27,8 @@ class ShowLoadingOverlayUntilComplete {
     FocusManager.instance.primaryFocus?.unfocus(); // Dismiss the keyboard.
     return ShowMessageOverlay().show(
       context,
-      leading:
-          progressIndicator ?? const BasicDelayedCircularProgressIndicator(delay: Duration.zero),
+      leading: progressIndicator ??
+          const BasicDelayedCircularProgressIndicator(delay: Duration.zero),
       backgroundColor: backgroundColor,
       remover: (r) async {
         remove = r;

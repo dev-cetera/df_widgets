@@ -49,7 +49,8 @@ class ScaleXFlipAnimator extends StatefulWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class _State extends State<ScaleXFlipAnimator> with SingleTickerProviderStateMixin {
+class _State extends State<ScaleXFlipAnimator>
+    with SingleTickerProviderStateMixin {
   //
   //
   //
@@ -98,7 +99,8 @@ class _State extends State<ScaleXFlipAnimator> with SingleTickerProviderStateMix
       builder: (context, child) {
         // Calculate the current scale factor based on the animation value.
         // The scale oscillates between minScale and maxScale.
-        final scaleX = widget.minScale + (widget.maxScale - widget.minScale) * _animation.value;
+        final scaleX = widget.minScale +
+            (widget.maxScale - widget.minScale) * _animation.value;
 
         return Transform.scale(
           scaleX: scaleX, // Scale only in the x-direction.

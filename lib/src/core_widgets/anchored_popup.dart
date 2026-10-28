@@ -30,7 +30,8 @@ class AnchoredPopup extends StatefulWidget {
 
   final Widget Function(BuildContext context, VoidCallback open)? buttonBuilder;
   final Widget Function(BuildContext context, VoidCallback close)? itemBuilder;
-  final Widget Function(BuildContext context, VoidCallback close)? backgroundBuilder;
+  final Widget Function(BuildContext context, VoidCallback close)?
+      backgroundBuilder;
 
   final AnchoredPopupController? controller;
 
@@ -86,19 +87,21 @@ class _State extends State<AnchoredPopup> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        widget.buttonBuilder?.call(context, _openPopup) ?? const SizedBox.shrink(),
+        widget.buttonBuilder?.call(context, _openPopup) ??
+            const SizedBox.shrink(),
         if (_open) ...[
           PositionedOverlay(
             child: Builder(
               builder: (context) => SizedBox.fromSize(
                 size: MediaQuery.sizeOf(context),
-                child:
-                    widget.backgroundBuilder?.call(context, _closePopup) ?? const BlurryContainer(),
+                child: widget.backgroundBuilder?.call(context, _closePopup) ??
+                    const BlurryContainer(),
               ),
             ),
           ),
           AnchoredOverlay(
-            child: widget.itemBuilder?.call(context, _closePopup) ?? const SizedBox.shrink(),
+            child: widget.itemBuilder?.call(context, _closePopup) ??
+                const SizedBox.shrink(),
           ),
         ],
       ],

@@ -185,7 +185,8 @@ class ContentDivider extends StatelessWidget {
             startChildren,
             horizontal ? Alignment.centerLeft : Alignment.topCenter,
           ),
-        if (centerChildren.isNotEmpty) buildChildren(centerChildren, Alignment.center),
+        if (centerChildren.isNotEmpty)
+          buildChildren(centerChildren, Alignment.center),
         if (endChildren.isNotEmpty)
           buildChildren(
             endChildren,
@@ -254,11 +255,15 @@ enum ContentDividerAlignment {
   Alignment toAlignment(Axis axis) {
     switch (this) {
       case ContentDividerAlignment.START:
-        return axis == Axis.horizontal ? Alignment.centerLeft : Alignment.topCenter;
+        return axis == Axis.horizontal
+            ? Alignment.centerLeft
+            : Alignment.topCenter;
       case ContentDividerAlignment.CENTER:
         return Alignment.center;
       case ContentDividerAlignment.END:
-        return axis == Axis.horizontal ? Alignment.centerRight : Alignment.bottomCenter;
+        return axis == Axis.horizontal
+            ? Alignment.centerRight
+            : Alignment.bottomCenter;
     }
   }
 }

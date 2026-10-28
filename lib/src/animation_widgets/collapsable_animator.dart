@@ -49,7 +49,8 @@ class CollapsableAnimator extends StatefulWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class _State extends State<CollapsableAnimator> with SingleTickerProviderStateMixin {
+class _State extends State<CollapsableAnimator>
+    with SingleTickerProviderStateMixin {
   //
   //
   //
@@ -123,6 +124,7 @@ class _State extends State<CollapsableAnimator> with SingleTickerProviderStateMi
     return FadeTransition(
       opacity: _animation,
       child: SizeTransition(
+        // ignore: deprecated_member_use
         axisAlignment: 1.0,
         sizeFactor: _animation,
         child: widget.child,

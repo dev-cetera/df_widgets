@@ -37,7 +37,8 @@ class PulseAnimator extends StatefulWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class _PulseAnimatorState extends State<PulseAnimator> with SingleTickerProviderStateMixin {
+class _PulseAnimatorState extends State<PulseAnimator>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _scaleAnimation;
 

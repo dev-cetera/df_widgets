@@ -49,7 +49,8 @@ class BouncingAnimator extends StatefulWidget {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class _State extends State<BouncingAnimator> with SingleTickerProviderStateMixin {
+class _State extends State<BouncingAnimator>
+    with SingleTickerProviderStateMixin {
   //
   //
   //
@@ -69,17 +70,18 @@ class _State extends State<BouncingAnimator> with SingleTickerProviderStateMixin
       vsync: this,
     );
 
-    _animation = Tween<double>(begin: widget.beginSize, end: widget.endSize).animate(
+    _animation =
+        Tween<double>(begin: widget.beginSize, end: widget.endSize).animate(
       CurvedAnimation(parent: _controller, curve: widget.curve),
     )..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          _controller.reverse();
-        } else if (status == AnimationStatus.dismissed) {
-          if (widget.bounce) {
-            _controller.forward();
-          }
-        }
-      });
+            if (status == AnimationStatus.completed) {
+              _controller.reverse();
+            } else if (status == AnimationStatus.dismissed) {
+              if (widget.bounce) {
+                _controller.forward();
+              }
+            }
+          });
 
     if (widget.bounce) {
       _controller.forward();

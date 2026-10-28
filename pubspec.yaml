@@ -40,8 +40,8 @@ dependencies:
   df_color: ^0.1.6
   df_di: ^0.15.10
   df_generate_dart_models_core: ^0.9.25
-  df_pod: ^0.19.1
-  df_scalable: ^0.9.6
+  df_pod: ^0.20.1
+  df_scalable: ^0.10.2
   df_debouncer: ^0.4.16
   
 

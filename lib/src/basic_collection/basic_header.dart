@@ -141,7 +141,9 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
                 child: Text(
                   title!,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                        fontSize: Theme.of(context).textTheme.titleSmall!.fontSize! * heightf,
+                        fontSize:
+                            Theme.of(context).textTheme.titleSmall!.fontSize! *
+                                heightf,
                       ),
                 ),
               ),
@@ -162,12 +164,13 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
                     child: IntrinsicHeight(
                       child: BlurryContainer(
                         properties: BlurryContainer.themeOf(context).copyWith(
-                          containerProperties:
-                              BlurryContainer.themeOf(context).containerProperties$.copyWith(
-                                    color: Theme.of(
-                                      context,
-                                    ).colorScheme.surfaceContainerHighest,
-                                  ),
+                          containerProperties: BlurryContainer.themeOf(context)
+                              .containerProperties$
+                              .copyWith(
+                                color: Theme.of(
+                                  context,
+                                ).colorScheme.surfaceContainerHighest,
+                              ),
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(24.sc),
                             bottomLeft: Radius.circular(24.sc),
@@ -192,7 +195,8 @@ class _BasicHeaderDelegate extends SliverPersistentHeaderDelegate {
                                 ),
                                 const Spacer(),
                                 BasicIconBtn(
-                                  iconData: FluentIcons.chevron_right_24_regular,
+                                  iconData:
+                                      FluentIcons.chevron_right_24_regular,
                                   onTapDown: (_) => close(),
                                 ),
                               ],

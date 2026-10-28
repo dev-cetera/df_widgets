@@ -124,6 +124,7 @@ class _State extends State<SizeAnimator> with SingleTickerProviderStateMixin {
 
     return SizeTransition(
       sizeFactor: _animation,
+      // ignore: deprecated_member_use
       axisAlignment: axisAlignment,
       axis: axis,
       child: widget.child,

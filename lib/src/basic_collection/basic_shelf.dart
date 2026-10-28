@@ -151,7 +151,8 @@ class BasicShelfItemWidget extends StatelessWidget {
               item.trailingIcon!
             else
               BasicIconBtn(
-                iconData: item.trailingIconData ?? FluentIcons.chevron_right_24_regular,
+                iconData: item.trailingIconData ??
+                    FluentIcons.chevron_right_24_regular,
                 onTap: item.onTap,
                 onTapDown: item.onTapDown,
               ),
