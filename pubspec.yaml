@@ -38,11 +38,11 @@ dependencies:
   visibility_detector: ^0.4.0+2
 
   df_color: ^0.1.6
-  df_di: ^0.15.10
-  df_generate_dart_models_core: ^0.9.25
+  df_di: ^0.17.2
+  df_generate_dart_models_core: ^0.12.2
   df_pod: ^0.20.1
   df_scalable: ^0.10.2
-  df_debouncer: ^0.4.16
+  df_debouncer: ^0.6.2
   
 
 ## -----------------------------------------------------------------------------
