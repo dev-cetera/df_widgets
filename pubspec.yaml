@@ -13,13 +13,9 @@
 
 name: df_widgets
 homepage: https://dev-cetera.com/
-repository: https://github.com/robmllze/df_widgets
-funding:
-  - https://www.buymeacoffee.com/dev_cetera
-  - https://www.patreon.com/c/robelator
-  - https://github.com/sponsors/robelator
+repository: https://github.com/dev-cetera/df_widgets
 description: A collection of practical widgets that are neither material nor cupertino.
-version: 0.3.0
+version: 0.4.0
 topics:
   - design
   - modular
